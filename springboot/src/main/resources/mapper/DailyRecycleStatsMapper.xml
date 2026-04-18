@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.DailyRecycleStatsMapper">
+
+    <insert id="insert" parameterType="com.example.entity.DailyRecycleStats" useGeneratedKeys="true" keyProperty="id">
+        insert into daily_recycle_stats (stat_date, total_orders, completed_orders, cancelled_orders, total_weight,
+                 total_carbon_saved, total_points_given, avg_response_time, active_users, active_collectors)
+        values ( #{statDate}, #{totalOrders}, #{completedOrders}, #{cancelledOrders}, #{totalWeight},
+                #{totalCarbonSaved}, #{totalPointsGiven}, #{avgResponseTime}, #{activeUsers}, #{activeCollectors})
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.DailyRecycleStats">
+        update daily_recycle_stats
+        <set>
+            <if test="totalOrders != null">total_orders = #{totalOrders},</if>
+            <if test="completedOrders != null">completed_orders = #{completedOrders},</if>
+            <if test="cancelledOrders != null">cancelled_orders = #{cancelledOrders},</if>
+            <if test="totalWeight != null">total_weight = #{totalWeight},</if>
+            <if test="totalCarbonSaved != null">total_carbon_saved = #{totalCarbonSaved},</if>
+            <if test="totalPointsGiven != null">total_points_given = #{totalPointsGiven},</if>
+            <if test="avgResponseTime != null">avg_response_time = #{avgResponseTime},</if>
+            <if test="activeUsers != null">active_users = #{activeUsers},</if>
+            <if test="activeCollectors != null">active_collectors = #{activeCollectors},</if>
+            <if test="applianceTypeStats != null">appliance_type_stats = #{applianceTypeStats},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectByDate" resultType="com.example.entity.DailyRecycleStats">
+        select * from daily_recycle_stats where stat_date = #{date}
+    </select>
+
+    <select id="selectByDateRange" resultType="com.example.entity.DailyRecycleStats">
+        select * from daily_recycle_stats
+        where stat_date between #{startDate} and #{endDate}
+        order by stat_date desc
+    </select>
+</mapper>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.BannerMapper">
+
+    <!-- 结果映射：下划线转驼峰 -->
+    <resultMap id="BaseResultMap" type="com.example.entity.Banner">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="subtitle" property="subtitle"/>
+        <result column="bg_color" property="bgColor"/>
+        <result column="icon" property="icon"/>
+        <result column="sort_order" property="sortOrder"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <!-- 基础字段列表 -->
+    <sql id="Base_Column_List">
+        id, title, subtitle, bg_color, icon, sort_order, status, create_time, update_time
+    </sql>
+
+    <insert id="insert" parameterType="com.example.entity.Banner" useGeneratedKeys="true" keyProperty="id">
+        insert into banner (title, subtitle, bg_color, icon, sort_order, status)
+        values (#{title}, #{subtitle}, #{bgColor}, #{icon}, #{sortOrder}, #{status})
+    </insert>
+
+    <delete id="deleteById">
+        delete from banner where id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.example.entity.Banner">
+        update banner
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="subtitle != null">subtitle = #{subtitle},</if>
+            <if test="bgColor != null">bg_color = #{bgColor},</if>
+            <if test="icon != null">icon = #{icon},</if>
+            <if test="sortOrder != null">sort_order = #{sortOrder},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from banner where id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from banner
+        <where>
+            <if test="title != null">and title like concat('%', #{title}, '%')</if>
+            <if test="status != null">and status = #{status}</if>
+        </where>
+        order by sort_order asc, id desc
+    </select>
+
+    <select id="selectPublished" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from banner
+        where status = 1
+        order by sort_order asc, id desc
+    </select>
+
+    <select id="selectByStatus" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from banner
+        where status = #{status}
+        order by sort_order asc, id desc
+    </select>
+
+</mapper>

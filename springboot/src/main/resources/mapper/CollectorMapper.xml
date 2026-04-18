@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CollectorMapper">
+
+    <insert id="insert" parameterType="com.example.entity.Collector" useGeneratedKeys="true" keyProperty="id">
+        insert into collector (username, password, name, phone, id_card, id_card_front, id_card_back,
+                               work_status, rating, order_count, today_order_count, location_lat,
+                               location_lng, location_update_time, max_daily_orders, service_area,
+                               status, audit_status, reject_reason)
+        values (#{username}, #{password}, #{name}, #{phone}, #{idCard}, #{idCardFront}, #{idCardBack},
+                #{workStatus}, #{rating}, #{orderCount}, #{todayOrderCount}, #{locationLat},
+                #{locationLng}, #{locationUpdateTime}, #{maxDailyOrders}, #{serviceArea},
+                #{status}, #{auditStatus}, #{rejectReason})
+    </insert>
+
+    <delete id="deleteById">
+        delete from collector where id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.example.entity.Collector">
+        update collector
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="idCard != null">id_card = #{idCard},</if>
+            <if test="idCardFront != null">id_card_front = #{idCardFront},</if>
+            <if test="idCardBack != null">id_card_back = #{idCardBack},</if>
+            <if test="workStatus != null">work_status = #{workStatus},</if>
+            <if test="rating != null">rating = #{rating},</if>
+            <if test="orderCount != null">order_count = #{orderCount},</if>
+            <if test="todayOrderCount != null">today_order_count = #{todayOrderCount},</if>
+            <if test="locationLat != null">location_lat = #{locationLat},</if>
+            <if test="locationLng != null">location_lng = #{locationLng},</if>
+            <if test="locationUpdateTime != null">location_update_time = #{locationUpdateTime},</if>
+            <if test="maxDailyOrders != null">max_daily_orders = #{maxDailyOrders},</if>
+            <if test="serviceArea != null">service_area = #{serviceArea},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="auditStatus != null">audit_status = #{auditStatus},</if>
+            <if test="rejectReason != null">reject_reason = #{rejectReason},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectById" resultType="com.example.entity.Collector">
+        select * from collector where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.example.entity.Collector">
+        select * from collector
+        <where>
+            <if test="username != null">and username like concat('%', #{username}, '%')</if>
+            <if test="name != null">and name like concat('%', #{name}, '%')</if>
+            <if test="phone != null">and phone = #{phone}</if>
+            <if test="workStatus != null">and work_status = #{workStatus}</if>
+            <if test="auditStatus != null">and audit_status = #{auditStatus}</if>
+            <if test="status != null">and status = #{status}</if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <select id="selectByUsername" resultType="com.example.entity.Collector">
+        select * from collector where username = #{username}
+    </select>
+
+    <select id="selectByPhone" resultType="com.example.entity.Collector">
+        select * from collector where phone = #{phone}
+    </select>
+
+    <select id="selectByPhoneAndIdCard" resultType="com.example.entity.Collector">
+        select * from collector where phone = #{phone} and id_card = #{idCard} order by create_time desc limit 1
+    </select>
+
+    <select id="selectByIdCard" resultType="com.example.entity.Collector">
+        select * from collector where id_card = #{idCard} limit 1
+    </select>
+
+    <select id="selectNearby" resultType="com.example.entity.Collector">
+        select *,
+               (6371 * acos(cos(radians(#{lat})) * cos(radians(location_lat)) *
+                            cos(radians(location_lng) - radians(#{lng})) + sin(radians(#{lat})) *
+                                                                           sin(radians(location_lat)))) as distance
+        from collector
+        where work_status = 1
+          and status = 1
+          and audit_status = 1
+          and location_lat is not null
+          and location_lng is not null
+        having distance &lt;= #{radius} / 1000
+        order by distance
+            limit 10
+    </select>
+
+    <select id="selectPendingAudit" resultType="com.example.entity.Collector">
+        select * from collector where audit_status = 0 order by create_time desc
+    </select>
+
+    <update id="auditPass">
+        update collector set audit_status = 1, status = 1 where id = #{id}
+    </update>
+
+    <update id="auditReject">
+        update collector set audit_status = 2, reject_reason = #{reason} where id = #{id}
+    </update>
+
+    <update id="resetTodayOrderCount">
+        update collector set today_order_count = 0
+    </update>
+
+</mapper>

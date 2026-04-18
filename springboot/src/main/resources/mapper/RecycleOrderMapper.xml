@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.RecycleOrderMapper">
+
+    <insert id="insert" parameterType="com.example.entity.RecycleOrder" useGeneratedKeys="true" keyProperty="id">
+        insert into recycle_order (
+            order_no, user_id, collector_id, address_id, address_detail, address_lat, address_lng,
+            building_type, floor, contact_name, contact_phone, appliance_type_id, appliance_type_name,
+            appliance_desc, appliance_imgs,brand_level, usage_years, functional_status, appearance_level,
+            condition_factor, price_estimate, estimated_weight, expect_date, expect_time_start, expect_time_end,
+            urgency_level, assign_type, status, points_earned, create_time)
+        values (#{orderNo}, #{userId}, #{collectorId}, #{addressId}, #{addressDetail}, #{addressLat}, #{addressLng},
+                #{buildingType}, #{floor}, #{contactName}, #{contactPhone}, #{applianceTypeId}, #{applianceTypeName},
+                #{applianceDesc}, #{applianceImgs},#{brandLevel}, #{usageYears}, #{functionalStatus}, #{appearanceLevel},
+                #{conditionFactor}, #{priceEstimate}, #{estimatedWeight}, #{expectDate}, #{expectTimeStart}, #{expectTimeEnd},
+                #{urgencyLevel}, #{assignType}, #{status}, #{pointsEarned}, now())
+    </insert>
+
+    <delete id="deleteById">
+        delete from recycle_order where id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.example.entity.RecycleOrder">
+        update recycle_order
+        <set>
+            <if test="collectorId != null">collector_id = #{collectorId},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="assignType != null">assign_type = #{assignType},</if>
+            <if test="assignTime != null">assign_time = #{assignTime},</if>
+            <if test="acceptTime != null">accept_time = #{acceptTime},</if>
+            <if test="arriveTime != null">arrive_time = #{arriveTime},</if>
+            <if test="completeTime != null">complete_time = #{completeTime},</if>
+            <if test="brandLevel != null">brand_level = #{brandLevel},</if>
+            <if test="usageYears != null">usage_years = #{usageYears},</if>
+            <if test="functionalStatus != null">functional_status = #{functionalStatus},</if>
+            <if test="appearanceLevel != null">appearance_level = #{appearanceLevel},</if>
+            <if test="conditionFactor != null">condition_factor = #{conditionFactor},</if>
+            <if test="priceEstimate != null">price_estimate = #{priceEstimate},</if>
+            <if test="priceActual != null">price_actual = #{priceActual},</if>
+            <if test="pointsEarned != null">points_earned = #{pointsEarned},</if>
+            <if test="weightActual != null">weight_actual = #{weightActual},</if>
+            <if test="carbonSaved != null">carbon_saved = #{carbonSaved},</if>
+            <if test="cancelReason != null">cancel_reason = #{cancelReason},</if>
+            <if test="userRating != null">user_rating = #{userRating},</if>
+            <if test="userComment != null">user_comment = #{userComment},</if>
+            <if test="collectorRating != null">collector_rating = #{collectorRating},</if>
+            update_time = NOW()
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectById" resultType="com.example.entity.RecycleOrder">
+        select * from recycle_order where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.example.entity.RecycleOrder">
+        select * from recycle_order
+        <where>
+            <if test="userId != null">and user_id = #{userId}</if>
+            <if test="collectorId != null">and collector_id = #{collectorId}</if>
+            <if test="status != null">and status = #{status}</if>
+            <if test="orderNo != null">and order_no like concat('%', #{orderNo}, '%')</if>
+            <if test="contactPhone != null">and contact_phone = #{contactPhone}</if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <select id="selectByUser" resultType="com.example.entity.RecycleOrder">
+        select * from recycle_order where user_id = #{userId} order by create_time desc
+    </select>
+
+    <select id="selectByCollector" resultType="com.example.entity.RecycleOrder">
+        select * from recycle_order where collector_id = #{collectorId} order by create_time desc
+    </select>
+
+    <select id="selectByStatus" resultType="com.example.entity.RecycleOrder">
+        select * from recycle_order where status = #{status} order by create_time asc
+    </select>
+
+    <select id="selectAvgRatingByCollector" resultType="java.math.BigDecimal">
+        select avg(user_rating) from recycle_order
+        where collector_id = #{collectorId} and user_rating is not null
+    </select>
+
+    <select id="countTotal" resultType="java.lang.Integer">
+        select count(*) from recycle_order
+    </select>
+
+    <select id="countToday" resultType="java.lang.Integer">
+        select count(*) from recycle_order where date(create_time) = curdate()
+    </select>
+
+    <select id="countByStatus" resultType="java.lang.Integer">
+        select count(*) from recycle_order where status = #{status}
+    </select>
+
+    <select id="sumTotalWeight" resultType="java.math.BigDecimal">
+        select coalesce(sum(weight_actual), 0) from recycle_order where status = 4
+    </select>
+
+    <select id="sumTotalCarbonSaved" resultType="java.math.BigDecimal">
+        select coalesce(sum(carbon_saved), 0) from recycle_order where status = 4
+    </select>
+
+    <select id="selectApplianceTypeStats" resultType="java.util.HashMap">
+        select appliance_type_name as name, count(*) as count, sum(weight_actual) as weight
+        from recycle_order where status = 4 group by appliance_type_id
+    </select>
+
+    <select id="selectCollectorRanking" resultType="java.util.HashMap">
+        select c.id, c.name, count(*) as orderCount, sum(r.price_actual) as totalAmount
+        from recycle_order r join collector c on r.collector_id = c.id
+        where r.status = 4 group by r.collector_id order by orderCount desc limit #{limit}
+    </select>
+
+    <!-- 带版本号查询 -->
+    <select id="selectByIdWithVersion" resultType="com.example.entity.RecycleOrder">
+        select id, status, version, order_no, user_id, collector_id
+        from recycle_order
+        where id = #{id}
+    </select>
+
+    <!-- 乐观锁抢单（核心：where version=#{oldVersion} and status=0） -->
+    <update id="grabOrderWithVersion">
+        update recycle_order
+        set status = 1,
+        collector_id = #{collectorId},
+        assign_type = 3,
+        assign_time = now(),
+        version = version + 1
+        where id = #{id}
+        and version = #{oldVersion}     <!-- 乐观锁校验 -->
+        and status = 0                  <!-- 确保仍是待分配状态 -->
+    </update>
+
+</mapper>

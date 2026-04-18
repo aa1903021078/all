@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.PointsGoodsMapper">
+
+    <insert id="insert" parameterType="com.example.entity.PointsGoods" useGeneratedKeys="true" keyProperty="id">
+        insert into points_goods (name, description, image, points_required,
+                                  stock, total_exchanged, status, sort_order)
+        values (#{name}, #{description}, #{image}, #{pointsRequired},
+                #{stock}, #{totalExchanged}, #{status}, #{sortOrder})
+    </insert>
+
+    <delete id="deleteById">
+        delete from points_goods where id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.example.entity.PointsGoods">
+        update points_goods
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="pointsRequired != null">points_required = #{pointsRequired},</if>
+            <if test="stock != null">stock = #{stock},</if>
+            <if test="totalExchanged != null">total_exchanged = #{totalExchanged},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="sortOrder != null">sort_order = #{sortOrder},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectById" resultType="com.example.entity.PointsGoods">
+        select * from points_goods where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.example.entity.PointsGoods">
+        select * from points_goods
+        <where>
+            <if test="name != null">and name like concat('%', #{name}, '%')</if>
+            <if test="status != null">and status = #{status}</if>
+        </where>
+        order by sort_order asc, create_time desc
+    </select>
+
+    <select id="selectAvailable" resultType="com.example.entity.PointsGoods">
+        select * from points_goods where status = 1 and stock > 0 order by sort_order asc
+    </select>
+    <!-- 带版本号查询（用于获取当前version值） -->
+    <select id="selectByIdWithVersion" resultType="com.example.entity.PointsGoods">
+        select id, name, stock, points_required, version
+        from points_goods
+        where id = #{id}
+    </select>
+    <!-- 乐观锁扣减库存（核心：where version=#{version}） -->
+    <update id="decreaseStockWithVersion">
+        update points_goods
+        set stock = stock - 1,
+        total_exchanged = total_exchanged + 1,
+        version = version + 1
+        where id = #{id}
+        and version = #{version}      <!-- 乐观锁校验 -->
+        and stock > 0                 <!-- 业务校验 -->
+    </update>
+</mapper>

@@ -1,0 +1,83 @@
+// ==================== 主题色彩 ====================
+$primary-color: #1890ff;
+$success-color: #52c41a;
+$warning-color: #faad14;
+$danger-color: #f5222d;
+$info-color: #909399;
+
+// 绿色主题（环保相关）
+$eco-primary: #52c41a;
+$eco-light: #73d13d;
+$eco-dark: #389e0d;
+$eco-bg: #f6ffed;
+
+// ==================== 中性色 ====================
+$text-primary: #262626;
+$text-regular: #595959;
+$text-secondary: #8c8c8c;
+$text-placeholder: #bfbfbf;
+
+$border-color: #d9d9d9;
+$border-light: #e8e8e8;
+$border-lighter: #f0f0f0;
+
+$bg-primary: #f5f7fa;
+$bg-white: #ffffff;
+$bg-dark: #001529;
+
+// ==================== 字体 ====================
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-size-base: 14px;
+$font-size-small: 12px;
+$font-size-medium: 16px;
+$font-size-large: 18px;
+$font-size-xl: 24px;
+$font-size-xxl: 32px;
+
+// ==================== 间距 ====================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// ==================== 圆角 ====================
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-round: 50%;
+
+// ==================== 阴影 ====================
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-primary: 0 4px 12px rgba(82, 196, 26, 0.2);
+
+// ==================== 过渡动画 ====================
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// ==================== 布局 ====================
+$sidebar-width: 250px;
+$sidebar-collapsed: 64px;
+$header-height: 64px;
+$footer-height: 60px;
+
+// ==================== 断点 ====================
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+$screen-xl: 1600px;
+
+// ==================== z-index ====================
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;

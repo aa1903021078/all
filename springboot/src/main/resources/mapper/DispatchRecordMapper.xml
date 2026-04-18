@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.DispatchRecordMapper">
+
+    <insert id="insert" parameterType="com.example.entity.DispatchRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into dispatch_record (order_id, collector_id, dispatch_type, distance, estimated_time)
+        values (#{orderId}, #{collectorId}, #{dispatchType}, #{distance}, #{estimatedTime})
+    </insert>
+
+
+    <update id="updateAcceptStatus">
+        update dispatch_record set is_accepted = #{isAccepted}
+                               where order_id = #{orderId} and collector_id = #{collectorId}
+    </update>
+</mapper>

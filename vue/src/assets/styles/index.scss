@@ -1,0 +1,141 @@
+@use './variables.scss' as *;
+
+// 全局工具类
+.text-primary { color: $primary; }
+.text-success { color: $success; }
+.text-warning { color: $warning; }
+.text-danger { color: $danger; }
+.text-info { color: $info; }
+
+.bg-primary { background-color: $primary; }
+.bg-success { background-color: $success; }
+.bg-warning { background-color: $warning; }
+.bg-danger { background-color: $danger; }
+
+// 弹性布局
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.flex-1 { flex: 1; }
+
+// 间距
+.p-4 { padding: 4px; }
+.p-8 { padding: 8px; }
+.p-16 { padding: 16px; }
+.p-24 { padding: 24px; }
+
+.m-4 { margin: 4px; }
+.m-8 { margin: 8px; }
+.m-16 { margin: 16px; }
+.m-24 { margin: 24px; }
+
+// 文字
+.text-center { text-align: center; }
+.font-bold { font-weight: bold; }
+
+// 卡片样式
+.card {
+  background: $white;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow;
+}
+
+// 页面容器
+.page-container {
+  padding: $spacing-lg;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// 按钮样式
+.btn-primary {
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: $white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// 标签样式
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: $text-xs;
+  font-weight: 500;
+
+  &.tag-primary {
+    background: rgba($primary, 0.1);
+    color: $primary;
+  }
+
+  &.tag-success {
+    background: rgba($success, 0.1);
+    color: $success;
+  }
+
+  &.tag-warning {
+    background: rgba($warning, 0.1);
+    color: $warning;
+  }
+
+  &.tag-danger {
+    background: rgba($danger, 0.1);
+    color: $danger;
+  }
+}
+
+// 状态样式
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  &.status-success::before { background: $success; }
+  &.status-warning::before { background: $warning; }
+  &.status-danger::before { background: $danger; }
+  &.status-info::before { background: $info; }
+}
+
+// 动画
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease;
+}
