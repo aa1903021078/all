@@ -139,8 +139,8 @@
           <el-descriptions-item label="晚餐" :span="2">{{ detailData.dinner || '暂无' }}</el-descriptions-item>
           <el-descriptions-item label="加餐" :span="2">{{ detailData.snack || '暂无' }}</el-descriptions-item>
           <el-descriptions-item label="备注" :span="2">{{ detailData.remark || '暂无' }}</el-descriptions-item>
-        </template>
-      </el-descriptions>
+        </el-descriptions>
+      </template>
     </el-dialog>
   </div>
 </template>
