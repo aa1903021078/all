@@ -19,10 +19,14 @@ public class CareRecordMedical {
 
     private Integer customerId;
 
+    private Integer infantId;
+
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date recordDate;
 
-    private String content;
+    private String maternalContent;
+
+    private String infantContent;
 
     private String remark;
 
@@ -35,4 +39,7 @@ public class CareRecordMedical {
 
     @TableField(exist = false)
     private String customerName;
+
+    @TableField(exist = false)
+    private String infantName;
 }
