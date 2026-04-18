@@ -210,7 +210,12 @@ import request from '@/utils/request'
 import FileUpload from '@/components/FileUpload.vue'
 
 const router = useRouter()
-const user = JSON.parse(localStorage.getItem('user') || '{}')
+let user = {}
+try {
+  user = JSON.parse(localStorage.getItem('user') || '{}')
+} catch {
+  user = {}
+}
 
 const step = ref(0)
 const formRef = ref(null)
@@ -299,8 +304,8 @@ watch(
         if (res.code === '200') {
           estimatedPrice.value = res.data
         }
-      } catch {
-        // ignore
+      } catch (e) {
+        console.warn('预估价格计算失败', e)
       }
     } else {
       estimatedPrice.value = null
