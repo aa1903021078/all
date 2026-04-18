@@ -8,8 +8,8 @@
             <el-table-column prop="customerName" label="客户" min-width="100" />
             <el-table-column prop="staffName" label="月嫂" min-width="100" />
             <el-table-column prop="recordDate" label="记录日期" width="120" />
-            <el-table-column prop="motherCare" label="产妇护理内容" min-width="180" show-overflow-tooltip />
-            <el-table-column prop="babyCare" label="婴儿护理内容" min-width="180" show-overflow-tooltip />
+            <el-table-column prop="maternalContent" label="产妇护理内容" min-width="180" show-overflow-tooltip />
+            <el-table-column prop="infantContent" label="婴儿护理内容" min-width="180" show-overflow-tooltip />
             <el-table-column prop="remark" label="备注" min-width="120" show-overflow-tooltip />
           </el-table>
           <div class="pagination-container">
@@ -25,7 +25,7 @@
             <el-table-column prop="customerName" label="客户" min-width="100" />
             <el-table-column prop="staffName" label="护理人员" min-width="100" />
             <el-table-column prop="recordDate" label="记录日期" width="120" />
-            <el-table-column prop="careContent" label="护理内容" min-width="240" show-overflow-tooltip />
+            <el-table-column prop="content" label="护理内容" min-width="240" show-overflow-tooltip />
             <el-table-column prop="remark" label="备注" min-width="120" show-overflow-tooltip />
           </el-table>
           <div class="pagination-container">
@@ -63,15 +63,15 @@
           <el-descriptions-item label="客户">{{ detailData.customerName }}</el-descriptions-item>
           <el-descriptions-item label="月嫂">{{ detailData.staffName }}</el-descriptions-item>
           <el-descriptions-item label="记录日期" :span="2">{{ detailData.recordDate }}</el-descriptions-item>
-          <el-descriptions-item label="产妇护理内容" :span="2">{{ detailData.motherCare || '暂无' }}</el-descriptions-item>
-          <el-descriptions-item label="婴儿护理内容" :span="2">{{ detailData.babyCare || '暂无' }}</el-descriptions-item>
+          <el-descriptions-item label="产妇护理内容" :span="2">{{ detailData.maternalContent || '暂无' }}</el-descriptions-item>
+          <el-descriptions-item label="婴儿护理内容" :span="2">{{ detailData.infantContent || '暂无' }}</el-descriptions-item>
           <el-descriptions-item label="备注" :span="2">{{ detailData.remark || '暂无' }}</el-descriptions-item>
         </template>
         <template v-else-if="detailType === 'medical'">
           <el-descriptions-item label="客户">{{ detailData.customerName }}</el-descriptions-item>
           <el-descriptions-item label="护理人员">{{ detailData.staffName }}</el-descriptions-item>
           <el-descriptions-item label="记录日期" :span="2">{{ detailData.recordDate }}</el-descriptions-item>
-          <el-descriptions-item label="护理内容" :span="2">{{ detailData.careContent || '暂无' }}</el-descriptions-item>
+          <el-descriptions-item label="护理内容" :span="2">{{ detailData.content || '暂无' }}</el-descriptions-item>
           <el-descriptions-item label="备注" :span="2">{{ detailData.remark || '暂无' }}</el-descriptions-item>
         </template>
         <template v-else>
