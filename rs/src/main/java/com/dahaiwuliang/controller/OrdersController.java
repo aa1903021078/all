@@ -66,7 +66,7 @@ public class OrdersController {
             orders.setStatus(0);
         }
         ordersService.save(orders);
-        return Result.ok();
+        return Result.ok(orders);
     }
 
     @PutMapping("/update")

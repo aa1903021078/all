@@ -13,7 +13,7 @@ public class CareRecordLifeService {
     @Autowired
     private CareRecordLifeDao careRecordLifeDao;
 
-    public Page<CareRecordLife> list(int pageNum, int pageSize, Integer orderId, Integer customerId, Integer staffId) {
+    public Page<CareRecordLife> list(int pageNum, int pageSize, Integer orderId, Integer customerId, Integer staffId, Integer infantId) {
         Page<CareRecordLife> page = new Page<>(pageNum, pageSize);
         QueryWrapper<CareRecordLife> wrapper = new QueryWrapper<>();
         if (orderId != null) {
@@ -24,6 +24,9 @@ public class CareRecordLifeService {
         }
         if (staffId != null) {
             wrapper.eq("staff_id", staffId);
+        }
+        if (infantId != null) {
+            wrapper.eq("infant_id", infantId);
         }
         wrapper.orderByDesc("create_time");
         return careRecordLifeDao.selectPage(page, wrapper);

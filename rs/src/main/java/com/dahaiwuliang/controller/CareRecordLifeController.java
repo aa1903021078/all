@@ -29,8 +29,9 @@ public class CareRecordLifeController {
                        @RequestParam(defaultValue = "10") int pageSize,
                        @RequestParam(required = false) Integer orderId,
                        @RequestParam(required = false) Integer customerId,
-                       @RequestParam(required = false) Integer staffId) {
-        Page<CareRecordLife> page = careRecordLifeService.list(pageNum, pageSize, orderId, customerId, staffId);
+                       @RequestParam(required = false) Integer staffId,
+                       @RequestParam(required = false) Integer infantId) {
+        Page<CareRecordLife> page = careRecordLifeService.list(pageNum, pageSize, orderId, customerId, staffId, infantId);
         for (CareRecordLife record : page.getRecords()) {
             fillNames(record);
         }

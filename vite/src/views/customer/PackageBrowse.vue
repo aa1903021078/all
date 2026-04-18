@@ -50,7 +50,7 @@
     </div>
 
     <!-- Order Dialog -->
-    <el-dialog v-model="orderDialogVisible" title="预约下单" width="560px" destroy-on-close>
+    <el-dialog v-model="orderDialogVisible" title="预约下单" width="700px" destroy-on-close>
       <div class="order-package-info">
         <div class="order-pkg-name">{{ selectedPackage.name }}</div>
         <div class="order-pkg-price">¥{{ Number(selectedPackage.price || 0).toFixed(2) }}</div>
@@ -61,6 +61,94 @@
           <el-date-picker v-model="orderForm.expectedDate" type="date" placeholder="请选择预期入住日期"
             value-format="YYYY-MM-DD" style="width: 100%" :disabled-date="disablePastDate" />
         </el-form-item>
+
+        <el-divider content-position="left">产妇信息</el-divider>
+        <el-form-item label="产妇姓名" prop="maternal.name">
+          <el-input v-model="orderForm.maternal.name" placeholder="请输入产妇姓名" />
+        </el-form-item>
+        <el-row :gutter="16">
+          <el-col :span="12">
+            <el-form-item label="年龄" prop="maternal.age">
+              <el-input-number v-model="orderForm.maternal.age" :min="18" :max="60" style="width: 100%" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="联系电话" prop="maternal.phone">
+              <el-input v-model="orderForm.maternal.phone" placeholder="请输入联系电话" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="16">
+          <el-col :span="12">
+            <el-form-item label="分娩方式" prop="maternal.deliveryType">
+              <el-select v-model="orderForm.maternal.deliveryType" placeholder="请选择" style="width: 100%">
+                <el-option label="顺产" value="顺产" />
+                <el-option label="剖腹产" value="剖腹产" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="分娩日期" prop="maternal.deliveryDate">
+              <el-date-picker v-model="orderForm.maternal.deliveryDate" type="date" value-format="YYYY-MM-DD"
+                placeholder="选择日期" style="width: 100%" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-form-item label="健康备注">
+          <el-input v-model="orderForm.maternal.healthNote" type="textarea" :rows="2" placeholder="过敏史、既往病史等（选填）" />
+        </el-form-item>
+
+        <el-divider content-position="left">
+          婴儿信息
+          <el-button type="primary" link style="margin-left: 12px" @click="addInfant">
+            <el-icon><Plus /></el-icon>添加婴儿
+          </el-button>
+        </el-divider>
+        <div v-for="(infant, idx) in orderForm.infants" :key="idx" class="infant-block">
+          <div class="infant-header">
+            <span class="infant-title">婴儿 {{ idx + 1 }}</span>
+            <el-button v-if="orderForm.infants.length > 1" type="danger" link size="small" @click="removeInfant(idx)">
+              <el-icon><Delete /></el-icon>移除
+            </el-button>
+          </div>
+          <el-row :gutter="16">
+            <el-col :span="8">
+              <el-form-item :label="'姓名'" :prop="'infants.' + idx + '.name'"
+                :rules="[{ required: true, message: '请输入婴儿姓名', trigger: 'blur' }]">
+                <el-input v-model="infant.name" placeholder="姓名/昵称" />
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item :label="'性别'" :prop="'infants.' + idx + '.gender'"
+                :rules="[{ required: true, message: '请选择性别', trigger: 'change' }]">
+                <el-select v-model="infant.gender" placeholder="性别" style="width: 100%">
+                  <el-option label="男" :value="1" />
+                  <el-option label="女" :value="0" />
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item :label="'出生体重(kg)'">
+                <el-input-number v-model="infant.birthWeight" :min="0.5" :max="10" :precision="2" :step="0.1" style="width: 100%" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row :gutter="16">
+            <el-col :span="12">
+              <el-form-item :label="'出生日期'">
+                <el-date-picker v-model="infant.birthDate" type="date" value-format="YYYY-MM-DD"
+                  placeholder="选择日期" style="width: 100%" />
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item :label="'健康备注'">
+                <el-input v-model="infant.healthNote" placeholder="健康备注（选填）" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </div>
+
+        <el-divider />
         <el-form-item label="备注">
           <el-input v-model="orderForm.remark" type="textarea" :rows="3" placeholder="请输入备注信息（选填）" />
         </el-form-item>
@@ -75,10 +163,10 @@
 
 <script setup>
 import { ref, reactive, onMounted, computed } from 'vue'
-import { Timer, Present, ShoppingCart } from '@element-plus/icons-vue'
+import { Timer, Present, ShoppingCart, Plus, Delete } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { useStore } from 'vuex'
-import { getPackageList, addOrder } from '@/api/index.js'
+import { getPackageList, addOrder, addOrderMaternal, addOrderInfant } from '@/api/index.js'
 
 const store = useStore()
 const user = computed(() => store.getters.user)
@@ -92,11 +180,27 @@ const orderDialogVisible = ref(false)
 const selectedPackage = ref({})
 const submitLoading = ref(false)
 const orderFormRef = ref(null)
-const orderForm = reactive({ expectedDate: '', remark: '' })
+
+const createEmptyInfant = () => ({ name: '', gender: null, birthDate: '', birthWeight: 3.00, healthNote: '' })
+
+const orderForm = reactive({
+  expectedDate: '',
+  remark: '',
+  maternal: { name: '', age: 28, phone: '', deliveryType: '', deliveryDate: '', healthNote: '' },
+  infants: [createEmptyInfant()]
+})
 
 const orderRules = {
-  expectedDate: [{ required: true, message: '请选择预期入住日期', trigger: 'change' }]
+  expectedDate: [{ required: true, message: '请选择预期入住日期', trigger: 'change' }],
+  'maternal.name': [{ required: true, message: '请输入产妇姓名', trigger: 'blur' }],
+  'maternal.phone': [{ required: true, message: '请输入联系电话', trigger: 'blur' }],
+  'maternal.deliveryType': [{ required: true, message: '请选择分娩方式', trigger: 'change' }],
+  'maternal.deliveryDate': [{ required: true, message: '请选择分娩日期', trigger: 'change' }],
+  'maternal.age': [{ required: true, message: '请输入年龄', trigger: 'blur' }]
 }
+
+const addInfant = () => { orderForm.infants.push(createEmptyInfant()) }
+const removeInfant = (idx) => { orderForm.infants.splice(idx, 1) }
 
 const disablePastDate = (date) => date.getTime() < Date.now() - 86400000
 
@@ -129,6 +233,8 @@ const handleBook = (pkg) => {
   selectedPackage.value = { ...pkg }
   orderForm.expectedDate = ''
   orderForm.remark = ''
+  orderForm.maternal = { name: '', age: 28, phone: '', deliveryType: '', deliveryDate: '', healthNote: '' }
+  orderForm.infants = [createEmptyInfant()]
   orderDialogVisible.value = true
 }
 
@@ -136,7 +242,7 @@ const handleSubmitOrder = async () => {
   await orderFormRef.value.validate()
   submitLoading.value = true
   try {
-    await addOrder({
+    const orderRes = await addOrder({
       customerId: user.value.id,
       packageId: selectedPackage.value.id,
       packageName: selectedPackage.value.name,
@@ -144,6 +250,13 @@ const handleSubmitOrder = async () => {
       expectedDate: orderForm.expectedDate,
       remark: orderForm.remark
     })
+    const orderId = orderRes.data?.id || orderRes.data
+    if (orderId) {
+      await addOrderMaternal({ ...orderForm.maternal, orderId })
+      for (const infant of orderForm.infants) {
+        await addOrderInfant({ ...infant, orderId })
+      }
+    }
     ElMessage.success('预约成功！订单已提交，请等待审核。')
     orderDialogVisible.value = false
   } finally {
@@ -201,4 +314,7 @@ onMounted(() => getList())
 .order-pkg-name { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
 .order-pkg-price { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
 .order-pkg-duration { font-size: 14px; opacity: 0.9; }
+.infant-block { background: #f5f7fa; border-radius: 8px; padding: 16px; margin-bottom: 12px; position: relative; }
+.infant-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.infant-title { font-weight: 600; color: #303133; font-size: 14px; }
 </style>

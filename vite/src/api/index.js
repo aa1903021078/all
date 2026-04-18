@@ -39,6 +39,18 @@ export const addOrderStaff = (data) => request.post('/orderStaff/add', data)
 export const deleteOrderStaff = (id) => request.delete(`/orderStaff/delete/${id}`)
 export const getStaffByOrder = (orderId) => request.get(`/orderStaff/byOrder/${orderId}`)
 
+// Order Infant APIs
+export const getInfantsByOrder = (orderId) => request.get(`/orderInfant/byOrder/${orderId}`)
+export const addOrderInfant = (data) => request.post('/orderInfant/add', data)
+export const updateOrderInfant = (data) => request.put('/orderInfant/update', data)
+export const deleteOrderInfant = (id) => request.delete(`/orderInfant/delete/${id}`)
+
+// Order Maternal APIs
+export const getMaternalByOrder = (orderId) => request.get(`/orderMaternal/byOrder/${orderId}`)
+export const addOrderMaternal = (data) => request.post('/orderMaternal/add', data)
+export const updateOrderMaternal = (data) => request.put('/orderMaternal/update', data)
+export const deleteOrderMaternal = (id) => request.delete(`/orderMaternal/delete/${id}`)
+
 // Care Record Life APIs
 export const getCareLifeList = (params) => request.get('/careLife/list', { params })
 export const getCareLifeDetail = (id) => request.get(`/careLife/detail/${id}`)

@@ -13,6 +13,12 @@
 
       <el-table v-loading="loading" :data="tableData" border stripe>
         <el-table-column prop="customerName" label="客户姓名" min-width="100" />
+        <el-table-column prop="infantName" label="婴儿" min-width="80" align="center">
+          <template #default="{ row }">
+            <span v-if="row.infantName">{{ row.infantName }}</span>
+            <el-tag v-else type="info" size="small">仅产妇</el-tag>
+          </template>
+        </el-table-column>
         <el-table-column prop="recordDate" label="记录日期" width="120" align="center" />
         <el-table-column prop="maternalContent" label="产妇护理内容" min-width="200" show-overflow-tooltip />
         <el-table-column prop="infantContent" label="婴儿护理内容" min-width="200" show-overflow-tooltip />
@@ -43,12 +49,18 @@
               :label="`${item.customerName} - ${item.packageName}`" :value="item.id" />
           </el-select>
         </el-form-item>
+        <el-form-item label="选择婴儿" v-if="infantList.length > 0">
+          <el-select v-model="form.infantId" clearable placeholder="选择护理的婴儿（不选则仅记录产妇护理）" style="width: 100%">
+            <el-option v-for="item in infantList" :key="item.id"
+              :label="item.name + (item.gender === 1 ? '(男)' : '(女)')" :value="item.id" />
+          </el-select>
+        </el-form-item>
         <el-form-item label="记录日期" prop="recordDate">
           <el-date-picker v-model="form.recordDate" type="date" value-format="YYYY-MM-DD"
             placeholder="选择日期" style="width: 100%" />
         </el-form-item>
 
-        <el-divider content-position="left">产妇护理明细</el-divider>
+        <el-divider content-position="left">产妇护理明细（打勾）</el-divider>
         <el-form-item label="护理项目">
           <el-checkbox-group v-model="maternalChecked">
             <div class="checklist-grid">
@@ -59,11 +71,10 @@
           </el-checkbox-group>
         </el-form-item>
         <el-form-item label="补充说明">
-          <el-input v-model="maternalNote" type="textarea" :rows="3"
-            placeholder="可对已勾选项补充说明，如：测体温：36.5°C，体重：55kg" />
+          <el-input v-model="maternalNote" type="textarea" :rows="2" placeholder="可对产妇护理补充说明" />
         </el-form-item>
 
-        <el-divider content-position="left">婴儿护理明细</el-divider>
+        <el-divider content-position="left">婴儿护理明细（打勾）</el-divider>
         <el-form-item label="护理项目">
           <el-checkbox-group v-model="infantChecked">
             <div class="checklist-grid">
@@ -74,8 +85,7 @@
           </el-checkbox-group>
         </el-form-item>
         <el-form-item label="补充说明">
-          <el-input v-model="infantNote" type="textarea" :rows="3"
-            placeholder="可对已勾选项补充说明，如：测体温：36.8°C，黄疸值：5.2" />
+          <el-input v-model="infantNote" type="textarea" :rows="2" placeholder="可对婴儿护理补充说明" />
         </el-form-item>
 
         <el-divider />
@@ -94,6 +104,7 @@
       <el-descriptions :column="2" border>
         <el-descriptions-item label="客户姓名">{{ detailData.customerName }}</el-descriptions-item>
         <el-descriptions-item label="记录日期">{{ detailData.recordDate }}</el-descriptions-item>
+        <el-descriptions-item label="婴儿" v-if="detailData.infantName">{{ detailData.infantName }}</el-descriptions-item>
       </el-descriptions>
       <div class="detail-section">
         <h4>产妇护理内容</h4>
@@ -116,23 +127,20 @@ import { ref, reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import { Search, Refresh, Plus } from '@element-plus/icons-vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { getCareLifeList, addCareLife, updateCareLife, deleteCareLife, getOrderList } from '@/api/index.js'
+import { getCareLifeList, addCareLife, updateCareLife, deleteCareLife, getOrderList, getInfantsByOrder } from '@/api/index.js'
 
 const store = useStore()
 const currentUser = computed(() => store.getters.user)
 
 const maternalItems = [
   '协助清洗身体', '指导正确喂奶姿势', '协助拍嗝、挤奶、储奶',
-  '帮助做简单盆底肌练习', '更换产褥垫、衣物', '测体温、体重、血压、脉搏、心率',
-  '子宫复旧情况', '恶露观察', '伤口情况', '乳房充盈程度',
-  '是否有硬块', '乳房是否皲裂', '乳腺疏通'
+  '帮助做简单盆底肌练习', '更换产褥垫、衣物'
 ]
 
 const infantItems = [
   '喂奶', '换尿布', '洗臀、晾干、涂护臀膏', '肚脐消毒',
   '清洁身体', '哄婴儿睡', '调整睡姿', '异常观察',
-  '清洗衣物', '打扫房间', '测体温、体重、身长', '记录黄疸值',
-  '记录大小便次数与性状', '婴儿红屁股情况', '婴儿尿布疹情况'
+  '清洗衣物', '打扫房间'
 ]
 
 // Query
@@ -158,6 +166,7 @@ const handleReset = () => { queryParams.recordDate = ''; queryParams.current = 1
 
 // Orders for dropdown
 const orderList = ref([])
+const infantList = ref([])
 const loadOrders = async () => {
   try {
     const res = await getOrderList({ current: 1, size: 200, staffId: currentUser.value?.id })
@@ -181,6 +190,7 @@ const form = reactive({
   orderId: null,
   customerName: '',
   staffId: null,
+  infantId: null,
   recordDate: '',
   maternalContent: '',
   infantContent: '',
@@ -192,9 +202,17 @@ const rules = {
   recordDate: [{ required: true, message: '请选择日期', trigger: 'change' }]
 }
 
-const handleOrderChange = (val) => {
+const handleOrderChange = async (val) => {
   const order = orderList.value.find(o => o.id === val)
   if (order) form.customerName = order.customerName
+  infantList.value = []
+  form.infantId = null
+  if (val) {
+    try {
+      const res = await getInfantsByOrder(val)
+      infantList.value = res.data || []
+    } catch { /* ignore */ }
+  }
 }
 
 const buildContent = (checked, items, note) => {
@@ -218,11 +236,12 @@ const parseContent = (content, items) => {
 }
 
 const resetForm = () => {
-  Object.assign(form, { id: null, orderId: null, customerName: '', staffId: null, recordDate: '', maternalContent: '', infantContent: '', remark: '' })
+  Object.assign(form, { id: null, orderId: null, customerName: '', staffId: null, infantId: null, recordDate: '', maternalContent: '', infantContent: '', remark: '' })
   maternalChecked.value = []
   maternalNote.value = ''
   infantChecked.value = []
   infantNote.value = ''
+  infantList.value = []
 }
 
 const handleAdd = () => {
@@ -232,7 +251,7 @@ const handleAdd = () => {
   dialogVisible.value = true
 }
 
-const handleEdit = (row) => {
+const handleEdit = async (row) => {
   resetForm()
   isEdit.value = true
   dialogTitle.value = '编辑护理记录'
@@ -243,6 +262,12 @@ const handleEdit = (row) => {
   const ip = parseContent(row.infantContent, infantItems)
   infantChecked.value = ip.checked
   infantNote.value = ip.note
+  if (row.orderId) {
+    try {
+      const res = await getInfantsByOrder(row.orderId)
+      infantList.value = res.data || []
+    } catch { /* ignore */ }
+  }
   dialogVisible.value = true
 }
 

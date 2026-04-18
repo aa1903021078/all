@@ -58,12 +58,40 @@
         <el-descriptions-item label="备注" :span="2">{{ detailData.remark || '无' }}</el-descriptions-item>
       </el-descriptions>
 
+      <div v-if="maternalInfo" style="margin-top: 20px">
+        <h4 style="margin-bottom: 12px; color: #303133;">产妇信息</h4>
+        <el-descriptions :column="2" border size="small">
+          <el-descriptions-item label="姓名">{{ maternalInfo.name }}</el-descriptions-item>
+          <el-descriptions-item label="年龄">{{ maternalInfo.age }}</el-descriptions-item>
+          <el-descriptions-item label="联系电话">{{ maternalInfo.phone }}</el-descriptions-item>
+          <el-descriptions-item label="分娩方式">{{ maternalInfo.deliveryType }}</el-descriptions-item>
+          <el-descriptions-item label="分娩日期">{{ maternalInfo.deliveryDate }}</el-descriptions-item>
+          <el-descriptions-item label="健康备注">{{ maternalInfo.healthNote || '无' }}</el-descriptions-item>
+        </el-descriptions>
+      </div>
+
+      <div v-if="infantListInfo.length > 0" style="margin-top: 20px">
+        <h4 style="margin-bottom: 12px; color: #303133;">婴儿信息（共{{ infantListInfo.length }}个）</h4>
+        <el-table :data="infantListInfo" border size="small">
+          <el-table-column prop="name" label="姓名/昵称" min-width="100" />
+          <el-table-column label="性别" width="60" align="center">
+            <template #default="{ row }">{{ row.gender === 1 ? '男' : '女' }}</template>
+          </el-table-column>
+          <el-table-column prop="birthDate" label="出生日期" width="120" />
+          <el-table-column prop="birthWeight" label="出生体重(kg)" width="110" align="center" />
+          <el-table-column prop="healthNote" label="健康备注" min-width="200" />
+        </el-table>
+      </div>
+
       <div v-if="staffList.length > 0" style="margin-top: 20px">
         <h4 style="margin-bottom: 12px; color: #303133;">指派工作人员</h4>
         <el-table :data="staffList" border size="small">
           <el-table-column prop="staffName" label="姓名" min-width="100" />
           <el-table-column prop="roleName" label="角色" min-width="100">
             <template #default="{ row }">{{ row.roleName || getRoleName(row.role) }}</template>
+          </el-table-column>
+          <el-table-column prop="infantName" label="负责婴儿" min-width="100">
+            <template #default="{ row }">{{ row.infantName || '通用/产妇' }}</template>
           </el-table-column>
           <el-table-column prop="phone" label="联系电话" min-width="130" />
         </el-table>
@@ -113,7 +141,7 @@ import { ref, reactive, onMounted, computed } from 'vue'
 import { View, StarFilled, Warning } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { useStore } from 'vuex'
-import { getMyOrders, getStaffByOrder, addEvaluation, addComplaint } from '@/api/index.js'
+import { getMyOrders, getStaffByOrder, addEvaluation, addComplaint, getMaternalByOrder, getInfantsByOrder } from '@/api/index.js'
 
 const store = useStore()
 const user = computed(() => store.getters.user)
@@ -139,6 +167,8 @@ const detailVisible = ref(false)
 const detailData = ref({})
 const staffList = ref([])
 const staffLoading = ref(false)
+const maternalInfo = ref(null)
+const infantListInfo = ref([])
 
 // Evaluation
 const evalDialogVisible = ref(false)
@@ -180,11 +210,19 @@ const getList = async () => {
 const handleDetail = async (row) => {
   detailData.value = { ...row }
   staffList.value = []
+  maternalInfo.value = null
+  infantListInfo.value = []
   detailVisible.value = true
   staffLoading.value = true
   try {
-    const res = await getStaffByOrder(row.id)
-    staffList.value = res.data || []
+    const [staffRes, maternalRes, infantRes] = await Promise.all([
+      getStaffByOrder(row.id),
+      getMaternalByOrder(row.id),
+      getInfantsByOrder(row.id)
+    ])
+    staffList.value = staffRes.data || []
+    maternalInfo.value = maternalRes.data || null
+    infantListInfo.value = infantRes.data || []
   } catch {
     staffList.value = []
   } finally {

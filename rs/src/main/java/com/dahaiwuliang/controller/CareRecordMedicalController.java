@@ -29,8 +29,9 @@ public class CareRecordMedicalController {
                        @RequestParam(defaultValue = "10") int pageSize,
                        @RequestParam(required = false) Integer orderId,
                        @RequestParam(required = false) Integer customerId,
-                       @RequestParam(required = false) Integer staffId) {
-        Page<CareRecordMedical> page = careRecordMedicalService.list(pageNum, pageSize, orderId, customerId, staffId);
+                       @RequestParam(required = false) Integer staffId,
+                       @RequestParam(required = false) Integer infantId) {
+        Page<CareRecordMedical> page = careRecordMedicalService.list(pageNum, pageSize, orderId, customerId, staffId, infantId);
         for (CareRecordMedical record : page.getRecords()) {
             fillNames(record);
         }
