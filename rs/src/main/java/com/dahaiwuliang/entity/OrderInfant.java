@@ -4,35 +4,30 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@TableName("order_staff")
-public class OrderStaff {
+@TableName("order_infant")
+public class OrderInfant {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
 
     private Integer orderId;
 
-    private Integer staffId;
+    private String name;
 
-    private Integer staffRole;
+    private Integer gender;
 
-    private Integer infantId;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date birthDate;
 
-    private Integer status;
+    private BigDecimal birthWeight;
+
+    private String healthNote;
 
     @TableField(fill = FieldFill.INSERT)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
-
-    @TableField(exist = false)
-    private String staffName;
-
-    @TableField(exist = false)
-    private String orderNo;
-
-    @TableField(exist = false)
-    private String infantName;
 }

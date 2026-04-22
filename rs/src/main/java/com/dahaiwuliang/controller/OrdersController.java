@@ -3,14 +3,19 @@ package com.dahaiwuliang.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dahaiwuliang.common.Result;
 import com.dahaiwuliang.entity.Orders;
+import com.dahaiwuliang.entity.OrderInfant;
+import com.dahaiwuliang.entity.OrderMaternal;
 import com.dahaiwuliang.entity.User;
 import com.dahaiwuliang.service.OrdersService;
+import com.dahaiwuliang.service.OrderInfantService;
+import com.dahaiwuliang.service.OrderMaternalService;
 import com.dahaiwuliang.service.PackageService;
 import com.dahaiwuliang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/order")
@@ -24,6 +29,12 @@ public class OrdersController {
 
     @Autowired
     private PackageService packageService;
+
+    @Autowired
+    private OrderInfantService orderInfantService;
+
+    @Autowired
+    private OrderMaternalService orderMaternalService;
 
     @GetMapping("/list")
     public Result list(@RequestParam(defaultValue = "1") int pageNum,
@@ -55,7 +66,7 @@ public class OrdersController {
             orders.setStatus(0);
         }
         ordersService.save(orders);
-        return Result.ok();
+        return Result.ok(orders);
     }
 
     @PutMapping("/update")

@@ -7,32 +7,28 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@TableName("order_staff")
-public class OrderStaff {
+@TableName("order_maternal")
+public class OrderMaternal {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
 
     private Integer orderId;
 
-    private Integer staffId;
+    private String name;
 
-    private Integer staffRole;
+    private Integer age;
 
-    private Integer infantId;
+    private String phone;
 
-    private Integer status;
+    private String deliveryType;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date deliveryDate;
+
+    private String healthNote;
 
     @TableField(fill = FieldFill.INSERT)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
-
-    @TableField(exist = false)
-    private String staffName;
-
-    @TableField(exist = false)
-    private String orderNo;
-
-    @TableField(exist = false)
-    private String infantName;
 }

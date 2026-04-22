@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dahaiwuliang.common.Result;
 import com.dahaiwuliang.entity.OrderStaff;
 import com.dahaiwuliang.entity.Orders;
+import com.dahaiwuliang.entity.OrderInfant;
 import com.dahaiwuliang.entity.User;
 import com.dahaiwuliang.service.OrderStaffService;
 import com.dahaiwuliang.service.OrdersService;
+import com.dahaiwuliang.service.OrderInfantService;
 import com.dahaiwuliang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,9 @@ public class OrderStaffController {
 
     @Autowired
     private OrdersService ordersService;
+
+    @Autowired
+    private OrderInfantService orderInfantService;
 
     @GetMapping("/list")
     public Result list(@RequestParam(defaultValue = "1") int pageNum,
@@ -69,6 +74,12 @@ public class OrderStaffController {
             Orders order = ordersService.getById(os.getOrderId());
             if (order != null) {
                 os.setOrderNo(order.getOrderNo());
+            }
+        }
+        if (os.getInfantId() != null) {
+            OrderInfant infant = orderInfantService.getById(os.getInfantId());
+            if (infant != null) {
+                os.setInfantName(infant.getName());
             }
         }
     }

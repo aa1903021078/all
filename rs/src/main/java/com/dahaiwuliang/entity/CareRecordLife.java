@@ -19,6 +19,8 @@ public class CareRecordLife {
 
     private Integer customerId;
 
+    private Integer infantId;
+
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date recordDate;
 
@@ -37,4 +39,7 @@ public class CareRecordLife {
 
     @TableField(exist = false)
     private String customerName;
+
+    @TableField(exist = false)
+    private String infantName;
 }

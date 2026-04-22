@@ -3,8 +3,10 @@ package com.dahaiwuliang.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dahaiwuliang.common.Result;
 import com.dahaiwuliang.entity.CareRecordMedical;
+import com.dahaiwuliang.entity.OrderInfant;
 import com.dahaiwuliang.entity.User;
 import com.dahaiwuliang.service.CareRecordMedicalService;
+import com.dahaiwuliang.service.OrderInfantService;
 import com.dahaiwuliang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +21,17 @@ public class CareRecordMedicalController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private OrderInfantService orderInfantService;
+
     @GetMapping("/list")
     public Result list(@RequestParam(defaultValue = "1") int pageNum,
                        @RequestParam(defaultValue = "10") int pageSize,
                        @RequestParam(required = false) Integer orderId,
                        @RequestParam(required = false) Integer customerId,
-                       @RequestParam(required = false) Integer staffId) {
-        Page<CareRecordMedical> page = careRecordMedicalService.list(pageNum, pageSize, orderId, customerId, staffId);
+                       @RequestParam(required = false) Integer staffId,
+                       @RequestParam(required = false) Integer infantId) {
+        Page<CareRecordMedical> page = careRecordMedicalService.list(pageNum, pageSize, orderId, customerId, staffId, infantId);
         for (CareRecordMedical record : page.getRecords()) {
             fillNames(record);
         }
@@ -71,6 +77,12 @@ public class CareRecordMedicalController {
             User customer = userService.getById(record.getCustomerId());
             if (customer != null) {
                 record.setCustomerName(customer.getRealName());
+            }
+        }
+        if (record.getInfantId() != null) {
+            OrderInfant infant = orderInfantService.getById(record.getInfantId());
+            if (infant != null) {
+                record.setInfantName(infant.getName());
             }
         }
     }
