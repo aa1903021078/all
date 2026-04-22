@@ -33,7 +33,7 @@ public class HotRankService {
     private final BookMapper bookMapper;
     private final ItemMapper itemMapper;
 
-    /** 每 5 分钟衰减一次 -> 7 天半衰期近似：factor = 0.5 ^ (5/ (7*24*60)) ≈ 0.99966 */
+    /** 每 5 分钟衰减一次 -> 7 天半衰期近似：factor = 0.5 ^ (5 / (7*24*60)) ≈ 0.99966 */
     private static final double DECAY = 0.99966;
 
     @Scheduled(fixedDelay = 5 * 60_000L, initialDelay = 5 * 60_000L)

@@ -44,16 +44,16 @@ public class UserActionService {
     @Async
     public void track(Long userId, String targetType, Long targetId, String action, String extra) {
         try {
-            UserActionLog log = new UserActionLog();
-            log.setUserId(userId);
-            log.setTargetType(targetType);
-            log.setTargetId(targetId);
-            log.setAction(action);
-            log.setExtra(extra);
-            log.setCreateTime(LocalDateTime.now());
-            mapper.insert(log);
+            UserActionLog entity = new UserActionLog();
+            entity.setUserId(userId);
+            entity.setTargetType(targetType);
+            entity.setTargetId(targetId);
+            entity.setAction(action);
+            entity.setExtra(extra);
+            entity.setCreateTime(LocalDateTime.now());
+            mapper.insert(entity);
         } catch (Exception e) {
-            UserActionService.log.debug("track persist failed: {}", e.getMessage());
+            log.debug("track persist failed: {}", e.getMessage());
         }
 
         // 更新 Redis：热度累加 + 事件流
