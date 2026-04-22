@@ -23,11 +23,14 @@ public class JwtUtil {
     @Autowired
     public JwtUtil(JwtProperties props) {
         this.props = props;
+        if (props.getSecret() == null) {
+            throw new IllegalStateException("jwt.secret must be configured");
+        }
         byte[] bytes = props.getSecret().getBytes(StandardCharsets.UTF_8);
         if (bytes.length < 32) {
-            byte[] padded = new byte[32];
-            System.arraycopy(bytes, 0, padded, 0, bytes.length);
-            bytes = padded;
+            throw new IllegalStateException(
+                    "jwt.secret must be at least 32 bytes (got " + bytes.length + "). " +
+                    "Configure a strong secret via JWT_SECRET environment variable.");
         }
         this.key = Keys.hmacShaKeyFor(bytes);
     }

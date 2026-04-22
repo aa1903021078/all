@@ -87,18 +87,29 @@ public class OrderController {
     public void pay(@PathVariable String orderId, HttpServletResponse resp) throws IOException {
         var u = UserContext.get();
         if (u == null) throw new BizException(401, "未登录");
+        // 校验 orderId 形态（UUID），避免可疑输入传递到下游
+        if (orderId == null || !ORDER_ID_PATTERN.matcher(orderId).matches()) {
+            throw new BizException(400, "订单号无效");
+        }
         OrderInfo o = orderMapper.selectById(orderId);
         if (o == null) throw new BizException(404, "订单不存在");
         if (!o.getUserId().equals(u.userId())) throw new BizException(403, "无权访问");
         if (!"0".equals(o.getStatus())) throw new BizException("订单当前状态不可支付");
 
         Item item = itemMapper.selectById(o.getItemId());
-        String subject = item != null && item.getItemName() != null ? item.getItemName() : ("阅趣阁订单-" + orderId);
-        String html = alipayService.buildPagePayForm(orderId, o.getAmount(), subject);
+        // 使用 DB 中可信的 orderId 与 itemName，避免 path 变量直接进入下游 HTML 输出
+        String trustedOrderId = o.getOrderId();
+        String subject = item != null && item.getItemName() != null
+                ? item.getItemName()
+                : ("阅趣阁订单-" + trustedOrderId);
+        String html = alipayService.buildPagePayForm(trustedOrderId, o.getAmount(), subject);
         resp.setContentType("text/html;charset=UTF-8");
         resp.getOutputStream().write(html.getBytes(StandardCharsets.UTF_8));
         resp.getOutputStream().flush();
     }
+
+    private static final java.util.regex.Pattern ORDER_ID_PATTERN =
+            java.util.regex.Pattern.compile("^[a-fA-F0-9-]{8,64}$");
 
     /** 用户主动取消订单。 */
     @PostMapping("/{orderId}/cancel")
