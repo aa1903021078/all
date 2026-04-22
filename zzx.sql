@@ -715,4 +715,25 @@ VALUES
     ('阅趣阁正式上线', '欢迎使用阅趣阁——集图书阅读、商品购买、音乐欣赏、智能推荐于一体的综合平台。', 'admin', 1, 100, NULL),
     ('系统使用提示', '登录页下方提供测试账号，点击可快速回填。所有测试密码均为 123456。', 'admin', 1, 90, NULL);
 
+-- ============================================================
+-- 第 2 期补充：客服会话标识 + AI 对话消息表
+-- ============================================================
+
+-- chat_session：追加 is_support 标识（是否为客服会话）
+ALTER TABLE `chat_session`
+    ADD COLUMN `is_support` TINYINT NULL DEFAULT 0 COMMENT '0=普通会话 1=客服会话';
+
+-- AI 对话消息表（DeepSeek 等 AI 对话记录）
+DROP TABLE IF EXISTS `ai_message`;
+CREATE TABLE `ai_message`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `conversation_id` varchar(64) NOT NULL COMMENT '会话 ID（同一会话串上下文）',
+  `role` varchar(16) NOT NULL COMMENT 'user / assistant / system',
+  `content` text NOT NULL,
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_user_conv` (`user_id`, `conversation_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'AI 对话消息表' ROW_FORMAT = DYNAMIC;
+
 SET FOREIGN_KEY_CHECKS = 1;

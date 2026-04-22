@@ -6,6 +6,10 @@ server:
 spring:
   application:
     name: yuequge-server
+  # 默认排除 RocketMQ 自动装配（broker 不可用时直接降级，不阻塞启动）。
+  # 当部署环境有 broker 时，可通过 ROCKETMQ_AUTOCONFIG= 清空此项启用。
+  autoconfigure:
+    exclude: ${ROCKETMQ_AUTOCONFIG:org.apache.rocketmq.spring.autoconfigure.RocketMQAutoConfiguration}
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/zzx?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
@@ -78,6 +82,19 @@ ai:
   api-key: ${DEEPSEEK_API_KEY:sk-f73e6598d68443caa6b2405e369c662d}
   api-url: https://api.deepseek.com/v1/chat/completions
   model: deepseek-chat
+  # 单次请求超时（秒）
+  timeout: 30
+  system-prompt: "你是阅趣阁的阅读助手，擅长书籍推荐、内容讨论、阅读陪伴，请用中文、简洁友好地回答用户的问题。"
+
+# RocketMQ（可选，默认关闭，无 broker 时不影响启动）
+rocketmq:
+  enabled: ${ROCKETMQ_ENABLED:false}
+  name-server: ${ROCKETMQ_NAMESRV:127.0.0.1:9876}
+  producer:
+    group: yuequge-producer
+  topic:
+    order-timeout: order-timeout
+    user-action: user-action-log
 
 # 测试账号（前端登录页回填展示用）
 yuequge:

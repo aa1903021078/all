@@ -28,6 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
             "/api/auth/**",
             "/api/public/**",
             "/api/payments/alipay/notify",
+            "/ws/**",
             "/static/**",
             "/error",
             "/favicon.ico"
