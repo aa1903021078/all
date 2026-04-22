@@ -1,55 +1,113 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { dishes, allIngredients } from './dishes.js'
 
-// 菜品数据库（含鱼类菜品，用于验证推荐）
-const dishes = [
-  { name: '红烧肉', ingredients: ['五花肉', '葱', '姜', '蒜', '生抽', '老抽', '八角'] },
-  { name: '清蒸鲈鱼', ingredients: ['鲈鱼', '葱', '姜', '蒸鱼豉油'] },
-  { name: '糖醋鱼', ingredients: ['草鱼', '糖', '醋', '番茄酱', '姜'] },
-  { name: '酸菜鱼', ingredients: ['黑鱼', '酸菜', '泡椒', '蒜', '花椒'] },
-  { name: '水煮鱼', ingredients: ['草鱼', '豆芽', '花椒', '辣椒', '蒜'] },
-  { name: '番茄炒蛋', ingredients: ['番茄', '鸡蛋', '葱', '糖'] },
-  { name: '青椒土豆丝', ingredients: ['土豆', '青椒', '蒜', '醋'] },
-  { name: '宫保鸡丁', ingredients: ['鸡胸肉', '花生', '干辣椒', '葱', '蒜'] },
-  { name: '麻婆豆腐', ingredients: ['豆腐', '牛肉末', '豆瓣酱', '花椒', '蒜'] }
-]
+// 用户输入（实时编辑，但不直接触发推荐）
+const input = ref('')
+// 已提交用于推荐的关键词（仅在点击"推荐"按钮后更新）
+const submittedKeywords = ref([])
+// 是否已点击过推荐（控制初始展示文案）
+const hasSearched = ref(false)
 
-const input = ref('鱼')
+// 常用快捷食材（可点击一键推荐）——从数据库里挑选一组代表性食材
+const quickPicks = ['鱼', '虾', '鸡蛋', '牛肉', '鸡肉', '猪肉', '豆腐', '土豆', '茄子', '番茄', '青椒', '香菇', '米饭', '面条']
 
-/**
- * 智能匹配：用户输入的关键词只要是菜品名或任一食材的子串即视为匹配。
- * 之前的 bug：使用 `ingredients.includes(keyword)` 做完全相等匹配，
- * 导致用户输入"鱼"时无法匹配到食材为"鲈鱼"、"草鱼"、"黑鱼"的菜品。
- * 这里改为 indexOf/includes 做子串匹配，并兼容多关键词（以空格或逗号分隔）。
- */
-const keywords = computed(() =>
-  input.value
+function parseKeywords(text) {
+  return text
     .split(/[\s,，、]+/)
     .map((k) => k.trim())
     .filter(Boolean)
+}
+
+/**
+ * 点击"推荐"按钮触发：
+ * 1. 按分隔符拆分用户输入为多个关键词
+ * 2. 对每个关键词，与菜品名 / 任一食材做子串匹配（只要数据库中存在即可命中）
+ * 3. 多关键词之间取"与"关系（每个关键词都要匹配到，才算命中该菜品）
+ */
+function recommend(textOverride) {
+  const text = textOverride ?? input.value
+  if (textOverride !== undefined) input.value = text
+  submittedKeywords.value = parseKeywords(text)
+  hasSearched.value = true
+}
+
+function clearSearch() {
+  input.value = ''
+  submittedKeywords.value = []
+  hasSearched.value = false
+}
+
+// 当前输入的关键词是否在数据库里存在（任一食材子串包含即算存在）
+const knownStatus = computed(() =>
+  parseKeywords(input.value).map((kw) => ({
+    kw,
+    exists: allIngredients.some((ing) => ing.includes(kw))
+  }))
 )
 
 const recommended = computed(() => {
-  if (keywords.value.length === 0) return dishes
+  if (submittedKeywords.value.length === 0) return []
   return dishes.filter((dish) =>
-    keywords.value.every((kw) =>
+    submittedKeywords.value.every((kw) =>
       dish.name.includes(kw) ||
       dish.ingredients.some((ing) => ing.includes(kw))
     )
   )
 })
+
+function onEnter() {
+  recommend()
+}
 </script>
 
 <template>
   <section class="card">
     <h2 class="card-title">🍳 食材智能推荐</h2>
+
     <div class="search-row">
       <input
         v-model="input"
         type="text"
         class="search-input"
-        placeholder="输入食材，如：鱼、土豆、鸡蛋"
+        placeholder="输入食材，如：鱼、牛肉、番茄、香菇…（多个食材用空格或逗号分隔）"
+        @keyup.enter="onEnter"
       />
+      <button type="button" class="btn btn-primary" @click="recommend()">推荐</button>
+      <button type="button" class="btn btn-plain" @click="clearSearch">清空</button>
+    </div>
+
+    <!-- 快捷点选：点击即触发推荐 -->
+    <div class="quick-row">
+      <span class="quick-label">快捷食材：</span>
+      <button
+        v-for="ing in quickPicks"
+        :key="ing"
+        type="button"
+        class="quick-tag"
+        @click="recommend(ing)"
+      >{{ ing }}</button>
+    </div>
+
+    <!-- 输入中的食材是否存在于数据库 -->
+    <div v-if="knownStatus.length" class="known-row">
+      <span
+        v-for="item in knownStatus"
+        :key="item.kw"
+        class="known-tag"
+        :class="{ yes: item.exists, no: !item.exists }"
+      >
+        {{ item.kw }}
+        <small>{{ item.exists ? '数据库中有' : '暂无此食材' }}</small>
+      </span>
+    </div>
+
+    <div v-if="hasSearched" class="result-head">
+      <span>
+        关键词：
+        <strong v-for="kw in submittedKeywords" :key="kw" class="kw">{{ kw }}</strong>
+        <em v-if="!submittedKeywords.length">（空）</em>
+      </span>
       <span class="hint">共 {{ recommended.length }} 道推荐菜品</span>
     </div>
 
@@ -61,12 +119,13 @@ const recommended = computed(() => {
             v-for="ing in dish.ingredients"
             :key="ing"
             class="tag"
-            :class="{ matched: keywords.some((k) => ing.includes(k)) }"
+            :class="{ matched: submittedKeywords.some((k) => ing.includes(k)) }"
           >{{ ing }}</span>
         </div>
       </li>
     </ul>
-    <p v-else class="empty">没有匹配的菜品，换个食材试试～</p>
+    <p v-else-if="hasSearched" class="empty">没有匹配的菜品，换个食材试试～</p>
+    <p v-else class="empty hint">输入食材或点击上方快捷食材，再点"推荐"即可查看菜品</p>
   </section>
 </template>
 
@@ -76,7 +135,7 @@ const recommended = computed(() => {
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  max-width: 520px;
+  max-width: 560px;
   margin: 16px auto;
 }
 .card-title {
@@ -87,8 +146,8 @@ const recommended = computed(() => {
 .search-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 .search-input {
   flex: 1;
@@ -101,6 +160,73 @@ const recommended = computed(() => {
 }
 .search-input:focus {
   border-color: #409eff;
+}
+.btn {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.88; }
+.btn-primary { background: #409eff; color: #fff; }
+.btn-plain { background: #f4f4f5; color: #606266; }
+
+.quick-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.quick-label {
+  font-size: 12px;
+  color: #999;
+  margin-right: 4px;
+}
+.quick-tag {
+  font-size: 12px;
+  padding: 3px 10px;
+  background: #f0f9eb;
+  color: #67c23a;
+  border: 1px solid #e1f3d8;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.quick-tag:hover { background: #e1f3d8; }
+
+.known-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.known-tag {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.known-tag small { font-size: 11px; opacity: 0.85; }
+.known-tag.yes { background: #ecf5ff; color: #409eff; }
+.known-tag.no { background: #fef0f0; color: #f56c6c; }
+
+.result-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #666;
+  margin: 10px 0;
+}
+.kw {
+  color: #409eff;
+  margin: 0 2px;
 }
 .hint {
   font-size: 12px;
@@ -116,9 +242,7 @@ const recommended = computed(() => {
   padding: 10px 0;
   border-bottom: 1px dashed #eee;
 }
-.dish-item:last-child {
-  border-bottom: none;
-}
+.dish-item:last-child { border-bottom: none; }
 .dish-name {
   font-weight: 600;
   color: #333;
