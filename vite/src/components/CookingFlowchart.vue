@@ -92,10 +92,10 @@ const steps = ref([
   cursor: pointer;
   user-select: none;
   transform: translateZ(0);
-  will-change: transform, box-shadow;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .badge:hover {
+  will-change: transform;
   transform: scale(1.08) translateZ(0);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
