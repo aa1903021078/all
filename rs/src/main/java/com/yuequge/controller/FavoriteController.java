@@ -7,6 +7,7 @@ import com.yuequge.entity.UserFavorite;
 import com.yuequge.exception.BizException;
 import com.yuequge.mapper.BookMapper;
 import com.yuequge.mapper.UserFavoriteMapper;
+import com.yuequge.service.UserActionService;
 import com.yuequge.util.UserContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class FavoriteController {
 
     private final UserFavoriteMapper favoriteMapper;
     private final BookMapper bookMapper;
+    private final UserActionService userActionService;
 
     @GetMapping
     public Result<List<Book>> myFavorites() {
@@ -49,6 +51,7 @@ public class FavoriteController {
         f.setBookId(bookId);
         f.setCreateTime(LocalDateTime.now());
         favoriteMapper.insert(f);
+        userActionService.track(u.userId(), "BOOK", bookId, "FAVORITE");
         return Result.ok();
     }
 
@@ -59,6 +62,7 @@ public class FavoriteController {
         favoriteMapper.delete(new LambdaQueryWrapper<UserFavorite>()
                 .eq(UserFavorite::getUserId, u.userId())
                 .eq(UserFavorite::getBookId, bookId));
+        userActionService.track(u.userId(), "BOOK", bookId, "UNFAVORITE");
         return Result.ok();
     }
 

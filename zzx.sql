@@ -736,4 +736,38 @@ CREATE TABLE `ai_message`  (
   INDEX `idx_user_conv` (`user_id`, `conversation_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'AI 对话消息表' ROW_FORMAT = DYNAMIC;
 
+-- ============================================================
+-- 第 3 期补充：行为日志 / 推荐缓存
+-- ============================================================
+
+-- 重构 user_action_log：变为真正的行为埋点表
+DROP TABLE IF EXISTS `user_action_log`;
+CREATE TABLE `user_action_log`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NULL DEFAULT NULL COMMENT '用户ID，可为 NULL（匿名）',
+  `target_type` varchar(32) NOT NULL COMMENT '目标对象类型：BOOK / CHAPTER / ITEM / SONG / ORDER',
+  `target_id` bigint NULL DEFAULT NULL COMMENT '目标对象ID',
+  `action` varchar(32) NOT NULL COMMENT '动作：VIEW / READ / FAVORITE / UNFAVORITE / ORDER / PAY / COMMENT',
+  `extra` varchar(255) NULL DEFAULT NULL COMMENT '附加信息（可选）',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_user` (`user_id`) USING BTREE,
+  INDEX `idx_target` (`target_type`, `target_id`) USING BTREE,
+  INDEX `idx_create_time` (`create_time`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户行为日志（供 Flink 实时 / Spark 离线消费）' ROW_FORMAT = DYNAMIC;
+
+-- 推荐结果缓存表（Spark 离线 ItemCF/ALS 的落地表；线上 Redis 是热门数据）
+DROP TABLE IF EXISTS `recommend_result`;
+CREATE TABLE `recommend_result`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL,
+  `book_id` bigint NOT NULL,
+  `score` double NULL DEFAULT 0 COMMENT '推荐分数',
+  `algo` varchar(32) NULL DEFAULT 'ITEM_CF' COMMENT '算法来源：ITEM_CF / ALS / HOT',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `uniq_user_book` (`user_id`, `book_id`) USING BTREE,
+  INDEX `idx_user_score` (`user_id`, `score`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户个性化推荐结果缓存' ROW_FORMAT = DYNAMIC;
+
 SET FOREIGN_KEY_CHECKS = 1;

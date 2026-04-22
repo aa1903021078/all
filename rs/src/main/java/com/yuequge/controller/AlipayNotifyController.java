@@ -23,6 +23,7 @@ public class AlipayNotifyController {
 
     private final AlipayService alipayService;
     private final OrderInfoMapper orderMapper;
+    private final com.yuequge.service.UserActionService userActionService;
 
     /**
      * 异步通知：验签 -> 查订单 -> 幂等更新状态 -> 返回 success 文本。
@@ -52,6 +53,7 @@ public class AlipayNotifyController {
                 && !"1".equals(o.getStatus())) {
             o.setStatus("1");
             orderMapper.updateById(o);
+            userActionService.track(o.getUserId(), "ORDER", o.getItemId(), "PAY", "orderId=" + outTradeNo);
             log.info("[alipay notify] order {} paid", outTradeNo);
         } else if ("TRADE_CLOSED".equals(tradeStatus) && "0".equals(o.getStatus())) {
             o.setStatus("2");
@@ -74,6 +76,7 @@ public class AlipayNotifyController {
         if ("1".equals(o.getStatus())) return Result.ok();
         o.setStatus("1");
         orderMapper.updateById(o);
+        userActionService.track(o.getUserId(), "ORDER", o.getItemId(), "PAY", "orderId=" + orderId + "&mock=1");
         return Result.ok();
     }
 

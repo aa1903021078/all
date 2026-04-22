@@ -5,6 +5,8 @@ import com.yuequge.common.Result;
 import com.yuequge.entity.Book;
 import com.yuequge.entity.BookContent;
 import com.yuequge.service.BookService;
+import com.yuequge.service.UserActionService;
+import com.yuequge.util.UserContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,7 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
+    private final UserActionService userActionService;
 
     @GetMapping
     public Result<PageResult<Book>> page(@RequestParam(defaultValue = "1") long page,
@@ -30,7 +33,10 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Result<Book> get(@PathVariable Long id) {
-        return Result.ok(bookService.getById(id));
+        Book b = bookService.getById(id);
+        var u = UserContext.get();
+        userActionService.track(u == null ? null : u.userId(), "BOOK", id, "VIEW");
+        return Result.ok(b);
     }
 
     @GetMapping("/{id}/chapters")
@@ -42,6 +48,9 @@ public class BookController {
     public Result<BookContent> chapter(@PathVariable Long chapterId) {
         BookContent c = bookService.getChapter(chapterId);
         bookService.incrHeat(c.getBookId());
+        var u = UserContext.get();
+        userActionService.track(u == null ? null : u.userId(), "BOOK", c.getBookId(), "READ",
+                "chapter=" + chapterId);
         return Result.ok(c);
     }
 }

@@ -11,6 +11,7 @@ import com.yuequge.mapper.ItemMapper;
 import com.yuequge.mapper.OrderInfoMapper;
 import com.yuequge.service.AlipayService;
 import com.yuequge.service.MessageQueueService;
+import com.yuequge.service.UserActionService;
 import com.yuequge.util.UserContext;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,7 @@ public class OrderController {
     private final ItemMapper itemMapper;
     private final AlipayService alipayService;
     private final MessageQueueService mqService;
+    private final UserActionService userActionService;
 
     @PostMapping
     public Result<OrderInfo> create(@RequestBody Map<String, Object> body) {
@@ -54,6 +56,7 @@ public class OrderController {
 
         // 可选：发送订单超时延迟消息（RocketMQ 不可用时自动降级）
         mqService.sendOrderTimeout(o.getOrderId(), 15);
+        userActionService.track(u.userId(), "ITEM", itemId, "ORDER", "orderId=" + o.getOrderId());
         return Result.ok(o);
     }
 
