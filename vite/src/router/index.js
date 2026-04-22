@@ -38,7 +38,8 @@ const routes = [
       { path: 'orders', component: () => import('@/views/admin/OrdersManage.vue') },
       { path: 'songs', component: () => import('@/views/admin/SongsManage.vue') },
       { path: 'comments', component: () => import('@/views/admin/CommentsManage.vue') },
-      { path: 'support', component: () => import('@/views/admin/SupportManage.vue') }
+      { path: 'support', component: () => import('@/views/admin/SupportManage.vue') },
+      { path: 'bigscreen', component: () => import('@/views/admin/BigScreen.vue'), meta: { fullscreen: true } }
     ]
   },
   { path: '/:pathMatch(.*)*', redirect: '/home' }

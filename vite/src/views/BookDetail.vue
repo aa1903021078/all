@@ -34,6 +34,22 @@
       </div>
     </div>
 
+    <!-- 相似图书 -->
+    <div class="yq-card mt-4" v-if="similar.length">
+      <div class="text-lg font-bold mb-3">📖 看过此书的人还看了</div>
+      <div class="grid grid-cols-6 gap-3">
+        <div v-for="b in similar" :key="b.id"
+             class="cursor-pointer hover:-translate-y-1 transition"
+             @click="goSimilar(b.id)">
+          <div class="aspect-[3/4] overflow-hidden rounded bg-gray-100">
+            <img :src="b.coverUrl" class="w-full h-full object-cover"
+                 @error="(e) => e.target.style.display='none'" />
+          </div>
+          <div class="mt-1 text-xs truncate">{{ b.name }}</div>
+        </div>
+      </div>
+    </div>
+
     <!-- 评论盖楼 -->
     <div class="yq-card mt-4">
       <div class="text-lg font-bold mb-3">评论（{{ commentCount }}）</div>
@@ -50,7 +66,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { getBook, listChapters } from '@/api/book'
+import { getBook, listChapters, similarBooks } from '@/api/book'
 import { listComments, createComment, deleteComment, addFavorite, removeFavorite, checkFavorite } from '@/api/biz'
 import { useUserStore } from '@/store/user'
 import CommentTree from '@/components/CommentTree.vue'
@@ -63,6 +79,7 @@ const loading = ref(false)
 const book = ref(null)
 const chapters = ref([])
 const comments = ref([])
+const similar = ref([])
 const isFav = ref(false)
 const commentText = ref('')
 
@@ -86,9 +103,14 @@ async function load() {
     chapters.value = await listChapters(id)
     comments.value = await listComments(id)
     try { isFav.value = await checkFavorite(id) } catch (e) { /* ignore */ }
+    try { similar.value = await similarBooks(id, 6) } catch (e) { /* ignore */ }
   } finally {
     loading.value = false
   }
+}
+
+function goSimilar(id) {
+  router.push('/books/' + id).then(load)
 }
 
 function startReading() {

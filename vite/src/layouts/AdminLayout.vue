@@ -20,6 +20,7 @@
         <el-menu-item index="/admin/songs">音乐管理</el-menu-item>
         <el-menu-item index="/admin/comments">评论管理</el-menu-item>
         <el-menu-item index="/admin/support">客服会话</el-menu-item>
+        <el-menu-item index="/admin/bigscreen">数据大屏</el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>

@@ -21,6 +21,25 @@
       </div>
     </div>
 
+    <!-- 为你推荐（登录用户） -->
+    <div v-if="userStore.isLogin && recommend.length" class="yq-card mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <div class="text-lg font-bold">✨ 为你推荐</div>
+        <span class="text-xs text-gray-400">基于你的收藏用 ItemCF 计算</span>
+      </div>
+      <div class="grid grid-cols-5 gap-4">
+        <div v-for="b in recommend" :key="b.id"
+             class="cursor-pointer hover:-translate-y-1 transition"
+             @click="$router.push('/books/' + b.id)">
+          <div class="aspect-[3/4] overflow-hidden rounded bg-gray-100">
+            <img :src="b.coverUrl" class="w-full h-full object-cover"
+                 @error="(e) => e.target.style.display='none'" />
+          </div>
+          <div class="mt-2 text-sm truncate">{{ b.name }}</div>
+        </div>
+      </div>
+    </div>
+
     <!-- 热门推荐 -->
     <div class="yq-card mb-6">
       <div class="flex items-center justify-between mb-4">
@@ -61,10 +80,13 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { hotBooks, stats } from '@/api/book'
+import { hotBooks, stats, myRecommend, realtimeHotBooks } from '@/api/book'
 import { listAnnouncements } from '@/api/biz'
+import { useUserStore } from '@/store/user'
 
+const userStore = useUserStore()
 const hot = ref([])
+const recommend = ref([])
 const statsData = ref({})
 const announcements = ref([])
 
@@ -76,8 +98,17 @@ const quick = [
 ]
 
 onMounted(async () => {
-  try { hot.value = await hotBooks(8) } catch (e) {}
+  // 首页热门：优先使用 Redis 实时热榜，失败再退回 DB
+  try {
+    const rt = await realtimeHotBooks(8)
+    hot.value = rt && rt.length ? rt : await hotBooks(8)
+  } catch (e) {
+    try { hot.value = await hotBooks(8) } catch (_) {}
+  }
   try { statsData.value = await stats() } catch (e) {}
   try { announcements.value = await listAnnouncements() } catch (e) {}
+  if (userStore.isLogin) {
+    try { recommend.value = await myRecommend(10) } catch (e) {}
+  }
 })
 </script>
