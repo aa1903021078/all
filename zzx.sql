@@ -673,3 +673,46 @@ CREATE TABLE `customer_service`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- =========================================================
+-- 阅趣阁 - 第 1 期补充：书籍热度/评分字段 + 演示数据
+-- 测试账号（前端登录页会显示供回填）：
+--   admin / 123456  (ADMIN)
+--   user1 / 123456  (USER)
+--   zzx   / 123456  (USER)
+-- 以上账号 zzx.sql 已有，密码哈希 $2a$10$N.zmdr9... 即 BCrypt("123456")
+-- =========================================================
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- book 表追加字段：热度、评分
+ALTER TABLE `book`
+    ADD COLUMN `heat` BIGINT NULL DEFAULT 0 COMMENT '热度（点击/阅读累计）',
+    ADD COLUMN `rating` DECIMAL(3,1) NULL DEFAULT 0.0 COMMENT '评分 0-10';
+
+-- 给前 10 本有数据的图书预填一些热度/评分，首页热门榜单有数据
+UPDATE `book` SET heat = 9800, rating = 9.1 WHERE id = 1;
+UPDATE `book` SET heat = 8600, rating = 9.0 WHERE id = 2;
+UPDATE `book` SET heat = 7500, rating = 9.2 WHERE id = 3;
+UPDATE `book` SET heat = 6900, rating = 8.6 WHERE id = 4;
+UPDATE `book` SET heat = 6200, rating = 9.1 WHERE id = 5;
+UPDATE `book` SET heat = 5800, rating = 9.3 WHERE id = 6;
+UPDATE `book` SET heat = 5100, rating = 8.8 WHERE id = 7;
+UPDATE `book` SET heat = 4800, rating = 9.0 WHERE id = 8;
+UPDATE `book` SET heat = 4500, rating = 8.1 WHERE id = 9;
+UPDATE `book` SET heat = 4200, rating = 9.3 WHERE id = 10;
+UPDATE `book` SET heat = 3600, rating = 9.4 WHERE id IN (11,12,13,14);
+UPDATE `book` SET heat = 3000, rating = 9.0 WHERE id IN (15,16,17,18,19,20);
+UPDATE `book` SET heat = 2000, rating = 8.0 WHERE id = 21;
+UPDATE `book` SET heat = 2000, rating = 8.0 WHERE id = 32;
+
+-- 清理无效书籍记录（type/name 全 NULL）
+DELETE FROM `book` WHERE id = 31;
+
+-- 补充：公告置顶数据
+INSERT INTO `announcement` (`title`, `content`, `author`, `status`, `priority`, `cover_url`)
+VALUES
+    ('阅趣阁正式上线', '欢迎使用阅趣阁——集图书阅读、商品购买、音乐欣赏、智能推荐于一体的综合平台。', 'admin', 1, 100, NULL),
+    ('系统使用提示', '登录页下方提供测试账号，点击可快速回填。所有测试密码均为 123456。', 'admin', 1, 90, NULL);
+
+SET FOREIGN_KEY_CHECKS = 1;
