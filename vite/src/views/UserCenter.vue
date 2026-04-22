@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { getMe, updateMe, changePassword } from '@/api/auth'
 import { useUserStore } from '@/store/user'
@@ -46,7 +46,8 @@ const pwd = ref({ oldPassword: '', newPassword: '' })
 const defaultAvatar = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 
 const uploadUrl = '/api/files/upload'
-const uploadHeaders = { Authorization: 'Bearer ' + userStore.token }
+// 始终使用最新 token，避免刷新后 header 还是旧值
+const uploadHeaders = computed(() => ({ Authorization: 'Bearer ' + userStore.token }))
 
 async function load() {
   const u = await getMe()

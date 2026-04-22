@@ -56,12 +56,8 @@ onMounted(async () => {
   try {
     testUsers.value = await listTestUsers()
   } catch (e) {
-    // fallback static list
-    testUsers.value = [
-      { username: 'admin', password: '123456', role: 'ADMIN', desc: '管理员' },
-      { username: 'user1', password: '123456', role: 'USER', desc: '普通用户' },
-      { username: 'zzx', password: '123456', role: 'USER', desc: '测试用户 zzx' }
-    ]
+    // 接口失败时不再硬编码展示账号，改为提示用户手动输入
+    testUsers.value = []
   }
 })
 
