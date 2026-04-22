@@ -12,6 +12,9 @@
           <router-link to="/items" class="hover:text-red-600">商品</router-link>
           <router-link to="/music" class="hover:text-red-600">音乐</router-link>
           <router-link to="/announcements" class="hover:text-red-600">公告</router-link>
+          <router-link to="/chat" class="hover:text-red-600">消息</router-link>
+          <router-link to="/ai" class="hover:text-red-600">AI</router-link>
+          <router-link to="/support" class="hover:text-red-600">客服</router-link>
           <router-link to="/favorites" class="hover:text-red-600">我的收藏</router-link>
           <router-link to="/my-orders" class="hover:text-red-600">我的订单</router-link>
         </nav>

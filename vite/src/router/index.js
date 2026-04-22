@@ -18,7 +18,10 @@ const routes = [
       { path: 'announcements', name: 'Announcements', component: () => import('@/views/Announcements.vue') },
       { path: 'user-center', name: 'UserCenter', component: () => import('@/views/UserCenter.vue') },
       { path: 'my-orders', name: 'MyOrders', component: () => import('@/views/MyOrders.vue') },
-      { path: 'favorites', name: 'Favorites', component: () => import('@/views/Favorites.vue') }
+      { path: 'favorites', name: 'Favorites', component: () => import('@/views/Favorites.vue') },
+      { path: 'chat', name: 'Chat', component: () => import('@/views/Chat.vue') },
+      { path: 'support', name: 'Support', component: () => import('@/views/Support.vue') },
+      { path: 'ai', name: 'AiChat', component: () => import('@/views/AiChat.vue') }
     ]
   },
   {
@@ -34,7 +37,8 @@ const routes = [
       { path: 'items', component: () => import('@/views/admin/ItemsManage.vue') },
       { path: 'orders', component: () => import('@/views/admin/OrdersManage.vue') },
       { path: 'songs', component: () => import('@/views/admin/SongsManage.vue') },
-      { path: 'comments', component: () => import('@/views/admin/CommentsManage.vue') }
+      { path: 'comments', component: () => import('@/views/admin/CommentsManage.vue') },
+      { path: 'support', component: () => import('@/views/admin/SupportManage.vue') }
     ]
   },
   { path: '/:pathMatch(.*)*', redirect: '/home' }
