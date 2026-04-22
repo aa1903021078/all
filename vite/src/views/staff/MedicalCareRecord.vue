@@ -128,6 +128,7 @@ const isEdit = ref(false)
 const form = reactive({
   id: null,
   orderId: null,
+  customerId: null,
   customerName: '',
   staffId: null,
   recordDate: '',
@@ -143,11 +144,14 @@ const rules = {
 
 const handleOrderChange = (val) => {
   const order = orderList.value.find(o => o.id === val)
-  if (order) form.customerName = order.customerName
+  if (order) {
+    form.customerName = order.customerName
+    form.customerId = order.customerId
+  }
 }
 
 const resetForm = () => {
-  Object.assign(form, { id: null, orderId: null, customerName: '', staffId: null, recordDate: '', content: '', remark: '' })
+  Object.assign(form, { id: null, orderId: null, customerId: null, customerName: '', staffId: null, recordDate: '', content: '', remark: '' })
 }
 
 const handleAdd = () => {

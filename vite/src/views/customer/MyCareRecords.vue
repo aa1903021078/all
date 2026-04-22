@@ -12,9 +12,9 @@
         <el-tab-pane label="生活护理记录" name="life">
           <el-table v-loading="lifeLoading" :data="lifeRecords" border stripe>
             <el-table-column prop="staffName" label="月嫂" min-width="100" />
-            <el-table-column prop="careDate" label="日期" width="120" />
-            <el-table-column prop="motherCare" label="产妇护理内容" min-width="200" show-overflow-tooltip />
-            <el-table-column prop="babyCare" label="婴儿护理内容" min-width="200" show-overflow-tooltip />
+            <el-table-column prop="recordDate" label="日期" width="120" />
+            <el-table-column prop="maternalContent" label="产妇护理内容" min-width="200" show-overflow-tooltip />
+            <el-table-column prop="infantContent" label="婴儿护理内容" min-width="200" show-overflow-tooltip />
             <el-table-column label="操作" width="100" align="center">
               <template #default="{ row }">
                 <el-button type="primary" link :icon="View" @click="showLifeDetail(row)">详情</el-button>
@@ -32,8 +32,8 @@
         <el-tab-pane label="医疗护理记录" name="medical">
           <el-table v-loading="medicalLoading" :data="medicalRecords" border stripe>
             <el-table-column prop="staffName" label="护理人员" min-width="100" />
-            <el-table-column prop="careDate" label="日期" width="120" />
-            <el-table-column prop="careContent" label="护理内容" min-width="300" show-overflow-tooltip />
+            <el-table-column prop="recordDate" label="日期" width="120" />
+            <el-table-column prop="content" label="护理内容" min-width="300" show-overflow-tooltip />
             <el-table-column label="操作" width="100" align="center">
               <template #default="{ row }">
                 <el-button type="primary" link :icon="View" @click="showMedicalDetail(row)">详情</el-button>
@@ -75,9 +75,9 @@
     <el-dialog v-model="lifeDetailVisible" title="生活护理记录详情" width="600px">
       <el-descriptions :column="1" border>
         <el-descriptions-item label="月嫂">{{ lifeDetail.staffName }}</el-descriptions-item>
-        <el-descriptions-item label="日期">{{ lifeDetail.careDate }}</el-descriptions-item>
-        <el-descriptions-item label="产妇护理内容">{{ lifeDetail.motherCare || '无' }}</el-descriptions-item>
-        <el-descriptions-item label="婴儿护理内容">{{ lifeDetail.babyCare || '无' }}</el-descriptions-item>
+        <el-descriptions-item label="日期">{{ lifeDetail.recordDate }}</el-descriptions-item>
+        <el-descriptions-item label="产妇护理内容">{{ lifeDetail.maternalContent || '无' }}</el-descriptions-item>
+        <el-descriptions-item label="婴儿护理内容">{{ lifeDetail.infantContent || '无' }}</el-descriptions-item>
         <el-descriptions-item label="备注">{{ lifeDetail.remark || '无' }}</el-descriptions-item>
         <el-descriptions-item label="记录时间">{{ lifeDetail.createTime }}</el-descriptions-item>
       </el-descriptions>
@@ -87,8 +87,8 @@
     <el-dialog v-model="medicalDetailVisible" title="医疗护理记录详情" width="600px">
       <el-descriptions :column="1" border>
         <el-descriptions-item label="护理人员">{{ medicalDetail.staffName }}</el-descriptions-item>
-        <el-descriptions-item label="日期">{{ medicalDetail.careDate }}</el-descriptions-item>
-        <el-descriptions-item label="护理内容">{{ medicalDetail.careContent || '无' }}</el-descriptions-item>
+        <el-descriptions-item label="日期">{{ medicalDetail.recordDate }}</el-descriptions-item>
+        <el-descriptions-item label="护理内容">{{ medicalDetail.content || '无' }}</el-descriptions-item>
         <el-descriptions-item label="备注">{{ medicalDetail.remark || '无' }}</el-descriptions-item>
         <el-descriptions-item label="记录时间">{{ medicalDetail.createTime }}</el-descriptions-item>
       </el-descriptions>
@@ -148,7 +148,7 @@ const dietDetail = ref({})
 const loadLifeRecords = async () => {
   lifeLoading.value = true
   try {
-    const res = await getCareLifeList({ ...lifeParams, customerId: user.value.id })
+    const res = await getCareLifeList({ pageNum: lifeParams.current, pageSize: lifeParams.size, customerId: user.value.id })
     lifeRecords.value = res.data.records
     lifeTotal.value = res.data.total
   } finally {
@@ -159,7 +159,7 @@ const loadLifeRecords = async () => {
 const loadMedicalRecords = async () => {
   medicalLoading.value = true
   try {
-    const res = await getCareMedicalList({ ...medicalParams, customerId: user.value.id })
+    const res = await getCareMedicalList({ pageNum: medicalParams.current, pageSize: medicalParams.size, customerId: user.value.id })
     medicalRecords.value = res.data.records
     medicalTotal.value = res.data.total
   } finally {
@@ -170,7 +170,7 @@ const loadMedicalRecords = async () => {
 const loadDietRecords = async () => {
   dietLoading.value = true
   try {
-    const res = await getDietPlanList({ ...dietParams, customerId: user.value.id })
+    const res = await getDietPlanList({ pageNum: dietParams.current, pageSize: dietParams.size, customerId: user.value.id })
     dietRecords.value = res.data.records
     dietTotal.value = res.data.total
   } finally {

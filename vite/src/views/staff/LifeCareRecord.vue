@@ -179,6 +179,7 @@ const infantNote = ref('')
 const form = reactive({
   id: null,
   orderId: null,
+  customerId: null,
   customerName: '',
   staffId: null,
   recordDate: '',
@@ -194,7 +195,10 @@ const rules = {
 
 const handleOrderChange = (val) => {
   const order = orderList.value.find(o => o.id === val)
-  if (order) form.customerName = order.customerName
+  if (order) {
+    form.customerName = order.customerName
+    form.customerId = order.customerId
+  }
 }
 
 const buildContent = (checked, items, note) => {
@@ -218,7 +222,7 @@ const parseContent = (content, items) => {
 }
 
 const resetForm = () => {
-  Object.assign(form, { id: null, orderId: null, customerName: '', staffId: null, recordDate: '', maternalContent: '', infantContent: '', remark: '' })
+  Object.assign(form, { id: null, orderId: null, customerId: null, customerName: '', staffId: null, recordDate: '', maternalContent: '', infantContent: '', remark: '' })
   maternalChecked.value = []
   maternalNote.value = ''
   infantChecked.value = []

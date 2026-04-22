@@ -94,32 +94,28 @@ const handleLogin = () => {
     loading.value = true
     try {
       const res = await login({ username: form.username, password: form.password })
-      const data = res.data
-      if (data.code === 200 || data.code === 0) {
-        const user = data.data || data.user
-        const token = data.token || ''
-        store.commit('SET_USER', user)
-        store.commit('SET_TOKEN', token)
-        ElMessage.success('登录成功')
-        const role = user.role
-        if (role === 0) {
-          router.push('/home')
-        } else if (role === 1) {
-          router.push('/staff/life-care')
-        } else if (role === 2) {
-          router.push('/staff/diet-plan')
-        } else if (role === 3) {
-          router.push('/staff/medical-care')
-        } else if (role === 4) {
-          router.push('/customer/services')
-        } else {
-          router.push('/home')
-        }
+      // request.js 拦截器已解包，res 就是 {code, msg, data}
+      const user = res.data
+      const token = res.token || ''
+      store.commit('SET_USER', user)
+      store.commit('SET_TOKEN', token)
+      ElMessage.success('登录成功')
+      const role = user.role
+      if (role === 0) {
+        router.push('/home')
+      } else if (role === 1) {
+        router.push('/staff/life-care')
+      } else if (role === 2) {
+        router.push('/staff/diet-plan')
+      } else if (role === 3) {
+        router.push('/staff/medical-care')
+      } else if (role === 4) {
+        router.push('/customer/services')
       } else {
-        ElMessage.error(data.msg || data.message || '登录失败')
+        router.push('/home')
       }
     } catch (err) {
-      ElMessage.error(err.response?.data?.msg || '登录失败，请检查网络')
+      // 拦截器已处理错误提示，这里不重复弹出
     } finally {
       loading.value = false
     }

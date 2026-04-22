@@ -59,7 +59,7 @@ import { ref, reactive, onMounted, computed } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { useStore } from 'vuex'
-import { getComplaintList, addComplaint, getMyOrders } from '@/api/index.js'
+import { getComplaintList, addComplaint, getOrderList } from '@/api/index.js'
 
 const store = useStore()
 const user = computed(() => store.getters.user)
@@ -83,7 +83,7 @@ const myOrders = ref([])
 const getList = async () => {
   loading.value = true
   try {
-    const res = await getComplaintList({ ...queryParams, customerId: user.value.id })
+    const res = await getComplaintList({ pageNum: queryParams.current, pageSize: queryParams.size, customerId: user.value.id })
     tableData.value = res.data.records
     total.value = res.data.total
   } finally {
@@ -93,9 +93,8 @@ const getList = async () => {
 
 const loadMyOrders = async () => {
   try {
-    const res = await getMyOrders(user.value.id)
-    const orders = res.data.records || res.data || []
-    myOrders.value = Array.isArray(orders) ? orders : []
+    const res = await getOrderList({ pageNum: 1, pageSize: 200, customerId: user.value.id })
+    myOrders.value = res.data.records || []
   } catch {
     myOrders.value = []
   }
