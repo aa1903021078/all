@@ -26,6 +26,7 @@ function parseKeywords(text) {
  * 3. 多关键词之间取"与"关系（每个关键词都要匹配到，才算命中该菜品）
  */
 function recommend(textOverride) {
+  // 若提供了 textOverride（如点击快捷食材按钮），则同步更新输入框，便于用户看到当前推荐所用的关键词
   const text = textOverride ?? input.value
   if (textOverride !== undefined) input.value = text
   submittedKeywords.value = parseKeywords(text)

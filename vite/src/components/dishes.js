@@ -52,6 +52,7 @@ export const dishes = [
 ]
 
 // 从菜品库自动抽取所有食材（用于快捷点选与"数据库里有"的判断）
+// 按中文 locale 排序，便于 UI 展示顺序稳定
 export const allIngredients = Array.from(
   new Set(dishes.flatMap((d) => d.ingredients))
 ).sort((a, b) => a.localeCompare(b, 'zh'))
