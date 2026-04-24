@@ -117,6 +117,7 @@ async function analyze() {
     </div>
 
     <div v-if="report" class="report">
+      <div class="section-title">望舌观察</div>
       <div class="card" v-if="report.tongueBody">
         <h3>舌质</h3>
         <p>{{ report.tongueBody }}</p>
@@ -126,16 +127,63 @@ async function analyze() {
         <p>{{ report.tongueCoating }}</p>
       </div>
       <div class="card" v-if="report.tongueShape">
-        <h3>舌型</h3>
+        <h3>舌形</h3>
         <p>{{ report.tongueShape }}</p>
+      </div>
+      <div class="card" v-if="report.tongueState">
+        <h3>舌态</h3>
+        <p>{{ report.tongueState }}</p>
+      </div>
+      <div class="card" v-if="report.sublingualVein">
+        <h3>舌下脉络</h3>
+        <p>{{ report.sublingualVein }}</p>
+      </div>
+
+      <div class="section-title">细节特征</div>
+      <div class="card" v-if="report.toothMarks">
+        <h3>齿痕</h3>
+        <p>{{ report.toothMarks }}</p>
+      </div>
+      <div class="card" v-if="report.cracks">
+        <h3>裂纹</h3>
+        <p>{{ report.cracks }}</p>
+      </div>
+      <div class="card" v-if="report.spots">
+        <h3>点刺 / 红点</h3>
+        <p>{{ report.spots }}</p>
+      </div>
+      <div class="card" v-if="report.moisture">
+        <h3>津液</h3>
+        <p>{{ report.moisture }}</p>
+      </div>
+
+      <div class="section-title">体质与证型</div>
+      <div class="card highlight" v-if="report.constitution">
+        <h3>体质辨识</h3>
+        <p>{{ report.constitution }}</p>
       </div>
       <div class="card" v-if="report.syndrome">
         <h3>证型提示</h3>
         <p>{{ report.syndrome }}</p>
       </div>
+
+      <div class="section-title">调养建议</div>
+      <div class="card" v-if="report.dietAdvice">
+        <h3>饮食建议</h3>
+        <p>{{ report.dietAdvice }}</p>
+      </div>
+      <div class="card" v-if="report.lifestyleAdvice">
+        <h3>起居与运动</h3>
+        <p>{{ report.lifestyleAdvice }}</p>
+      </div>
       <div class="card" v-if="report.suggestion">
-        <h3>调养建议</h3>
+        <h3>综合调养</h3>
         <p>{{ report.suggestion }}</p>
+      </div>
+
+      <div class="card meta" v-if="report.imageQuality">
+        <h3>图像质量</h3>
+        <p>{{ report.imageQuality }}</p>
       </div>
       <p class="disclaimer">
         {{ report.disclaimer || '本结果由 AI 根据图像生成,仅供健康参考,不构成医疗诊断,如有不适请及时就医。' }}
@@ -230,6 +278,30 @@ async function analyze() {
   margin: 0;
   white-space: pre-wrap;
   line-height: 1.6;
+}
+.report .section-title {
+  margin: 18px 0 8px;
+  padding-left: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  border-left: 3px solid #1677ff;
+}
+.report .section-title:first-child {
+  margin-top: 4px;
+}
+.report .card.highlight {
+  background: #f0f7ff;
+  border-color: #bddcff;
+}
+.report .card.highlight h3 {
+  color: #0958d9;
+}
+.report .card.meta {
+  background: #fafafa;
+}
+.report .card.meta h3 {
+  color: #888;
 }
 .disclaimer {
   margin-top: 10px;

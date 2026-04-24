@@ -7,17 +7,25 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 
-# 百度千帆大模型(ModelBuilder)多模态接入配置。
-# 真实 AK/SK 请通过环境变量注入,不要提交到 git:
-#   export BAIDU_AK=你的ApiKey
-#   export BAIDU_SK=你的SecretKey
-# 模型 endpoint 可选:ernie-4.5-vl、ernie-4.0-turbo-vl 等(需在千帆控制台开通后才能调用)。
+# ============================================================
+# 百度千帆大模型(ModelBuilder)接入
+# -----------------------------------------------------------
+# OpenAI 兼容接口(支持 ernie-4.5-vl 多模态)
+#   1) 登录 https://console.bce.baidu.com/iam/#/iam/apikey/list
+#      或 千帆控制台 → 右上角头像 → 「安全认证 / API Key」 → 「创建 API Key」
+#   2) 生成的 Key 通常形如  bce-v3/ALTAK-xxx/xxx,把它填到下面 bearer-token
+#   3) 确保账号已在「模型广场」中 开通多模态模型(如 ernie-4.5-turbo-vl-32k)
+#
+# ============================================================
 baidu:
   qianfan:
-    api-key: ${BAIDU_AK:}
-    secret-key: ${BAIDU_SK:}
-    model-endpoint: ${BAIDU_MODEL_ENDPOINT:ernie-4.5-vl}
-    # 单张图片 Base64 编码前原始字节上限,千帆多模态通常限制在 4MB 左右
+    # 用环境变量注入:  export BAIDU_BEARER=bce-v3/ALTAK-xxx/xxx
+    bearer-token: bce-v3/ALTAK-jNkO4yOE2ys1nQbJGFLcI/d785e3c72026e38701c5b040cb64feb19cb58008
+
+    # v2 路径直接填模型名;v1 路径填你在控制台发布的服务短名
+    model-endpoint: ${BAIDU_MODEL_ENDPOINT:ernie-4.5-turbo-vl-32k}
+
+    # 单张图片原始字节上限,千帆多模态通常限制在 4MB 左右
     max-image-bytes: 4194304
     connect-timeout-ms: 10000
     read-timeout-ms: 60000

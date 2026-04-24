@@ -1,0 +1,248 @@
+26-04-24.17:14:03.049 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 52498 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:14:03.050 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:14:03.077 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:14:03.077 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:14:03.354 [restartedMain   ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[com.dahaiwuliang.dao]' package. Please check your configuration.
+26-04-24.17:14:03.549 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:14:03.553 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:14:03.554 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:14:03.554 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:14:03.595 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:14:03.595 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 518 ms
+26-04-24.17:14:03.738 [restartedMain   ] WARN  AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+26-04-24.17:14:03.740 [restartedMain   ] INFO  StandardService        - Stopping service [Tomcat]
+26-04-24.17:14:03.750 [restartedMain   ] INFO  ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+26-04-24.17:14:03.757 [restartedMain   ] ERROR LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+26-04-24.17:15:14.845 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 52668 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:15:14.846 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:15:14.874 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:15:14.874 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:15:15.027 [restartedMain   ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[com.dahaiwuliang.dao]' package. Please check your configuration.
+26-04-24.17:15:15.074 [restartedMain   ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[com.dahaiwuliang]' package. Please check your configuration.
+26-04-24.17:15:15.289 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:15:15.293 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:15:15.293 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:15:15.293 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:15:15.338 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:15:15.338 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 464 ms
+26-04-24.17:15:15.469 [restartedMain   ] WARN  AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+26-04-24.17:15:15.470 [restartedMain   ] INFO  StandardService        - Stopping service [Tomcat]
+26-04-24.17:15:15.480 [restartedMain   ] INFO  ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+26-04-24.17:15:15.488 [restartedMain   ] ERROR LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+26-04-24.17:16:51.365 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 52910 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:16:51.366 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:16:51.391 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:16:51.391 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:16:51.592 [restartedMain   ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[com.dahaiwuliang]' package. Please check your configuration.
+26-04-24.17:16:51.853 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:16:51.856 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:16:51.856 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:16:51.856 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:16:51.896 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:16:51.897 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 505 ms
+26-04-24.17:16:52.033 [restartedMain   ] WARN  AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+26-04-24.17:16:52.034 [restartedMain   ] INFO  StandardService        - Stopping service [Tomcat]
+26-04-24.17:16:52.043 [restartedMain   ] INFO  ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+26-04-24.17:16:52.051 [restartedMain   ] ERROR LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+26-04-24.17:17:55.619 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 53098 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:17:55.620 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:17:55.645 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:17:55.645 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:17:55.852 [restartedMain   ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[com.dahaiwuliang]' package. Please check your configuration.
+26-04-24.17:17:56.085 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:17:56.089 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:17:56.090 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:17:56.090 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:17:56.129 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:17:56.129 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 484 ms
+26-04-24.17:17:56.283 [restartedMain   ] WARN  AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+26-04-24.17:17:56.284 [restartedMain   ] INFO  StandardService        - Stopping service [Tomcat]
+26-04-24.17:17:56.293 [restartedMain   ] INFO  ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+26-04-24.17:17:56.307 [restartedMain   ] ERROR LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+26-04-24.17:18:29.660 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 53120 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:18:29.661 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:18:29.686 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:18:29.686 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:18:29.909 [restartedMain   ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[com.dahaiwuliang]' package. Please check your configuration.
+26-04-24.17:18:30.159 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:18:30.163 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:18:30.163 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:18:30.163 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:18:30.198 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:18:30.198 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 511 ms
+26-04-24.17:18:30.328 [restartedMain   ] WARN  AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+26-04-24.17:18:30.329 [restartedMain   ] INFO  StandardService        - Stopping service [Tomcat]
+26-04-24.17:18:30.336 [restartedMain   ] INFO  ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+26-04-24.17:18:30.344 [restartedMain   ] ERROR LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+26-04-24.17:19:52.579 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 53312 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:19:52.580 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:19:52.606 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:19:52.607 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:19:52.981 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:19:52.985 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:19:52.985 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:19:52.985 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:19:53.022 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:19:53.022 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 415 ms
+26-04-24.17:19:53.162 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-04-24.17:19:53.168 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-04-24.17:19:53.183 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port(s): 8080 (http) with context path ''
+26-04-24.17:19:53.191 [restartedMain   ] INFO  App                    - Started App in 5.867 seconds (JVM running for 6.096)
+26-04-24.17:23:58.734 [http-nio-8080-exec-1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-04-24.17:23:58.735 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-04-24.17:23:58.737 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+26-04-24.17:23:59.217 [http-nio-8080-exec-1] INFO  BaiduTokenService      - 百度千帆 access_token 刷新成功,有效期 2592000 秒
+26-04-24.17:24:00.161 [http-nio-8080-exec-1] WARN  ExceptionHandlerExceptionResolver - Resolved [com.dahaiwuliang.tongue.TongueAnalysisException: 大模型返回错误: Unsupported openapi method]
+26-04-24.17:42:04.831 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 55412 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:42:04.832 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:42:04.857 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:42:04.858 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:42:05.250 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:42:05.254 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:42:05.254 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:42:05.254 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:42:05.286 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:42:05.286 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 428 ms
+26-04-24.17:42:05.436 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-04-24.17:42:05.441 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-04-24.17:42:05.456 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port(s): 8080 (http) with context path ''
+26-04-24.17:42:05.465 [restartedMain   ] INFO  App                    - Started App in 5.911 seconds (JVM running for 6.179)
+26-04-24.17:42:20.394 [http-nio-8080-exec-1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-04-24.17:42:20.394 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-04-24.17:42:20.395 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 1 ms
+26-04-24.17:42:20.772 [http-nio-8080-exec-1] INFO  BaiduTokenService      - 百度千帆 access_token 刷新成功,有效期 2592000 秒
+26-04-24.17:42:21.543 [http-nio-8080-exec-1] WARN  ExceptionHandlerExceptionResolver - Resolved [com.dahaiwuliang.tongue.TongueAnalysisException: 大模型返回错误[3]: Unsupported openapi method。请确认 model-endpoint="ernie-4.5-turbo-vl-32k" 已在千帆控制台「在线服务」中发布,或改用 v2 Bearer Token 路径。]
+26-04-24.17:52:56.897 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 56918 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.17:52:56.897 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.17:52:56.925 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.17:52:56.925 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.17:52:57.331 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.17:52:57.334 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.17:52:57.334 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.17:52:57.335 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.17:52:57.371 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.17:52:57.371 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 445 ms
+26-04-24.17:52:57.522 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-04-24.17:52:57.527 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-04-24.17:52:57.543 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port(s): 8080 (http) with context path ''
+26-04-24.17:52:57.550 [restartedMain   ] INFO  App                    - Started App in 5.922 seconds (JVM running for 6.196)
+26-04-24.17:53:05.591 [http-nio-8080-exec-1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-04-24.17:53:05.592 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-04-24.17:53:05.592 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 0 ms
+26-04-24.18:14:48.122 [restartedMain   ] INFO  App                    - Starting App using Java 11.0.30 on B-LWR22LT3-2134.local with PID 59782 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all)
+26-04-24.18:14:48.123 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-04-24.18:14:48.151 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-24.18:14:48.151 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-24.18:14:48.557 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8080 (http)
+26-04-24.18:14:48.561 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-04-24.18:14:48.562 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-04-24.18:14:48.562 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-24.18:14:48.594 [restartedMain   ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-04-24.18:14:48.594 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 443 ms
+26-04-24.18:14:48.743 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-04-24.18:14:48.748 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-04-24.18:14:48.764 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port(s): 8080 (http) with context path ''
+26-04-24.18:14:48.772 [restartedMain   ] INFO  App                    - Started App in 5.951 seconds (JVM running for 6.185)
+26-04-24.18:15:00.472 [http-nio-8080-exec-1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-04-24.18:15:00.472 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-04-24.18:15:00.473 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 1 ms

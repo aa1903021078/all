@@ -22,32 +22,60 @@ import java.util.Base64;
 
 /**
  * 舌诊分析核心服务:校验图片 → 调用百度千帆多模态模型 → 解析结构化结果。
+ *
+ * <p>调用路径由 {@link BaiduQianfanProperties} 自动选择:<br>
+ * - 配置 {@code bearer-token} → 走千帆 v2 OpenAI 兼容接口(推荐,支持 ernie-4.5-vl 系多模态);<br>
+ * - 只有 AK/SK → 走 v1 {@code wenxinworkshop/chat/{endpoint}}(需在控制台发布服务)。
  */
 @Service
 public class TongueAnalysisService {
 
     private static final Logger log = LoggerFactory.getLogger(TongueAnalysisService.class);
 
-    private static final String CHAT_BASE_URL =
+    /** v1 老接口 base,拼接 endpoint 短名后使用。 */
+    private static final String V1_CHAT_BASE_URL =
             "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/";
+
+    /** v2 OpenAI 兼容接口(Bearer Token 鉴权)。 */
+    private static final String V2_CHAT_URL =
+            "https://qianfan.baidubce.com/v2/chat/completions";
 
     private static final String DEFAULT_DISCLAIMER =
             "本结果由 AI 根据图像生成,仅供健康参考,不构成医疗诊断,如有不适请及时就医。";
 
     /** 提示词:要求模型以固定 JSON 输出,方便后端解析。 */
     private static final String PROMPT_TEMPLATE = ""
-            + "你是一名资深的中医舌诊专家。请严格根据用户上传的这张舌头图片进行舌诊分析,"
-            + "从以下三个维度给出判断,并结合常见中医证型给出生活调养建议:\n"
-            + "1) 舌质:颜色(淡红/淡白/红/绛/青紫等)、胖瘦、齿痕、裂纹、点刺等;\n"
+            + "你是一名资深的中医舌诊与体质辨识专家。请严格根据用户上传的这张舌头图片进行细致的望舌分析,"
+            + "并结合中医九种体质理论给出体质辨识与调养建议。请从以下维度分别评估:\n"
+            + "1) 舌质:颜色(淡红/淡白/红/绛/青紫等)、荣枯、有无光泽;\n"
             + "2) 舌苔:颜色(白/黄/灰/黑)、厚薄、润燥、腐腻、是否剥落;\n"
-            + "3) 舌型:大小、老嫩、柔软度。\n"
-            + "请只返回 JSON,不要包含任何 Markdown 代码块标记或多余说明。字段固定如下:\n"
+            + "3) 舌形:胖瘦、大小、老嫩;\n"
+            + "4) 舌态:强硬、痿软、歪斜、颤动、吐弄、短缩等动态特征(无则写\"自然伸展、活动自如\");\n"
+            + "5) 舌下脉络:舌下静脉的颜色、粗细、迂曲程度,反映气血瘀滞情况(若图中不可见请说明\"未见舌下脉络图像\");\n"
+            + "6) 齿痕:舌边是否有齿痕及其明显程度(如无则写\"未见明显齿痕\");\n"
+            + "7) 裂纹:舌面裂纹的位置、形态、深浅(如无则写\"未见明显裂纹\");\n"
+            + "8) 点刺:红点或芒刺的分布与色泽(如无则写\"未见明显点刺\");\n"
+            + "9) 津液:润、燥、滑、少津等状况;\n"
+            + "10) 体质辨识:从「平和质/气虚质/阳虚质/阴虚质/痰湿质/湿热质/血瘀质/气郁质/特禀质」中选出最可能的 1–2 种并简述依据;\n"
+            + "11) 证型提示:可能的中医证型(如气虚、湿热、阴虚、血瘀等),并简要说明;\n"
+            + "12) 图像质量:简评光线、对焦与舌体完整度。\n"
+            + "请只返回 JSON,不要包含任何 Markdown 代码块标记或多余说明。字段固定如下(所有字段均必须存在,未观察到的请用\"未见明显异常\"或相应说明填充):\n"
             + "{\n"
             + "  \"tongueBody\": \"对舌质的描述\",\n"
             + "  \"tongueCoating\": \"对舌苔的描述\",\n"
-            + "  \"tongueShape\": \"对舌型的描述\",\n"
-            + "  \"syndrome\": \"可能的中医证型提示(如气虚、湿热、阴虚等,并简要说明)\",\n"
-            + "  \"suggestion\": \"饮食起居与调养建议\",\n"
+            + "  \"tongueShape\": \"对舌形的描述\",\n"
+            + "  \"tongueState\": \"对舌态的描述\",\n"
+            + "  \"sublingualVein\": \"对舌下脉络的描述\",\n"
+            + "  \"toothMarks\": \"对齿痕的描述\",\n"
+            + "  \"cracks\": \"对裂纹的描述\",\n"
+            + "  \"spots\": \"对点刺/红点的描述\",\n"
+            + "  \"moisture\": \"对津液润燥的描述\",\n"
+            + "  \"constitution\": \"中医体质辨识结果及依据\",\n"
+            + "  \"syndrome\": \"可能的中医证型提示及简要说明\",\n"
+            + "  \"dietAdvice\": \"针对性的饮食建议(宜食/忌食举例)\",\n"
+            + "  \"lifestyleAdvice\": \"起居作息与运动建议\",\n"
+            + "  \"suggestion\": \"综合调养建议摘要\",\n"
+            + "  \"imageQuality\": \"图像质量简评\",\n"
             + "  \"disclaimer\": \"免责声明:仅供参考,不替代医生诊断\"\n"
             + "}\n"
             + "若图片不是人类舌头,或画面模糊、光线不足导致无法判断,请改为返回:\n"
@@ -66,7 +94,9 @@ public class TongueAnalysisService {
         byte[] bytes = validateAndRead(file);
         String mime = detectMime(bytes);
         String base64 = Base64.getEncoder().encodeToString(bytes);
-        String modelRaw = callQianfan(base64, mime);
+        String modelRaw = properties.hasBearer()
+                ? callQianfanV2(base64, mime)
+                : callQianfanV1(base64, mime);
         return parseReport(modelRaw);
     }
 
@@ -123,15 +153,11 @@ public class TongueAnalysisService {
         return null;
     }
 
-    /* ---------------- 调用千帆 ---------------- */
+    /* ---------------- 构造 messages(两版共用) ---------------- */
 
-    private String callQianfan(String base64Image, String mime) {
-        String token = tokenService.getAccessToken();
-        String url = CHAT_BASE_URL + properties.getModelEndpoint() + "?access_token=" + token;
-
-        // content 数组:一段文字 + 一张图片(base64)。
-        // 千帆多模态 content 的 image_url 支持 "data:<mime>;base64,<data>" 或 http(s) URL。
+    private JSONArray buildMessages(String base64Image, String mime) {
         JSONArray content = new JSONArray();
+
         JSONObject textPart = new JSONObject();
         textPart.put("type", "text");
         textPart.put("text", PROMPT_TEMPLATE);
@@ -150,9 +176,67 @@ public class TongueAnalysisService {
 
         JSONArray messages = new JSONArray();
         messages.add(message);
+        return messages;
+    }
+
+    /* ---------------- 调用千帆 v2(Bearer Token,OpenAI 兼容) ---------------- */
+
+    private String callQianfanV2(String base64Image, String mime) {
+        JSONObject payload = new JSONObject();
+        payload.put("model", properties.getModelEndpoint());
+        payload.put("messages", buildMessages(base64Image, mime));
+        payload.put("temperature", 0.2);
+
+        RequestConfig cfg = RequestConfig.custom()
+                .setConnectTimeout(properties.getConnectTimeoutMs())
+                .setSocketTimeout(properties.getReadTimeoutMs())
+                .build();
+
+        try (CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(cfg).build()) {
+            HttpPost post = new HttpPost(V2_CHAT_URL);
+            post.setHeader("Authorization", "Bearer " + properties.getBearerToken());
+            post.setEntity(new StringEntity(payload.toJSONString(),
+                    ContentType.create("application/json", StandardCharsets.UTF_8)));
+            try (CloseableHttpResponse resp = client.execute(post)) {
+                int status = resp.getStatusLine().getStatusCode();
+                String body = EntityUtils.toString(resp.getEntity(), StandardCharsets.UTF_8);
+                if (status != 200) {
+                    log.warn("调用千帆 v2 失败 status={} body={}", status, truncate(body));
+                    throw new TongueAnalysisException(502,
+                            "调用大模型失败,HTTP " + status + ":" + truncate(body));
+                }
+                JSONObject json = JSONObject.parseObject(body);
+                if (json.containsKey("error")) {
+                    JSONObject err = json.getJSONObject("error");
+                    String msg = err == null ? json.getString("error") : err.getString("message");
+                    throw new TongueAnalysisException(502, "大模型返回错误: " + msg);
+                }
+                JSONArray choices = json.getJSONArray("choices");
+                if (choices == null || choices.isEmpty()) {
+                    throw new TongueAnalysisException(502, "大模型返回为空: " + truncate(body));
+                }
+                JSONObject msg = choices.getJSONObject(0).getJSONObject("message");
+                String result = msg == null ? null : msg.getString("content");
+                if (result == null || result.isEmpty()) {
+                    throw new TongueAnalysisException(502, "大模型返回为空");
+                }
+                return result;
+            }
+        } catch (TongueAnalysisException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new TongueAnalysisException(502, "调用大模型异常: " + e.getMessage(), e);
+        }
+    }
+
+    /* ---------------- 调用千帆 v1(OAuth access_token) ---------------- */
+
+    private String callQianfanV1(String base64Image, String mime) {
+        String token = tokenService.getAccessToken();
+        String url = V1_CHAT_BASE_URL + properties.getModelEndpoint() + "?access_token=" + token;
 
         JSONObject payload = new JSONObject();
-        payload.put("messages", messages);
+        payload.put("messages", buildMessages(base64Image, mime));
         payload.put("temperature", 0.2);
 
         RequestConfig cfg = RequestConfig.custom()
@@ -168,14 +252,18 @@ public class TongueAnalysisService {
                 int status = resp.getStatusLine().getStatusCode();
                 String body = EntityUtils.toString(resp.getEntity(), StandardCharsets.UTF_8);
                 if (status != 200) {
-                    log.warn("调用千帆失败 status={} bodyLen={}", status, body == null ? 0 : body.length());
-                    throw new TongueAnalysisException(502, "调用大模型失败,HTTP " + status);
+                    log.warn("调用千帆 v1 失败 status={} body={}", status, truncate(body));
+                    throw new TongueAnalysisException(502,
+                            "调用大模型失败,HTTP " + status + ":" + truncate(body));
                 }
                 JSONObject json = JSONObject.parseObject(body);
                 if (json.containsKey("error_code")) {
+                    Object code = json.get("error_code");
                     Object err = json.get("error_msg");
                     throw new TongueAnalysisException(502,
-                            "大模型返回错误: " + (err == null ? json.get("error_code") : err));
+                            "大模型返回错误[" + code + "]: " + (err == null ? "unknown" : err)
+                                    + "。请确认 model-endpoint=\"" + properties.getModelEndpoint()
+                                    + "\" 已在千帆控制台「在线服务」中发布,或改用 v2 Bearer Token 路径。");
                 }
                 String result = json.getString("result");
                 if (result == null || result.isEmpty()) {
@@ -186,9 +274,13 @@ public class TongueAnalysisService {
         } catch (TongueAnalysisException e) {
             throw e;
         } catch (Exception e) {
-            // 注意:异常信息不要带敏感信息(token/base64),只给出通用描述。
             throw new TongueAnalysisException(502, "调用大模型异常: " + e.getMessage(), e);
         }
+    }
+
+    private static String truncate(String s) {
+        if (s == null) return "";
+        return s.length() > 500 ? s.substring(0, 500) + "..." : s;
     }
 
     /* ---------------- 解析模型输出 ---------------- */
@@ -217,8 +309,18 @@ public class TongueAnalysisService {
         report.setTongueBody(obj.getString("tongueBody"));
         report.setTongueCoating(obj.getString("tongueCoating"));
         report.setTongueShape(obj.getString("tongueShape"));
+        report.setTongueState(obj.getString("tongueState"));
+        report.setSublingualVein(obj.getString("sublingualVein"));
+        report.setToothMarks(obj.getString("toothMarks"));
+        report.setCracks(obj.getString("cracks"));
+        report.setSpots(obj.getString("spots"));
+        report.setMoisture(obj.getString("moisture"));
+        report.setConstitution(obj.getString("constitution"));
         report.setSyndrome(obj.getString("syndrome"));
+        report.setDietAdvice(obj.getString("dietAdvice"));
+        report.setLifestyleAdvice(obj.getString("lifestyleAdvice"));
         report.setSuggestion(obj.getString("suggestion"));
+        report.setImageQuality(obj.getString("imageQuality"));
         String disclaimer = obj.getString("disclaimer");
         report.setDisclaimer(disclaimer == null || disclaimer.isEmpty() ? DEFAULT_DISCLAIMER : disclaimer);
         return report;
