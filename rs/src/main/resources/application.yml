@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# 百度千帆大模型(ModelBuilder)多模态接入配置。
+# 真实 AK/SK 请通过环境变量注入,不要提交到 git:
+#   export BAIDU_AK=你的ApiKey
+#   export BAIDU_SK=你的SecretKey
+# 模型 endpoint 可选:ernie-4.5-vl、ernie-4.0-turbo-vl 等(需在千帆控制台开通后才能调用)。
+baidu:
+  qianfan:
+    api-key: ${BAIDU_AK:}
+    secret-key: ${BAIDU_SK:}
+    model-endpoint: ${BAIDU_MODEL_ENDPOINT:ernie-4.5-vl}
+    # 单张图片 Base64 编码前原始字节上限,千帆多模态通常限制在 4MB 左右
+    max-image-bytes: 4194304
+    connect-timeout-ms: 10000
+    read-timeout-ms: 60000
