@@ -15,7 +15,7 @@ CREATE TABLE sys_user (
   enabled TINYINT NOT NULL DEFAULT 1,
   deleted TINYINT NOT NULL DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS hospital;
 CREATE TABLE hospital (
@@ -26,7 +26,7 @@ CREATE TABLE hospital (
   address VARCHAR(255),
   phone VARCHAR(32),
   deleted TINYINT NOT NULL DEFAULT 0
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS department;
 CREATE TABLE department (
@@ -35,7 +35,7 @@ CREATE TABLE department (
   name VARCHAR(64) NOT NULL,
   description VARCHAR(255),
   deleted TINYINT NOT NULL DEFAULT 0
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS schedule;
 CREATE TABLE schedule (
@@ -51,7 +51,7 @@ CREATE TABLE schedule (
   version INT NOT NULL DEFAULT 0,
   deleted TINYINT NOT NULL DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS appointment;
 CREATE TABLE appointment (
@@ -65,7 +65,7 @@ CREATE TABLE appointment (
   source VARCHAR(16) DEFAULT 'SELF', -- SELF / REFERRAL
   referral_id BIGINT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS medical_record;
 CREATE TABLE medical_record (
@@ -81,7 +81,7 @@ CREATE TABLE medical_record (
   advice VARCHAR(1000),
   image_url VARCHAR(500),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS referral;
 CREATE TABLE referral (
@@ -103,7 +103,7 @@ CREATE TABLE referral (
   target_appointment_id BIGINT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS notification;
 CREATE TABLE notification (
@@ -114,7 +114,7 @@ CREATE TABLE notification (
   type VARCHAR(32),
   read_flag TINYINT NOT NULL DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS operation_log;
 CREATE TABLE operation_log (
@@ -129,4 +129,4 @@ CREATE TABLE operation_log (
   ip VARCHAR(64),
   duration_ms BIGINT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

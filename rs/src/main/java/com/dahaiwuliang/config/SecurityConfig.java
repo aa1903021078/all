@@ -52,7 +52,7 @@ public class SecurityConfig {
             .csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeRequests()
-                .antMatchers("/api/auth/**", "/uploads/**", "/static/**", "/h2-console/**",
+                .antMatchers("/api/auth/**", "/uploads/**", "/static/**",
                              "/error", "/favicon.ico").permitAll()
                 .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/doctor/**").hasAnyRole("DOCTOR", "ADMIN")

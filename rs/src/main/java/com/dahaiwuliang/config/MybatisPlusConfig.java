@@ -13,7 +13,7 @@ public class MybatisPlusConfig {
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor i = new MybatisPlusInterceptor();
         i.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
-        i.addInnerInterceptor(new PaginationInnerInterceptor(DbType.H2));
+        i.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         return i;
     }
 }
