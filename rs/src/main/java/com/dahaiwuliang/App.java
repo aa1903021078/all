@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@MapperScan("com.dahaiwuliang.dao")
+@MapperScan("com.dahaiwuliang.mapper")
 @EnableScheduling
 public class App {
 
