@@ -1,5 +1,31 @@
-// 导入 tailwind 的基础指令组件
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #f4f6fb;
+  color: #2c3e50;
+}
+
+a { text-decoration: none; }
+
+/* Card hover for booking */
+.card-shadow {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: box-shadow .2s, transform .2s;
+}
+.card-shadow:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  transform: translateY(-2px);
+}
+
+/* Print */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; padding: 24px; }
+  .no-print { display: none !important; }
+}
