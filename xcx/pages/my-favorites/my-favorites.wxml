@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="card" wx:for="{{favorites}}" wx:key="id" bindtap="goDetail" data-id="{{item.bookId}}">
+    <text>图书ID: {{item.bookId}}</text>
+    <text class="time">收藏时间: {{item.createTime}}</text>
+  </view>
+  <view wx:if="{{!favorites.length}}" class="empty">暂无收藏</view>
+</view>

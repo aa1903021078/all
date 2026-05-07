@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="card" wx:for="{{orders}}" wx:key="id">
+    <view class="order-header">
+      <text class="order-id">订单 #{{item.id}}</text>
+      <text class="order-status">{{statusTexts[item.status]}}</text>
+    </view>
+    <view class="order-info">
+      <text>交换方式: {{item.exchangeMethod || '待确认'}}</text>
+      <text>交换地点: {{item.exchangeLocation || '待确认'}}</text>
+    </view>
+    <view class="order-actions">
+      <view wx:if="{{item.status === 0}}" class="action-btn" bindtap="accept" data-id="{{item.id}}">接受</view>
+      <view wx:if="{{item.status === 0}}" class="action-btn reject" bindtap="reject" data-id="{{item.id}}">拒绝</view>
+      <view wx:if="{{item.status === 1}}" class="action-btn" bindtap="confirm" data-id="{{item.id}}">确认完成</view>
+      <view wx:if="{{item.status === 4}}" class="action-btn" bindtap="goReview" data-id="{{item.id}}">评价</view>
+    </view>
+  </view>
+  <view wx:if="{{!orders.length}}" class="empty">暂无置换记录</view>
+</view>

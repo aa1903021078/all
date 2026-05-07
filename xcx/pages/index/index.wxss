@@ -1,0 +1,35 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 40rpx;
+  padding: 16rpx 24rpx;
+  margin-bottom: 20rpx;
+}
+.search-icon { margin-right: 12rpx; }
+.search-text { color: #999; font-size: 28rpx; }
+.section { margin-bottom: 30rpx; }
+.section-title { font-size: 32rpx; font-weight: bold; margin-bottom: 16rpx; }
+.scroll-row { white-space: nowrap; }
+.book-scroll-item {
+  display: inline-block;
+  width: 200rpx;
+  margin-right: 16rpx;
+  text-align: center;
+}
+.book-cover-sm { width: 200rpx; height: 260rpx; border-radius: 8rpx; }
+.book-title-sm { font-size: 24rpx; display: block; margin-top: 8rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.book-list { }
+.book-card {
+  display: flex;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+}
+.book-cover { width: 160rpx; height: 200rpx; border-radius: 8rpx; margin-right: 20rpx; flex-shrink: 0; }
+.book-info { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.book-title { font-size: 30rpx; font-weight: bold; }
+.book-author { font-size: 26rpx; color: #666; }
+.book-condition { font-size: 24rpx; color: #4A90D9; }
+.book-want { font-size: 24rpx; color: #999; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

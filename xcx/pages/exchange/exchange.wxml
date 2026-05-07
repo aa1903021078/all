@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="card">
+    <text class="section-title">选择您要用来交换的书</text>
+    <view class="my-book {{selectedBookId === item.id ? 'selected' : ''}}" wx:for="{{myBooks}}" wx:key="id" bindtap="selectBook" data-id="{{item.id}}">
+      <image src="{{item.coverImg}}" class="mini-cover" mode="aspectFill"></image>
+      <text>{{item.title}}</text>
+    </view>
+    <view wx:if="{{!myBooks.length}}" class="empty">您还没有上架的图书，请先发布</view>
+  </view>
+  <view class="card">
+    <text class="section-title">备注</text>
+    <textarea class="form-textarea" placeholder="留言给对方" bindinput="onRemarkInput"></textarea>
+  </view>
+  <view class="btn-primary" bindtap="submit">发起置换申请</view>
+</view>

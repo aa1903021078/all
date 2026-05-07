@@ -1,0 +1,10 @@
+.cover-swiper { width: 100%; height: 500rpx; }
+.swiper-img { width: 100%; height: 100%; }
+.title { font-size: 36rpx; font-weight: bold; display: block; margin-bottom: 16rpx; }
+.sub-title { font-size: 30rpx; font-weight: bold; display: block; margin-bottom: 12rpx; }
+.info-row { display: flex; margin-bottom: 12rpx; font-size: 28rpx; }
+.label { color: #999; width: 160rpx; flex-shrink: 0; }
+.highlight { color: #4A90D9; font-weight: bold; }
+.bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; display: flex; background: #fff; padding: 16rpx 20rpx; border-top: 1rpx solid #eee; padding-bottom: calc(16rpx + env(safe-area-inset-bottom)); }
+.bar-btn { flex: 1; text-align: center; padding: 16rpx 0; font-size: 28rpx; }
+.bar-btn.primary { background: #4A90D9; color: #fff; border-radius: 8rpx; }

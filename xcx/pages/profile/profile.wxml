@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="profile-header">
+    <image class="avatar" src="{{userInfo.avatar || '/static/default_avatar.png'}}" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="nickname">{{userInfo.nickname || '未登录'}}</text>
+      <text class="credit">信用分: {{userInfo.creditScore || 0}}</text>
+      <text class="status-tag" wx:if="{{userInfo.status === 1}}">已认证</text>
+      <text class="status-tag pending" wx:if="{{userInfo.status === 0}}">未认证</text>
+    </view>
+  </view>
+
+  <view class="menu-list">
+    <view class="menu-item" bindtap="goPage" data-url="/pages/edit-profile/edit-profile">
+      <text>编辑资料</text><text class="arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="goPage" data-url="/pages/my-books/my-books">
+      <text>我的发布</text><text class="arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="goPage" data-url="/pages/my-exchange/my-exchange">
+      <text>我的置换</text><text class="arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="goPage" data-url="/pages/my-favorites/my-favorites">
+      <text>我的收藏</text><text class="arrow">></text>
+    </view>
+  </view>
+
+  <view class="btn-primary logout" bindtap="logout">退出登录</view>
+</view>

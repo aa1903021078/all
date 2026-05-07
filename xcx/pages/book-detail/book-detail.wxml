@@ -1,0 +1,41 @@
+<view class="container">
+  <swiper class="cover-swiper" indicator-dots autoplay>
+    <swiper-item>
+      <image src="{{book.coverImg}}" mode="aspectFill" class="swiper-img"></image>
+    </swiper-item>
+    <block wx:if="{{book.detailImgs}}">
+      <swiper-item wx:for="{{book.detailImgs.split(',')}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill" class="swiper-img"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="card">
+    <text class="title">{{book.title}}</text>
+    <view class="info-row"><text class="label">作者:</text><text>{{book.author}}</text></view>
+    <view class="info-row"><text class="label">ISBN:</text><text>{{book.isbn}}</text></view>
+    <view class="info-row"><text class="label">出版社:</text><text>{{book.publisher}}</text></view>
+    <view class="info-row"><text class="label">适用年级:</text><text>{{book.grade}}</text></view>
+    <view class="info-row"><text class="label">适用专业:</text><text>{{book.major}}</text></view>
+    <view class="info-row"><text class="label">课程:</text><text>{{book.courseName}}</text></view>
+    <view class="info-row"><text class="label">品相:</text><text class="highlight">{{book.conditionLevel}}/10</text></view>
+    <view class="info-row"><text class="label">品相描述:</text><text>{{book.conditionDesc}}</text></view>
+  </view>
+
+  <view class="card">
+    <text class="sub-title">置换意向</text>
+    <view class="info-row"><text class="label">想换:</text><text>{{book.wantBookDesc}}</text></view>
+  </view>
+
+  <view class="bottom-bar">
+    <view class="bar-btn" bindtap="toggleFavorite">
+      <text>{{isFavorite ? '❤️' : '🤍'}} 收藏</text>
+    </view>
+    <view class="bar-btn" bindtap="contactOwner">
+      <text>💬 联系</text>
+    </view>
+    <view class="bar-btn primary" bindtap="goExchange">
+      <text>🔄 发起置换</text>
+    </view>
+  </view>
+</view>

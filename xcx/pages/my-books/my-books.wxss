@@ -1,0 +1,6 @@
+.book-card { display: flex; background: #fff; border-radius: 12rpx; padding: 20rpx; margin-bottom: 16rpx; }
+.book-cover { width: 120rpx; height: 160rpx; border-radius: 8rpx; margin-right: 16rpx; }
+.book-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.book-title { font-size: 30rpx; font-weight: bold; margin-bottom: 8rpx; }
+.book-status { font-size: 26rpx; color: #4A90D9; }
+.empty { text-align: center; padding: 100rpx 0; color: #999; }

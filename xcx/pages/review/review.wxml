@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="card">
+    <view class="score-item">
+      <text>信用评分</text>
+      <slider min="1" max="5" value="{{creditScore}}" data-field="creditScore" bindchange="onScoreChange" show-value />
+    </view>
+    <view class="score-item">
+      <text>品相评分</text>
+      <slider min="1" max="5" value="{{conditionScore}}" data-field="conditionScore" bindchange="onScoreChange" show-value />
+    </view>
+    <view class="score-item">
+      <text>态度评分</text>
+      <slider min="1" max="5" value="{{attitudeScore}}" data-field="attitudeScore" bindchange="onScoreChange" show-value />
+    </view>
+    <view class="score-item">
+      <text>评价内容</text>
+      <textarea class="textarea" placeholder="写下你的评价" bindinput="onInput"></textarea>
+    </view>
+  </view>
+  <view class="btn-primary" bindtap="submit">提交评价</view>
+</view>

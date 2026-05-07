@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="card" wx:if="{{unreadCount > 0}}">
+    <text class="unread-badge">{{unreadCount}}条未读消息</text>
+  </view>
+  <view class="card" wx:for="{{messages}}" wx:key="id">
+    <text class="msg-title">{{item.title}}</text>
+    <text class="msg-content">{{item.content}}</text>
+    <text class="msg-time">{{item.createTime}}</text>
+  </view>
+  <view wx:if="{{!messages.length}}" class="empty">暂无消息</view>
+</view>

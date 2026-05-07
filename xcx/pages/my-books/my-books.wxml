@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="book-card" wx:for="{{books}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+    <image class="book-cover" src="{{item.coverImg}}" mode="aspectFill"></image>
+    <view class="book-info">
+      <text class="book-title">{{item.title}}</text>
+      <text class="book-status">{{item.status === 0 ? '待审核' : item.status === 1 ? '上架中' : item.status === 2 ? '已下架' : '已置换'}}</text>
+    </view>
+  </view>
+  <view wx:if="{{!books.length}}" class="empty">暂无发布的图书</view>
+</view>

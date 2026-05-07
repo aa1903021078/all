@@ -1,0 +1,50 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar" bindtap="goSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-text">搜索图书</text>
+  </view>
+
+  <!-- 推荐图书 -->
+  <view class="section" wx:if="{{recommendBooks.length}}">
+    <view class="section-title">推荐图书</view>
+    <scroll-view scroll-x class="scroll-row">
+      <view class="book-scroll-item" wx:for="{{recommendBooks}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+        <image class="book-cover-sm" src="{{item.coverImg}}" mode="aspectFill"></image>
+        <text class="book-title-sm">{{item.title}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 热门置换 -->
+  <view class="section">
+    <view class="section-title">热门置换</view>
+    <view class="book-list">
+      <view class="book-card" wx:for="{{hotBooks}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+        <image class="book-cover" src="{{item.coverImg}}" mode="aspectFill"></image>
+        <view class="book-info">
+          <text class="book-title">{{item.title}}</text>
+          <text class="book-author">{{item.author}}</text>
+          <text class="book-condition">品相: {{item.conditionLevel}}/10</text>
+          <text class="book-want">想换: {{item.wantBookDesc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最新发布 -->
+  <view class="section">
+    <view class="section-title">最新发布</view>
+    <view class="book-list">
+      <view class="book-card" wx:for="{{latestBooks}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+        <image class="book-cover" src="{{item.coverImg}}" mode="aspectFill"></image>
+        <view class="book-info">
+          <text class="book-title">{{item.title}}</text>
+          <text class="book-author">{{item.author}}</text>
+          <text class="book-condition">品相: {{item.conditionLevel}}/10</text>
+          <text class="book-want">想换: {{item.wantBookDesc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

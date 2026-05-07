@@ -1,0 +1,72 @@
+<view class="container">
+  <view class="card">
+    <view class="form-item">
+      <text class="form-label">书名 *</text>
+      <input class="form-input" placeholder="请输入书名" data-field="title" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">作者</text>
+      <input class="form-input" placeholder="请输入作者" data-field="author" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">ISBN</text>
+      <input class="form-input" placeholder="请输入ISBN" data-field="isbn" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">出版社</text>
+      <input class="form-input" placeholder="请输入出版社" data-field="publisher" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">分类</text>
+      <picker range="{{categories}}" range-key="name" data-field="categoryId" bindchange="onPickerChange">
+        <view class="form-input picker">{{form.categoryId ? '已选择' : '请选择分类'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">年级</text>
+      <picker range="{{gradeOptions}}" data-field="grade" bindchange="onPickerChange">
+        <view class="form-input picker">{{form.grade || '请选择年级'}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">专业</text>
+      <input class="form-input" placeholder="请输入适用专业" data-field="major" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">课程名称</text>
+      <input class="form-input" placeholder="请输入课程名称" data-field="courseName" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">品相等级</text>
+      <picker range="{{conditionOptions}}" data-field="conditionLevel" bindchange="onPickerChange">
+        <view class="form-input picker">{{form.conditionLevel}}/10</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">品相描述</text>
+      <textarea class="form-textarea" placeholder="描述新旧程度、笔记、破损情况" data-field="conditionDesc" bindinput="onInput"></textarea>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="form-label">封面照片</text>
+    <view class="img-list">
+      <image wx:if="{{coverImg}}" src="{{coverImg}}" class="img-item" mode="aspectFill"></image>
+      <view class="img-add" bindtap="chooseCover">+</view>
+    </view>
+    <text class="form-label" style="margin-top:20rpx">内页照片</text>
+    <view class="img-list">
+      <image wx:for="{{detailImgs}}" wx:key="*this" src="{{item}}" class="img-item" mode="aspectFill"></image>
+      <view class="img-add" bindtap="chooseDetail">+</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="form-item">
+      <text class="form-label">想换书籍</text>
+      <textarea class="form-textarea" placeholder="描述您想要交换的书籍" data-field="wantBookDesc" bindinput="onInput"></textarea>
+    </view>
+  </view>
+
+  <view class="btn-primary" bindtap="submit">发布图书</view>
+</view>

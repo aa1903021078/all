@@ -1,0 +1,12 @@
+<view class="chat-page">
+  <scroll-view scroll-y class="msg-list">
+    <view class="msg-item" wx:for="{{messages}}" wx:key="id">
+      <text class="msg-bubble">{{item.content}}</text>
+      <text class="msg-time">{{item.createTime}}</text>
+    </view>
+  </scroll-view>
+  <view class="input-bar">
+    <input class="chat-input" value="{{inputContent}}" bindinput="onInput" placeholder="输入消息" />
+    <view class="send-btn" bindtap="send">发送</view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+.order-header { display: flex; justify-content: space-between; margin-bottom: 12rpx; }
+.order-id { font-weight: bold; }
+.order-status { color: #4A90D9; font-size: 26rpx; }
+.order-info { font-size: 26rpx; color: #666; margin-bottom: 12rpx; }
+.order-info text { display: block; margin-bottom: 6rpx; }
+.order-actions { display: flex; gap: 16rpx; }
+.action-btn { background: #4A90D9; color: #fff; padding: 10rpx 24rpx; border-radius: 6rpx; font-size: 26rpx; }
+.action-btn.reject { background: #ff4d4f; }
+.empty { text-align: center; padding: 100rpx 0; color: #999; }

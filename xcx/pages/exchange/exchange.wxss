@@ -1,0 +1,6 @@
+.section-title { font-size: 30rpx; font-weight: bold; margin-bottom: 16rpx; display: block; }
+.my-book { display: flex; align-items: center; padding: 16rpx; border: 2rpx solid #eee; border-radius: 8rpx; margin-bottom: 12rpx; }
+.my-book.selected { border-color: #4A90D9; background: #f0f7ff; }
+.mini-cover { width: 80rpx; height: 100rpx; border-radius: 6rpx; margin-right: 16rpx; }
+.form-textarea { background: #f5f5f5; border-radius: 8rpx; padding: 16rpx; width: 100%; height: 160rpx; box-sizing: border-box; font-size: 28rpx; }
+.empty { text-align: center; padding: 40rpx; color: #999; }

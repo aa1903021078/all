@@ -1,0 +1,5 @@
+.unread-badge { color: #ff4d4f; font-weight: bold; }
+.msg-title { font-size: 30rpx; font-weight: bold; display: block; margin-bottom: 8rpx; }
+.msg-content { font-size: 26rpx; color: #666; display: block; margin-bottom: 8rpx; }
+.msg-time { font-size: 24rpx; color: #999; }
+.empty { text-align: center; padding: 100rpx 0; color: #999; }

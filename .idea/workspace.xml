@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c9a2553b-09d4-463e-ac2c-c69b716eea02" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/rs/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rs/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rs/src/main/java/com/dahaiwuliang/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/rs/src/main/java/com/dahaiwuliang/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rs/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/rs/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vite/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vite/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite/src/main.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/weibaiwang/Desktop/AAA/work/all" value="3CnWOYKgN7l3kEoDVBYgm5gJD0G" />
+    </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedChatMode">
+    <option name="chatModeId" value="Agent" />
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="chat-panel" value="Claude Opus 4.7" />
+      <entry key="agent-panel" value="Claude Opus 4.7" />
+    </selectedModels>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="copilot/feature-patient-service-module" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;aa1903021078&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/aa1903021078/all.git&quot;,
+    &quot;accountId&quot;: &quot;c8ae4113-a1c3-4cfe-bbe8-13bc360520d6&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3CnWOYKgN7l3kEoDVBYgm5gJD0G" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.App.executor": "Run",
+    "git-widget-placeholder": "ts",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/weibaiwang/Desktop/AAA/work/all"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="all" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="all" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dahaiwuliang.App" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dahaiwuliang.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c9a2553b-09d4-463e-ac2c-c69b716eea02" name="Changes" comment="" />
+      <created>1777021783212</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777021783212</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

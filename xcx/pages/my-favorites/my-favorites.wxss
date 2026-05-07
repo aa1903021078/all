@@ -1,0 +1,2 @@
+.time { font-size: 24rpx; color: #999; display: block; margin-top: 8rpx; }
+.empty { text-align: center; padding: 100rpx 0; color: #999; }
