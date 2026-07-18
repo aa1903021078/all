@@ -20,7 +20,7 @@
           </div>
 
           <h1 class="note-title mt-12" v-if="note.title">{{ note.title }}</h1>
-          <div class="note-text">{{ note.content }}</div>
+          <div class="note-text" v-html="note.content"></div>
 
           <div v-if="note.shopId" class="shop-link card mt-16" @click="$router.push('/shops/' + note.shopId)">
             <img :src="note.shopCover" class="shop-link-cover" />
@@ -43,6 +43,14 @@
       <div ref="commentEl" class="card block mt-16" style="padding: 16px">
         <CommentSection target-type="NOTE" :target-id="note.id" />
       </div>
+
+      <!-- 同菜系相似店铺推荐 -->
+      <template v-if="similarShops.length">
+        <div class="section-title mt-16">🍴 同菜系相似店铺推荐</div>
+        <div class="grid-cards">
+          <ShopCard v-for="s in similarShops" :key="s.id" :shop="s" />
+        </div>
+      </template>
     </template>
   </div>
 </template>
@@ -51,10 +59,11 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { noteApi } from '@/api'
+import { noteApi, shopApi } from '@/api'
 import { useAuthStore } from '@/store/auth'
 import StarRating from '@/components/StarRating.vue'
 import CommentSection from '@/components/CommentSection.vue'
+import ShopCard from '@/components/ShopCard.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -63,6 +72,7 @@ const auth = useAuthStore()
 const note = ref({})
 const loading = ref(false)
 const commentEl = ref(null)
+const similarShops = ref([])
 
 const images = computed(() => {
   try {
@@ -82,8 +92,26 @@ async function load() {
   try {
     const res = await noteApi.detail(route.params.id)
     note.value = res.data || {}
+    similarShops.value = []
+    if (note.value.shopId) {
+      loadSimilarShops(note.value.shopId)
+    }
   } finally {
     loading.value = false
+  }
+}
+
+// 同菜系相似店铺: 先取本店菜系, 再拉同类高分店铺
+async function loadSimilarShops(shopId) {
+  try {
+    const detail = await shopApi.detail(shopId)
+    const categoryId = detail.data && detail.data.categoryId
+    if (!categoryId) return
+    const res = await shopApi.page({ current: 1, size: 6, categoryId: categoryId, sort: 'rating' })
+    const records = (res.data && res.data.records) || []
+    similarShops.value = records.filter((s) => s.id !== shopId).slice(0, 4)
+  } catch (e) {
+    // 忽略推荐加载失败
   }
 }
 

@@ -103,8 +103,8 @@ export const commentApi = {
 export const favoriteApi = {
   toggle: (targetType, targetId, folderId) =>
     request.post('/favorites/toggle', null, { params: { targetType, targetId, folderId } }),
-  shops: () => request.get('/favorites/shops'),
-  recipes: () => request.get('/favorites/recipes'),
+  shops: (folderId) => request.get('/favorites/shops', { params: { folderId } }),
+  recipes: (folderId) => request.get('/favorites/recipes', { params: { folderId } }),
   folders: (type) => request.get('/favorites/folders', { params: { type } }),
   createFolder: (data) => request.post('/favorites/folders', data),
   deleteFolder: (id) => request.delete(`/favorites/folders/${id}`),
@@ -153,6 +153,19 @@ export const chatApi = {
   sessions: () => request.get('/chat/sessions'),
   messages: (id) => request.get(`/chat/sessions/${id}/messages`),
   read: (id) => request.put(`/chat/sessions/${id}/read`),
+}
+
+// ---------------- 我的消息 ----------------
+export const messageApi = {
+  mine: () => request.get('/messages'),
+}
+
+// ---------------- 差评申诉 ----------------
+export const appealApi = {
+  submit: (data) => request.post('/appeals', data),
+  mine: () => request.get('/appeals/mine'),
+  adminList: (status) => request.get('/appeals/admin', { params: { status } }),
+  handle: (id, status, reply) => request.put(`/appeals/${id}/handle`, null, { params: { status, reply } }),
 }
 
 // ---------------- 系统 / RBAC ----------------

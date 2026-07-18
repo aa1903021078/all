@@ -554,6 +554,27 @@ INSERT INTO `chat_message` (`session_id`,`from_user_id`,`to_user_id`,`content`,`
 (1,3,5,'好的,给您留靠窗位置~','text',0,DATE_SUB(NOW(),INTERVAL 20 MINUTE)),
 (2,6,4,'请问早茶需要预约吗?','text',0,DATE_SUB(NOW(),INTERVAL 10 MINUTE));
 
+-- ---------------------------- 差评申诉 ----------------------------
+DROP TABLE IF EXISTS `note_appeal`;
+CREATE TABLE `note_appeal` (
+  `id`          BIGINT       NOT NULL AUTO_INCREMENT,
+  `note_id`     BIGINT       NOT NULL COMMENT '被申诉的探店笔记',
+  `shop_id`     BIGINT       NOT NULL COMMENT '关联店铺',
+  `merchant_id` BIGINT       NOT NULL COMMENT '申诉商家(用户id)',
+  `reason`      VARCHAR(500)          DEFAULT NULL COMMENT '申诉理由',
+  `status`      TINYINT               DEFAULT 0 COMMENT '0待处理 1已受理 2已驳回',
+  `reply`       VARCHAR(500)          DEFAULT NULL COMMENT '平台处理回复',
+  `create_time` DATETIME              DEFAULT NULL,
+  `update_time` DATETIME              DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_merchant` (`merchant_id`),
+  KEY `idx_note` (`note_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='差评申诉';
+
+-- 差评申诉示例 (merchant1 对本店 shop3 的 note3 评价发起申诉)
+INSERT INTO `note_appeal` (`note_id`,`shop_id`,`merchant_id`,`reason`,`status`,`reply`,`create_time`,`update_time`) VALUES
+(3,3,3,'该评价存在与事实不符的描述,当日门店服务正常,恳请平台核实处理',0,NULL,NOW(),NOW());
+
 -- 系统配置
 INSERT INTO `sys_config` (`config_key`,`config_value`,`remark`,`update_time`) VALUES
 ('site_name','觅食记 · 美食探店菜谱平台','站点名称',NOW()),

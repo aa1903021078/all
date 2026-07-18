@@ -10,7 +10,7 @@
             <span class="bold">{{ recipe.authorName }}</span>
             <span class="pill">{{ recipe.categoryName }}</span>
           </div>
-          <p class="muted mt-12">{{ recipe.description }}</p>
+          <div class="recipe-desc muted mt-12" v-html="recipe.description"></div>
           <div class="badges mt-12">
             <div class="badge-item">
               <div class="badge-num">{{ recipe.cookTime }}</div>
@@ -67,7 +67,7 @@
               <div class="step-no">{{ i + 1 }}</div>
               <div class="step-body">
                 <img v-if="s.image" :src="s.image" class="step-img" />
-                <div class="step-text">{{ s.content }}</div>
+                <div class="step-text" v-html="s.content"></div>
               </div>
             </div>
             <el-empty v-if="!recipe.steps?.length" description="暂无步骤" :image-size="60" />
@@ -95,6 +95,14 @@
       <div class="card block mt-16" style="padding: 16px">
         <CommentSection target-type="RECIPE" :target-id="recipe.id" />
       </div>
+
+      <!-- 同难度相关菜谱 -->
+      <template v-if="similarRecipes.length">
+        <div class="section-title mt-16">🍲 同难度相关菜谱</div>
+        <div class="grid-cards">
+          <RecipeCard v-for="r in similarRecipes" :key="r.id" :recipe="r" />
+        </div>
+      </template>
     </template>
 
     <!-- 复刻晒图弹窗 -->
@@ -117,6 +125,7 @@ import { recipeApi, shoppingApi } from '@/api'
 import { useAuthStore } from '@/store/auth'
 import CommentSection from '@/components/CommentSection.vue'
 import ImageUpload from '@/components/ImageUpload.vue'
+import RecipeCard from '@/components/RecipeCard.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -124,6 +133,7 @@ const auth = useAuthStore()
 
 const recipe = ref({})
 const reposts = ref([])
+const similarRecipes = ref([])
 const loading = ref(false)
 const repostVisible = ref(false)
 const repostForm = reactive({ image: '', content: '' })
@@ -146,8 +156,22 @@ async function load() {
     const res = await recipeApi.detail(id)
     recipe.value = res.data || {}
     recipeApi.reposts(id).then((r) => (reposts.value = r.data || []))
+    loadSimilar(recipe.value.difficulty, recipe.value.id)
   } finally {
     loading.value = false
+  }
+}
+
+// 同难度相关菜谱
+async function loadSimilar(difficulty, id) {
+  similarRecipes.value = []
+  if (!difficulty) return
+  try {
+    const res = await recipeApi.page({ current: 1, size: 6, difficulty: difficulty, sort: 'hot' })
+    const records = (res.data && res.data.records) || []
+    similarRecipes.value = records.filter((r) => r.id !== id).slice(0, 4)
+  } catch (e) {
+    // 忽略推荐加载失败
   }
 }
 

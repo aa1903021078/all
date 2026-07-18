@@ -1,9 +1,20 @@
 <template>
   <div class="image-upload">
     <div class="preview-list">
-      <div v-for="(url, idx) in list" :key="idx" class="preview-item">
+      <div
+        v-for="(url, idx) in list"
+        :key="idx"
+        class="preview-item"
+        :class="{ dragging: dragIndex === idx, sortable: multiple }"
+        :draggable="multiple"
+        @dragstart="onDragStart(idx)"
+        @dragover.prevent
+        @drop="onDrop(idx)"
+        @dragend="dragIndex = -1"
+      >
         <img :src="url" />
         <el-icon class="del" @click="remove(idx)"><CircleCloseFilled /></el-icon>
+        <span v-if="multiple" class="order-badge">{{ idx + 1 }}</span>
       </div>
       <el-upload
         v-if="list.length < limit"
@@ -19,7 +30,9 @@
         </div>
       </el-upload>
     </div>
-    <div class="text-sm muted mt-8">图片将自动压缩为 WebP 格式,最多 {{ limit }} 张</div>
+    <div class="text-sm muted mt-8">
+      图片将自动压缩为 WebP 格式,最多 {{ limit }} 张<template v-if="multiple && list.length > 1">,可拖拽调整顺序</template>
+    </div>
   </div>
 </template>
 
@@ -36,6 +49,22 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const uploading = ref(false)
+const dragIndex = ref(-1)
+
+function onDragStart(idx) {
+  if (props.multiple) dragIndex.value = idx
+}
+function onDrop(idx) {
+  if (!props.multiple || dragIndex.value === -1 || dragIndex.value === idx) {
+    dragIndex.value = -1
+    return
+  }
+  const arr = Array.isArray(props.modelValue) ? [...props.modelValue] : []
+  const moved = arr.splice(dragIndex.value, 1)[0]
+  arr.splice(idx, 0, moved)
+  emit('update:modelValue', arr)
+  dragIndex.value = -1
+}
 
 const list = computed(() => {
   if (props.multiple) {
@@ -93,6 +122,26 @@ function remove(idx) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.preview-item.sortable {
+  cursor: move;
+}
+.preview-item.dragging {
+  opacity: 0.4;
+}
+.order-badge {
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 11px;
+  border-radius: 9px;
+  padding: 0 4px;
 }
 .del {
   position: absolute;

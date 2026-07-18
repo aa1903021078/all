@@ -128,8 +128,8 @@ public class FavoriteService {
 
     // ---------------- 我的收藏列表 ----------------
 
-    public List<Shop> myFavoriteShops() {
-        List<Long> ids = myFavoriteTargetIds("SHOP");
+    public List<Shop> myFavoriteShops(Long folderId) {
+        List<Long> ids = myFavoriteTargetIds("SHOP", folderId);
         if (ids.isEmpty()) {
             return Collections.emptyList();
         }
@@ -138,8 +138,8 @@ public class FavoriteService {
         return shops;
     }
 
-    public List<Recipe> myFavoriteRecipes() {
-        List<Long> ids = myFavoriteTargetIds("RECIPE");
+    public List<Recipe> myFavoriteRecipes(Long folderId) {
+        List<Long> ids = myFavoriteTargetIds("RECIPE", folderId);
         if (ids.isEmpty()) {
             return Collections.emptyList();
         }
@@ -148,12 +148,15 @@ public class FavoriteService {
         return recipes;
     }
 
-    private List<Long> myFavoriteTargetIds(String type) {
+    private List<Long> myFavoriteTargetIds(String type, Long folderId) {
         Long userId = UserContext.requireUserId();
-        return favoriteMapper.selectList(new LambdaQueryWrapper<UserFavorite>()
-                        .eq(UserFavorite::getUserId, userId)
-                        .eq(UserFavorite::getTargetType, type)
-                        .orderByDesc(UserFavorite::getId))
+        LambdaQueryWrapper<UserFavorite> wrapper = new LambdaQueryWrapper<UserFavorite>()
+                .eq(UserFavorite::getUserId, userId)
+                .eq(UserFavorite::getTargetType, type);
+        if (folderId != null) {
+            wrapper.eq(UserFavorite::getFolderId, folderId);
+        }
+        return favoriteMapper.selectList(wrapper.orderByDesc(UserFavorite::getId))
                 .stream().map(UserFavorite::getTargetId).collect(Collectors.toList());
     }
 }

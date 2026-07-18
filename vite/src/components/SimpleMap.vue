@@ -19,10 +19,19 @@
       <div class="popup-body">
         <div class="bold line-1">{{ active.name }}</div>
         <div class="muted text-sm">{{ active.categoryName }} · ¥{{ active.avgPrice }}/人</div>
-        <div class="flex items-center gap-4 mt-8">
+        <div class="flex items-center gap-4 mt-4">
           <StarRating :model-value="Number(active.rating)" :size="14" readonly show-score />
         </div>
-        <el-button type="primary" size="small" class="mt-8" @click="$emit('open', active)">查看详情</el-button>
+        <div class="muted text-sm line-1 mt-4">📍 {{ active.address }}</div>
+        <div class="muted text-sm" v-if="active.businessHours">🕒 {{ active.businessHours }}</div>
+        <div class="popup-actions mt-8">
+          <el-button type="primary" size="small" @click="$emit('open', active)">详情</el-button>
+          <el-button :type="active.lit ? 'danger' : 'default'" size="small" plain @click="$emit('checkin', active)">
+            {{ active.lit ? '已点亮' : '🔥点亮' }}
+          </el-button>
+          <el-button size="small" @click="$emit('reserve', active)">预约</el-button>
+          <el-button size="small" @click="$emit('consult', active)">咨询</el-button>
+        </div>
       </div>
       <el-icon class="popup-close" @click="activeId = null"><Close /></el-icon>
     </div>
@@ -37,7 +46,7 @@ const props = defineProps({
   shops: { type: Array, default: () => [] },
   showAllLabels: { type: Boolean, default: false },
 })
-defineEmits(['open'])
+defineEmits(['open', 'checkin', 'reserve', 'consult'])
 
 const activeId = ref(null)
 const mapRef = ref(null)
@@ -157,19 +166,24 @@ function select(s) {
   position: absolute;
   right: 16px;
   bottom: 16px;
-  width: 260px;
+  width: 300px;
   display: flex;
   z-index: 5;
 }
 .popup-cover {
   width: 88px;
-  height: 88px;
+  height: auto;
   object-fit: cover;
 }
 .popup-body {
   padding: 8px 10px;
   flex: 1;
   min-width: 0;
+}
+.popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 .popup-close {
   position: absolute;

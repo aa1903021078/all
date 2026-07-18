@@ -8,6 +8,9 @@
         <el-radio-button :value="1">已确认</el-radio-button>
         <el-radio-button :value="3">已完成</el-radio-button>
       </el-radio-group>
+      <el-button class="ml-auto" :disabled="!list.length" @click="exportCsv">
+        <el-icon><Download /></el-icon>&nbsp;导出历史记录(CSV)
+      </el-button>
     </div>
 
     <div class="card" style="padding: 16px" v-loading="loading">
@@ -81,6 +84,32 @@ async function handle(row, status) {
   row.status = status
   ElMessage.success('操作成功')
   if (filterStatus.value != null) load()
+}
+
+function exportCsv() {
+  if (!list.value.length) return ElMessage.warning('暂无数据可导出')
+  const headers = ['店铺', '预约时间', '人数', '联系人', '联系电话', '备注', '状态']
+  const rows = list.value.map((r) => [
+    r.shopName || '',
+    formatTime(r.reserveTime),
+    r.peopleCount == null ? '' : r.peopleCount,
+    r.contactName || '',
+    r.contactPhone || '',
+    String(r.remark || '').replace(/[\r\n]+/g, ' '),
+    statusText(r.status),
+  ])
+  const csv = [headers].concat(rows)
+    .map((row) => row.map((cell) => '"' + String(cell).replace(/"/g, '""') + '"').join(','))
+    .join('\n')
+  // 加 BOM 防止 Excel 打开中文乱码
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = '预约记录_' + new Date().toISOString().slice(0, 10) + '.csv'
+  a.click()
+  URL.revokeObjectURL(url)
+  ElMessage.success('已导出 ' + list.value.length + ' 条记录')
 }
 
 onMounted(load)

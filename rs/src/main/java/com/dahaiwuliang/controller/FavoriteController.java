@@ -33,13 +33,13 @@ public class FavoriteController {
     }
 
     @GetMapping("/shops")
-    public R<List<Shop>> shops() {
-        return R.ok(favoriteService.myFavoriteShops());
+    public R<List<Shop>> shops(@RequestParam(required = false) Long folderId) {
+        return R.ok(favoriteService.myFavoriteShops(folderId));
     }
 
     @GetMapping("/recipes")
-    public R<List<Recipe>> recipes() {
-        return R.ok(favoriteService.myFavoriteRecipes());
+    public R<List<Recipe>> recipes(@RequestParam(required = false) Long folderId) {
+        return R.ok(favoriteService.myFavoriteRecipes(folderId));
     }
 
     @GetMapping("/folders")

@@ -3,8 +3,10 @@
     <el-tabs v-model="activeTab" class="card content-tabs" @tab-change="reload">
       <el-tab-pane label="📝 探店笔记" name="note" />
       <el-tab-pane label="🍲 分享菜谱" name="recipe" />
+      <el-tab-pane label="🛡️ 差评申诉" name="appeal" />
     </el-tabs>
 
+    <template v-if="activeTab !== 'appeal'">
     <div class="card filter-bar mt-16">
       <el-input v-model="query.keyword" placeholder="搜索标题" style="width: 200px" clearable @keyup.enter="reload" />
       <el-select v-model="query.status" placeholder="状态" clearable style="width: 130px" @change="reload">
@@ -62,6 +64,67 @@
         />
       </div>
     </div>
+    </template>
+
+    <!-- 差评申诉处理 -->
+    <template v-if="activeTab === 'appeal'">
+      <div class="card filter-bar mt-16">
+        <el-select v-model="appealStatus" placeholder="申诉状态" clearable style="width: 150px" @change="loadAppeals">
+          <el-option label="待处理" :value="0" />
+          <el-option label="已受理" :value="1" />
+          <el-option label="已驳回" :value="2" />
+        </el-select>
+        <el-button type="primary" @click="loadAppeals"><el-icon><Search /></el-icon>&nbsp;查询</el-button>
+        <el-tag type="warning" class="ml-auto" v-if="appeals.some((a) => a.status === 0)">有待处理申诉</el-tag>
+      </div>
+      <div class="card mt-16" style="padding: 16px" v-loading="appealLoading">
+        <el-table :data="appeals" style="width: 100%">
+          <el-table-column label="申诉店铺" min-width="130">
+            <template #default="{ row }">
+              <div class="bold">{{ row.shopName }}</div>
+              <div class="muted text-sm">商家: {{ row.merchantName }}</div>
+            </template>
+          </el-table-column>
+          <el-table-column label="被申诉评价" min-width="240">
+            <template #default="{ row }">
+              <div class="bold line-1">{{ row.noteTitle || '(无标题)' }}</div>
+              <div class="muted text-sm line-2">{{ row.noteContent }}</div>
+              <StarRating v-if="row.noteRating" :model-value="row.noteRating" :size="13" readonly />
+            </template>
+          </el-table-column>
+          <el-table-column label="申诉理由" min-width="200">
+            <template #default="{ row }">
+              <div class="line-2">{{ row.reason }}</div>
+              <div v-if="row.reply" class="muted text-sm mt-4">回复: {{ row.reply }}</div>
+            </template>
+          </el-table-column>
+          <el-table-column label="状态" width="100">
+            <template #default="{ row }">
+              <el-tag :type="appealTag(row.status).type">{{ appealTag(row.status).t }}</el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column label="处理" width="170" fixed="right">
+            <template #default="{ row }">
+              <template v-if="row.status === 0">
+                <el-button size="small" type="success" @click="openHandle(row, 1)">受理</el-button>
+                <el-button size="small" type="info" plain @click="openHandle(row, 2)">驳回</el-button>
+              </template>
+              <span v-else class="muted text-sm">已处理</span>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-empty v-if="!appealLoading && !appeals.length" description="暂无申诉" />
+      </div>
+    </template>
+
+    <!-- 申诉处理弹窗 -->
+    <el-dialog v-model="handleVisible" :title="handleForm.status === 1 ? '受理申诉' : '驳回申诉'" width="440px">
+      <el-input v-model="handleForm.reply" type="textarea" :rows="3" placeholder="填写处理说明(可选), 将反馈给商家" />
+      <template #footer>
+        <el-button @click="handleVisible = false">取消</el-button>
+        <el-button type="primary" @click="submitHandle">确定</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -69,7 +132,8 @@
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { noteApi, recipeApi } from '@/api'
+import { noteApi, recipeApi, appealApi } from '@/api'
+import StarRating from '@/components/StarRating.vue'
 
 const router = useRouter()
 const activeTab = ref('note')
@@ -77,6 +141,39 @@ const list = ref([])
 const total = ref(0)
 const loading = ref(false)
 const query = reactive({ current: 1, size: 10, keyword: '', status: null })
+
+// ---- 差评申诉 ----
+const appeals = ref([])
+const appealLoading = ref(false)
+const appealStatus = ref(null)
+const handleVisible = ref(false)
+const handleForm = reactive({ id: null, status: 1, reply: '' })
+
+function appealTag(s) {
+  const map = { 0: { t: '待处理', type: 'warning' }, 1: { t: '已受理', type: 'success' }, 2: { t: '已驳回', type: 'info' } }
+  return map[s] || { t: '未知', type: 'info' }
+}
+async function loadAppeals() {
+  appealLoading.value = true
+  try {
+    const res = await appealApi.adminList(appealStatus.value)
+    appeals.value = res.data || []
+  } finally {
+    appealLoading.value = false
+  }
+}
+function openHandle(row, status) {
+  handleForm.id = row.id
+  handleForm.status = status
+  handleForm.reply = ''
+  handleVisible.value = true
+}
+async function submitHandle() {
+  await appealApi.handle(handleForm.id, handleForm.status, handleForm.reply)
+  handleVisible.value = false
+  ElMessage.success('处理完成')
+  loadAppeals()
+}
 
 const pendingHint = computed(() => list.value.some((r) => r.status === 0))
 
@@ -110,6 +207,10 @@ async function load() {
   }
 }
 function reload() {
+  if (activeTab.value === 'appeal') {
+    loadAppeals()
+    return
+  }
   query.current = 1
   load()
 }

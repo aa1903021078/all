@@ -36,6 +36,20 @@
       >{{ c.icon || '🍴' }} {{ c.name }}</span>
     </div>
 
+    <!-- 数据可视化 -->
+    <div class="stat-charts">
+      <div class="chart-card card">
+        <div class="chart-title">🍽️ 平台美食类别分布</div>
+        <EChart v-if="catOption" :option="catOption" height="280px" />
+        <el-empty v-else description="暂无数据" :image-size="70" />
+      </div>
+      <div class="chart-card card">
+        <div class="chart-title">💰 人均消费区间分布</div>
+        <EChart v-if="priceOption" :option="priceOption" height="280px" />
+        <el-empty v-else description="暂无数据" :image-size="70" />
+      </div>
+    </div>
+
     <!-- 推荐店铺 -->
     <div class="section-title">🔥 热门探店推荐</div>
     <div v-loading="loadingShops" class="grid-cards">
@@ -64,6 +78,7 @@ import { shopApi, recipeApi, noteApi, categoryApi, statsApi } from '@/api'
 import ShopCard from '@/components/ShopCard.vue'
 import RecipeCard from '@/components/RecipeCard.vue'
 import NoteCard from '@/components/NoteCard.vue'
+import EChart from '@/components/EChart.vue'
 
 const router = useRouter()
 const shops = ref([])
@@ -77,6 +92,32 @@ const loadingRecipes = ref(false)
 const loadingNotes = ref(false)
 
 const statCards = ref([])
+const catOption = ref(null)
+const priceOption = ref(null)
+const chartPalette = ['#ff6a3d', '#ffa940', '#ffc53d', '#73d13d', '#36cfc9', '#40a9ff', '#9254de', '#f759ab']
+
+function buildCharts(cat, price) {
+  if (cat && cat.length) {
+    catOption.value = {
+      tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+      legend: { bottom: 0, type: 'scroll' },
+      series: [{
+        type: 'pie', radius: ['40%', '66%'], center: ['50%', '44%'],
+        data: cat.map((c, i) => ({ name: c.name || '其他', value: c.value, itemStyle: { color: chartPalette[i % chartPalette.length] } })),
+        label: { show: false },
+      }],
+    }
+  }
+  if (price && price.length) {
+    priceOption.value = {
+      tooltip: { trigger: 'axis' },
+      grid: { left: 40, right: 16, top: 20, bottom: 30 },
+      xAxis: { type: 'category', data: price.map((p) => p.name) },
+      yAxis: { type: 'value', minInterval: 1 },
+      series: [{ type: 'bar', data: price.map((p) => p.value), barWidth: '50%', itemStyle: { color: '#ff6a3d', borderRadius: [6, 6, 0, 0] } }],
+    }
+  }
+}
 
 function buildStats() {
   statCards.value = [
@@ -118,6 +159,9 @@ onMounted(async () => {
   statsApi.overview().then((res) => {
     overview.value = res.data || {}
     buildStats()
+  })
+  Promise.all([statsApi.categoryDistribution(), statsApi.priceDistribution()]).then(([c, p]) => {
+    buildCharts(c.data || [], p.data || [])
   })
   loadingRecipes.value = true
   recipeApi.recommend(8).then((res) => (recipes.value = res.data || [])).finally(() => (loadingRecipes.value = false))
@@ -180,6 +224,24 @@ onMounted(async () => {
   gap: 10px;
   padding: 14px;
   margin: 16px 0;
+}
+.stat-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.chart-card {
+  padding: 16px;
+}
+.chart-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+@media (max-width: 900px) {
+  .stat-charts {
+    grid-template-columns: 1fr;
+  }
 }
 .cat-chip {
   padding: 6px 14px;

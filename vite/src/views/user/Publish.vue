@@ -25,7 +25,7 @@
             <StarRating v-model="noteForm.rating" :size="26" />
           </el-form-item>
           <el-form-item label="正文">
-            <el-input v-model="noteForm.content" type="textarea" :rows="5" placeholder="分享你的探店体验、推荐菜、避雷点..." maxlength="1000" show-word-limit />
+            <RichEditor v-model="noteForm.content" placeholder="分享你的探店体验、推荐菜、避雷点...(支持图文)" />
           </el-form-item>
           <el-form-item label="图片">
             <ImageUpload v-model="noteForm.imageList" multiple :limit="9" />
@@ -84,7 +84,7 @@
                   <span class="bold">步骤 {{ i + 1 }}</span>
                   <el-button size="small" text type="danger" @click="recipeForm.steps.splice(i, 1)">删除</el-button>
                 </div>
-                <el-input v-model="step.content" type="textarea" :rows="2" placeholder="描述这一步的操作" class="mb-8" />
+                <RichEditor v-model="step.content" placeholder="描述这一步的操作" min-height="110px" class="mb-8" />
                 <ImageUpload v-model="step.image" />
               </div>
               <el-button type="primary" plain @click="recipeForm.steps.push({ content: '', image: '' })">
@@ -108,6 +108,12 @@ import { ElMessage } from 'element-plus'
 import { shopApi, recipeApi, noteApi, categoryApi } from '@/api'
 import StarRating from '@/components/StarRating.vue'
 import ImageUpload from '@/components/ImageUpload.vue'
+import RichEditor from '@/components/RichEditor.vue'
+
+function isEmptyHtml(html) {
+  if (!html) return true
+  return !html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim()
+}
 
 const route = useRoute()
 const router = useRouter()
@@ -130,7 +136,7 @@ async function searchShops(kw) {
 }
 
 async function submitNote() {
-  if (!noteForm.content.trim()) return ElMessage.warning('请填写笔记正文')
+  if (isEmptyHtml(noteForm.content)) return ElMessage.warning('请填写笔记正文')
   submitting.value = true
   try {
     await noteApi.create({
@@ -151,7 +157,7 @@ async function submitRecipe() {
   if (!recipeForm.title.trim()) return ElMessage.warning('请填写菜谱名称')
   if (!recipeForm.cover) return ElMessage.warning('请上传封面图')
   const ingredients = recipeForm.ingredients.filter((i) => i.name.trim())
-  const steps = recipeForm.steps.filter((s) => s.content.trim())
+  const steps = recipeForm.steps.filter((s) => !isEmptyHtml(s.content) || s.image)
   if (!ingredients.length) return ElMessage.warning('至少添加一个食材')
   if (!steps.length) return ElMessage.warning('至少添加一个步骤')
   submitting.value = true
