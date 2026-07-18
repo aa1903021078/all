@@ -1,0 +1,56 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: foodie
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/foodie?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: "123456"
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 50MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.dahaiwuliang.entity
+
+# 平台自定义配置
+foodie:
+  jwt:
+    secret: foodie-platform-jwt-secret-key-please-change-in-prod-1234567890
+    # token 有效期(秒) 默认 7 天
+    expire: 604800
+    header: Authorization
+  upload:
+    # 上传文件本地存储目录(相对后端工作目录)
+    dir: ./data/upload
+    # 对外访问前缀(配合静态资源映射)
+    url-prefix: /upload
+    # 图片最长边(超过则等比压缩)
+    max-side: 1600
+    # WebP 压缩质量 0~1
+    webp-quality: 0.8
+  amap:
+    # 高德地图仅做基础效果演示,无需真实 key
+    key: ""
+
+logging:
+  level:
+    com.dahaiwuliang: debug
