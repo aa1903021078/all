@@ -80,6 +80,16 @@ def page_break_before(p):
     _pPr(p).append(OxmlElement('w:pageBreakBefore'))
 
 
+def set_outline_level(p, lvl):
+    """设置大纲级别(0=1级), 供 TOC 域抓取标题"""
+    pPr = _pPr(p)
+    ol = pPr.find(qn('w:outlineLvl'))
+    if ol is None:
+        ol = OxmlElement('w:outlineLvl')
+        pPr.append(ol)
+    ol.set(qn('w:val'), str(lvl))
+
+
 # ---------------- 页面 / 页眉 / 页脚 ----------------
 def setup_page(section):
     section.page_width = Emu(int(11907 * 635))     # twips->EMU (1 twip=635 EMU)
@@ -174,6 +184,7 @@ def add_h1(doc, text, page_break=True):
         page_break_before(p)
     r = p.add_run(text)
     style_run(r, cn=HEI, en=TNR, size=SZ["三号"], bold=True)
+    set_outline_level(p, 0)
     return p
 
 
@@ -184,6 +195,7 @@ def add_h2(doc, text):
     set_spacing(p, before=12, after=6, line=1.5)
     r = p.add_run(text)
     style_run(r, cn=HEI, en=TNR, size=SZ["小三"], bold=True)
+    set_outline_level(p, 1)
     return p
 
 
@@ -194,6 +206,7 @@ def add_h3(doc, text):
     set_spacing(p, before=8, after=4, line=1.5)
     r = p.add_run(text)
     style_run(r, cn=HEI, en=TNR, size=SZ["四号"], bold=True)
+    set_outline_level(p, 2)
     return p
 
 

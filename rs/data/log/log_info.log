@@ -1121,3 +1121,7 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't 
 26-07-19.10:34:42.939 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=16m18s40ms).
 26-07-19.10:41:25.866 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=6m12s925ms).
 26-07-19.11:06:22.987 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=9m27s20ms).
+26-07-19.11:38:50.853 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=16m27s725ms).
+26-07-19.11:57:17.650 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=17m56s793ms).
+26-07-19.12:14:07.156 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=16m19s512ms).
+26-07-19.12:31:16.120 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=16m38s965ms).
