@@ -31,7 +31,7 @@
       </el-upload>
     </div>
     <div class="text-sm muted mt-8">
-      图片将自动压缩为 WebP 格式,最多 {{ limit }} 张<template v-if="multiple && list.length > 1">,可拖拽调整顺序</template>
+      图片将自动压缩优化,最多 {{ limit }} 张<template v-if="multiple && list.length > 1">,可拖拽调整顺序</template>
     </div>
   </div>
 </template>

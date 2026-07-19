@@ -126,6 +126,19 @@ public class NoteService {
         }
     }
 
+    /** 后台删除笔记(内容审核), 无需作者校验 */
+    @Transactional(rollbackFor = Exception.class)
+    public void adminDelete(Long id) {
+        Note db = noteMapper.selectById(id);
+        if (db == null) {
+            return;
+        }
+        noteMapper.deleteById(id);
+        if (db.getShopId() != null) {
+            shopService.recalcRating(db.getShopId());
+        }
+    }
+
     public boolean like(Long id) {
         return likeService.toggle("NOTE", id);
     }
@@ -157,6 +170,27 @@ public class NoteService {
         if (note.getShopId() != null) {
             shopService.recalcRating(note.getShopId());
         }
+    }
+
+    /** 后台编辑笔记基本信息(标题/正文/图集/评分), 保护统计与作者字段 */
+    @Transactional(rollbackFor = Exception.class)
+    public Note adminUpdate(Note note) {
+        Note db = noteMapper.selectById(note.getId());
+        if (db == null) {
+            throw new BusinessException("笔记不存在");
+        }
+        db.setTitle(note.getTitle());
+        db.setContent(note.getContent());
+        db.setImages(note.getImages());
+        if (note.getRating() != null) {
+            db.setRating(note.getRating());
+        }
+        noteMapper.updateById(db);
+        if (db.getShopId() != null && db.getRating() != null) {
+            shopService.recalcRating(db.getShopId());
+        }
+        enrich(Collections.singletonList(db), null);
+        return db;
     }
 
     public void setRecommend(Long id, Integer recommend) {

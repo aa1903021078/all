@@ -204,6 +204,17 @@ public class RecipeService {
         stepMapper.delete(new LambdaQueryWrapper<RecipeStep>().eq(RecipeStep::getRecipeId, id));
     }
 
+    /** 后台删除菜谱(内容审核), 无需作者校验, 级联清理食材与步骤 */
+    @Transactional(rollbackFor = Exception.class)
+    public void adminDelete(Long id) {
+        if (recipeMapper.selectById(id) == null) {
+            return;
+        }
+        recipeMapper.deleteById(id);
+        ingredientMapper.delete(new LambdaQueryWrapper<RecipeIngredient>().eq(RecipeIngredient::getRecipeId, id));
+        stepMapper.delete(new LambdaQueryWrapper<RecipeStep>().eq(RecipeStep::getRecipeId, id));
+    }
+
     public boolean like(Long id) {
         return likeService.toggle("RECIPE", id);
     }
@@ -267,6 +278,29 @@ public class RecipeService {
         }
         recipe.setStatus(status);
         recipeMapper.updateById(recipe);
+    }
+
+    /** 后台编辑菜谱基本信息(标题/封面/描述/分类/时长/难度), 不改动食材与步骤 */
+    @Transactional(rollbackFor = Exception.class)
+    public Recipe adminUpdateBasic(Recipe recipe) {
+        Recipe db = recipeMapper.selectById(recipe.getId());
+        if (db == null) {
+            throw new BusinessException("菜谱不存在");
+        }
+        db.setTitle(recipe.getTitle());
+        db.setCover(recipe.getCover());
+        db.setDescription(recipe.getDescription());
+        if (recipe.getCategoryId() != null) {
+            db.setCategoryId(recipe.getCategoryId());
+        }
+        if (recipe.getCookTime() != null) {
+            db.setCookTime(recipe.getCookTime());
+        }
+        if (recipe.getDifficulty() != null) {
+            db.setDifficulty(recipe.getDifficulty());
+        }
+        recipeMapper.updateById(db);
+        return recipeMapper.selectById(db.getId());
     }
 
     public void setRecommend(Long id, Integer recommend) {

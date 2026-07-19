@@ -1,0 +1,1123 @@
+26-07-19.09:18:57.386 [background-preinit] INFO  Version                - HV000001: Hibernate Validator 8.0.1.Final
+26-07-19.09:18:57.403 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 1691 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:18:57.403 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:18:57.403 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:18:57.424 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-07-19.09:18:57.424 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-07-19.09:18:58.782 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:18:58.787 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:18:58.787 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:18:58.787 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:18:58.806 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:18:58.806 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1382 ms
+26-07-19.09:18:59.404 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:18:59.413 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:18:59.422 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:18:59.428 [restartedMain   ] INFO  App                    - Started App in 2.264 seconds (process running for 2.479)
+26-07-19.09:19:21.050 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 116 class path changes (0 additions, 116 deletions, 0 modifications)
+26-07-19.09:19:21.053 [Thread-7        ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:19:22.720 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 1691 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:19:22.720 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:19:22.720 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:19:22.832 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:19:22.832 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:19:22.832 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:19:22.837 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:19:22.837 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 116 ms
+26-07-19.09:19:23.104 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:19:23.110 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:19:23.113 [restartedMain   ] INFO  App                    - Started App in 0.409 seconds (process running for 26.164)
+26-07-19.09:19:23.114 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:19:26.519 [http-nio-8080-exec-5] INFO  [/api]                 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-07-19.09:19:26.520 [http-nio-8080-exec-5] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-07-19.09:19:26.525 [http-nio-8080-exec-5] INFO  DispatcherServlet      - Completed initialization in 4 ms
+26-07-19.09:19:26.568 [http-nio-8080-exec-3] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-07-19.09:19:26.723 [http-nio-8080-exec-3] INFO  HikariPool             - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b9864e3
+26-07-19.09:19:26.724 [http-nio-8080-exec-3] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-07-19.09:25:59.752 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+26-07-19.09:25:59.757 [Thread-9        ] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-07-19.09:25:59.759 [Thread-9        ] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-07-19.09:25:59.799 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 1691 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:25:59.799 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:25:59.799 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:25:59.937 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:25:59.938 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:25:59.938 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:25:59.942 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:25:59.943 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 143 ms
+26-07-19.09:26:00.225 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:26:00.231 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:26:00.234 [restartedMain   ] INFO  App                    - Started App in 0.449 seconds (process running for 423.285)
+26-07-19.09:26:00.234 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:26:20.907 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+26-07-19.09:26:20.958 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 1691 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:26:20.958 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:26:20.958 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:26:21.079 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:26:21.079 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:26:21.079 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:26:21.083 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:26:21.083 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 125 ms
+26-07-19.09:26:21.315 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:26:21.320 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:26:21.323 [restartedMain   ] INFO  App                    - Started App in 0.38 seconds (process running for 444.374)
+26-07-19.09:26:21.323 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:29:35.449 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+26-07-19.09:29:35.498 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 1691 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:29:35.498 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:29:35.498 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:29:35.636 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:29:35.637 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:29:35.637 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:29:35.641 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:29:35.641 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 142 ms
+26-07-19.09:29:35.860 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:29:35.867 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:29:35.869 [restartedMain   ] INFO  App                    - Started App in 0.384 seconds (process running for 638.98)
+26-07-19.09:29:35.869 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:30:22.925 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+26-07-19.09:30:22.981 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 1691 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:30:22.981 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:30:22.981 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:30:23.111 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:30:23.111 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:30:23.111 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:30:23.115 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:30:23.115 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 133 ms
+26-07-19.09:30:23.358 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:30:23.364 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:30:23.366 [restartedMain   ] INFO  App                    - Started App in 0.402 seconds (process running for 686.477)
+26-07-19.09:30:23.367 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:33:48.652 [background-preinit] INFO  Version                - HV000001: Hibernate Validator 8.0.1.Final
+26-07-19.09:33:48.671 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 5251 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:33:48.672 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:33:48.672 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:33:48.698 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-07-19.09:33:48.698 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-07-19.09:33:49.350 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:33:49.355 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:33:49.356 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:33:49.356 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:33:49.378 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:33:49.378 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 680 ms
+26-07-19.09:33:49.957 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:33:49.965 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:33:49.973 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:33:49.978 [restartedMain   ] INFO  App                    - Started App in 1.587 seconds (process running for 1.826)
+26-07-19.09:33:54.990 [http-nio-8080-exec-2] INFO  [/api]                 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-07-19.09:33:54.990 [http-nio-8080-exec-2] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-07-19.09:33:54.991 [http-nio-8080-exec-2] INFO  DispatcherServlet      - Completed initialization in 1 ms
+26-07-19.09:33:55.124 [http-nio-8080-exec-2] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-07-19.09:33:55.203 [http-nio-8080-exec-2] INFO  HikariPool             - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24d69b94
+26-07-19.09:33:55.204 [http-nio-8080-exec-2] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-07-19.09:34:37.704 [http-nio-8080-exec-4] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalDateTime` from String "2026-07-28 00:00:00": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2026-07-28 00:00:00' could not be parsed at index 10
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:406)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:354)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:161)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:135)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:224)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:178)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.time.LocalDateTime` from String "2026-07-28 00:00:00": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2026-07-28 00:00:00' could not be parsed at index 10
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 27] (through reference chain: com.dahaiwuliang.entity.Reservation["reserveTime"])
+	at com.fasterxml.jackson.databind.exc.InvalidFormatException.from(InvalidFormatException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.weirdStringException(DeserializationContext.java:2002)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleWeirdStringValue(DeserializationContext.java:1230)
+	at com.fasterxml.jackson.datatype.jsr310.deser.JSR310DeserializerBase._handleDateTimeException(JSR310DeserializerBase.java:176)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer._fromString(LocalDateTimeDeserializer.java:179)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.deserialize(LocalDateTimeDeserializer.java:81)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.deserialize(LocalDateTimeDeserializer.java:40)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:392)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:185)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:2105)
+	at com.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1481)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:395)
+	... 51 common frames omitted
+Caused by: java.time.format.DateTimeParseException: Text '2026-07-28 00:00:00' could not be parsed at index 10
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDateTime.parse(LocalDateTime.java:494)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer._fromString(LocalDateTimeDeserializer.java:177)
+	... 60 common frames omitted
+26-07-19.09:34:37.708 [http-nio-8080-exec-4] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalDateTime` from String "2026-07-28 00:00:00": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2026-07-28 00:00:00' could not be parsed at index 10]
+26-07-19.09:34:45.480 [http-nio-8080-exec-5] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalDateTime` from String "2026-07-20 00:00:00": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2026-07-20 00:00:00' could not be parsed at index 10
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:406)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:354)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:161)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:135)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:224)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:178)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.time.LocalDateTime` from String "2026-07-20 00:00:00": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2026-07-20 00:00:00' could not be parsed at index 10
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 27] (through reference chain: com.dahaiwuliang.entity.Reservation["reserveTime"])
+	at com.fasterxml.jackson.databind.exc.InvalidFormatException.from(InvalidFormatException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.weirdStringException(DeserializationContext.java:2002)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleWeirdStringValue(DeserializationContext.java:1230)
+	at com.fasterxml.jackson.datatype.jsr310.deser.JSR310DeserializerBase._handleDateTimeException(JSR310DeserializerBase.java:176)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer._fromString(LocalDateTimeDeserializer.java:179)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.deserialize(LocalDateTimeDeserializer.java:81)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.deserialize(LocalDateTimeDeserializer.java:40)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:392)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:185)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:2105)
+	at com.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1481)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:395)
+	... 51 common frames omitted
+Caused by: java.time.format.DateTimeParseException: Text '2026-07-20 00:00:00' could not be parsed at index 10
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDateTime.parse(LocalDateTime.java:494)
+	at com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer._fromString(LocalDateTimeDeserializer.java:177)
+	... 60 common frames omitted
+26-07-19.09:34:45.488 [http-nio-8080-exec-5] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalDateTime` from String "2026-07-20 00:00:00": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2026-07-20 00:00:00' could not be parsed at index 10]
+26-07-19.09:36:22.875 [http-nio-8080-exec-5] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC
+### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)
+	at jdk.proxy2/jdk.proxy2.$Proxy78.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy3/jdk.proxy3.$Proxy93.selectList(Unknown Source)
+	at com.dahaiwuliang.service.AppealService.myAppeals(AppealService.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at com.dahaiwuliang.service.AppealService$$SpringCGLIB$$0.myAppeals(<generated>)
+	at com.dahaiwuliang.controller.AppealController.mine(AppealController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at jdk.internal.reflect.GeneratedMethodAccessor71.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58)
+	at jdk.proxy4/jdk.proxy4.$Proxy128.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at jdk.internal.reflect.GeneratedMethodAccessor76.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	... 66 common frames omitted
+26-07-19.09:36:22.876 [http-nio-8080-exec-5] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: <EOL>### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)<EOL>### The error may involve defaultParameterMap<EOL>### The error occurred while setting parameters<EOL>### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC<EOL>### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>; bad SQL grammar []]
+26-07-19.09:36:29.173 [http-nio-8080-exec-1] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC
+### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)
+	at jdk.proxy2/jdk.proxy2.$Proxy78.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy3/jdk.proxy3.$Proxy93.selectList(Unknown Source)
+	at com.dahaiwuliang.service.AppealService.myAppeals(AppealService.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at com.dahaiwuliang.service.AppealService$$SpringCGLIB$$0.myAppeals(<generated>)
+	at com.dahaiwuliang.controller.AppealController.mine(AppealController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at jdk.internal.reflect.GeneratedMethodAccessor71.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58)
+	at jdk.proxy4/jdk.proxy4.$Proxy128.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at jdk.internal.reflect.GeneratedMethodAccessor76.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	... 66 common frames omitted
+26-07-19.09:36:29.174 [http-nio-8080-exec-1] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: <EOL>### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)<EOL>### The error may involve defaultParameterMap<EOL>### The error occurred while setting parameters<EOL>### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC<EOL>### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>; bad SQL grammar []]
+26-07-19.09:36:30.843 [http-nio-8080-exec-7] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC
+### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)
+	at jdk.proxy2/jdk.proxy2.$Proxy78.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy3/jdk.proxy3.$Proxy93.selectList(Unknown Source)
+	at com.dahaiwuliang.service.AppealService.myAppeals(AppealService.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at com.dahaiwuliang.service.AppealService$$SpringCGLIB$$0.myAppeals(<generated>)
+	at com.dahaiwuliang.controller.AppealController.mine(AppealController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at jdk.internal.reflect.GeneratedMethodAccessor71.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58)
+	at jdk.proxy4/jdk.proxy4.$Proxy128.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at jdk.internal.reflect.GeneratedMethodAccessor76.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	... 66 common frames omitted
+26-07-19.09:36:30.844 [http-nio-8080-exec-7] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: <EOL>### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)<EOL>### The error may involve defaultParameterMap<EOL>### The error occurred while setting parameters<EOL>### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC<EOL>### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>; bad SQL grammar []]
+26-07-19.09:36:33.245 [http-nio-8080-exec-10] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC
+### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)
+	at jdk.proxy2/jdk.proxy2.$Proxy78.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy3/jdk.proxy3.$Proxy93.selectList(Unknown Source)
+	at com.dahaiwuliang.service.AppealService.myAppeals(AppealService.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at com.dahaiwuliang.service.AppealService$$SpringCGLIB$$0.myAppeals(<generated>)
+	at com.dahaiwuliang.controller.AppealController.mine(AppealController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at jdk.internal.reflect.GeneratedMethodAccessor71.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58)
+	at jdk.proxy4/jdk.proxy4.$Proxy128.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at jdk.internal.reflect.GeneratedMethodAccessor76.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	... 66 common frames omitted
+26-07-19.09:36:33.247 [http-nio-8080-exec-10] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: <EOL>### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)<EOL>### The error may involve defaultParameterMap<EOL>### The error occurred while setting parameters<EOL>### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC<EOL>### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>; bad SQL grammar []]
+26-07-19.09:38:06.415 [http-nio-8080-exec-7] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC
+### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)
+	at jdk.proxy2/jdk.proxy2.$Proxy78.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy3/jdk.proxy3.$Proxy93.selectList(Unknown Source)
+	at com.dahaiwuliang.service.AppealService.myAppeals(AppealService.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at com.dahaiwuliang.service.AppealService$$SpringCGLIB$$0.myAppeals(<generated>)
+	at com.dahaiwuliang.controller.AppealController.mine(AppealController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at jdk.internal.reflect.GeneratedMethodAccessor71.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58)
+	at jdk.proxy4/jdk.proxy4.$Proxy128.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at jdk.internal.reflect.GeneratedMethodAccessor76.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	... 66 common frames omitted
+26-07-19.09:38:06.416 [http-nio-8080-exec-7] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: <EOL>### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)<EOL>### The error may involve defaultParameterMap<EOL>### The error occurred while setting parameters<EOL>### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal      WHERE  (merchant_id = ?) ORDER BY id DESC<EOL>### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>; bad SQL grammar []]
+26-07-19.09:38:36.409 [http-nio-8080-exec-7] ERROR GlobalExceptionHandler - 系统异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal           ORDER BY id DESC
+### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)
+	at jdk.proxy2/jdk.proxy2.$Proxy78.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy3/jdk.proxy3.$Proxy93.selectList(Unknown Source)
+	at com.dahaiwuliang.service.AppealService.adminList(AppealService.java:81)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at com.dahaiwuliang.service.AppealService$$SpringCGLIB$$0.adminList(<generated>)
+	at com.dahaiwuliang.controller.AppealController.adminList(AppealController.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at jdk.internal.reflect.GeneratedMethodAccessor71.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58)
+	at jdk.proxy4/jdk.proxy4.$Proxy128.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at jdk.internal.reflect.GeneratedMethodAccessor76.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	... 66 common frames omitted
+26-07-19.09:38:36.410 [http-nio-8080-exec-7] WARN  ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: <EOL>### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>### The error may exist in com/dahaiwuliang/mapper/NoteAppealMapper.java (best guess)<EOL>### The error may involve defaultParameterMap<EOL>### The error occurred while setting parameters<EOL>### SQL: SELECT  id,note_id,shop_id,merchant_id,reason,status,reply,create_time,update_time  FROM note_appeal           ORDER BY id DESC<EOL>### Cause: java.sql.SQLSyntaxErrorException: Table 'foodie.note_appeal' doesn't exist<EOL>; bad SQL grammar []]
+26-07-19.09:39:32.574 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (2 additions, 0 deletions, 0 modifications)
+26-07-19.09:39:32.578 [Thread-7        ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:39:32.583 [Thread-7        ] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-07-19.09:39:32.587 [Thread-7        ] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-07-19.09:39:32.640 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 5251 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:39:32.640 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:39:32.640 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:39:32.804 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:39:32.805 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:39:32.805 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:39:32.805 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:39:32.809 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:39:32.809 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 168 ms
+26-07-19.09:39:38.106 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:39:38.111 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:39:38.112 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:39:38.115 [restartedMain   ] INFO  App                    - Started App in 5.495 seconds (process running for 349.965)
+26-07-19.09:39:38.116 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:42:14.466 [http-nio-8080-exec-1] INFO  [/api]                 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-07-19.09:42:14.466 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-07-19.09:42:14.467 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 1 ms
+26-07-19.09:42:14.474 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-2 - Starting...
+26-07-19.09:42:14.479 [http-nio-8080-exec-1] INFO  HikariPool             - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@317e54e6
+26-07-19.09:42:14.479 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-2 - Start completed.
+26-07-19.09:44:33.123 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+26-07-19.09:44:33.126 [Thread-16       ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:44:33.130 [Thread-16       ] INFO  HikariDataSource       - HikariPool-2 - Shutdown initiated...
+26-07-19.09:44:33.131 [Thread-16       ] INFO  HikariDataSource       - HikariPool-2 - Shutdown completed.
+26-07-19.09:44:33.184 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 5251 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:44:33.184 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:44:33.184 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:44:33.305 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:44:33.306 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:44:33.306 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:44:33.306 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:44:33.310 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:44:33.310 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 125 ms
+26-07-19.09:44:38.544 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:44:38.549 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:44:38.550 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:44:38.552 [restartedMain   ] INFO  App                    - Started App in 5.387 seconds (process running for 650.405)
+26-07-19.09:44:38.553 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:47:37.531 [background-preinit] INFO  Version                - HV000001: Hibernate Validator 8.0.1.Final
+26-07-19.09:47:37.547 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 8404 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:47:37.547 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:47:37.548 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:47:37.571 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-07-19.09:47:37.571 [restartedMain   ] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-07-19.09:47:38.146 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:47:38.151 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:47:38.152 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:47:38.152 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:47:38.176 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:47:38.176 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 605 ms
+26-07-19.09:47:43.783 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:47:43.792 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:47:43.800 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:47:43.806 [restartedMain   ] INFO  App                    - Started App in 6.483 seconds (process running for 6.691)
+26-07-19.09:47:47.231 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+26-07-19.09:47:47.235 [Thread-7        ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:47:47.292 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 8404 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:47:47.292 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:47:47.292 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:47:47.412 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:47:47.412 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:47:47.412 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:47:47.412 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:47:47.416 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:47:47.416 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 123 ms
+26-07-19.09:47:47.683 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:47:47.688 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:47:47.689 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:47:47.692 [restartedMain   ] INFO  App                    - Started App in 0.417 seconds (process running for 10.577)
+26-07-19.09:47:47.693 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:47:48.172 [http-nio-8080-exec-1] INFO  [/api]                 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-07-19.09:47:48.172 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-07-19.09:47:48.173 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 1 ms
+26-07-19.09:47:48.279 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-07-19.09:47:48.346 [http-nio-8080-exec-1] INFO  HikariPool             - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@466c6c64
+26-07-19.09:47:48.347 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-07-19.09:48:01.260 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+26-07-19.09:48:01.263 [Thread-9        ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:01.274 [Thread-9        ] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-07-19.09:48:01.279 [Thread-9        ] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-07-19.09:48:01.325 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 8404 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:48:01.325 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:48:01.325 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:48:01.449 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:48:01.449 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:01.449 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:48:01.449 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:48:01.453 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:48:01.453 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 127 ms
+26-07-19.09:48:06.699 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:48:06.705 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:06.706 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:48:06.708 [restartedMain   ] INFO  App                    - Started App in 5.399 seconds (process running for 29.593)
+26-07-19.09:48:06.709 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:48:07.088 [http-nio-8080-exec-1] INFO  [/api]                 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-07-19.09:48:07.088 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-07-19.09:48:07.089 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 1 ms
+26-07-19.09:48:07.095 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-2 - Starting...
+26-07-19.09:48:07.101 [http-nio-8080-exec-1] INFO  HikariPool             - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f792a90
+26-07-19.09:48:07.101 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-2 - Start completed.
+26-07-19.09:48:39.603 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+26-07-19.09:48:39.605 [Thread-16       ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:39.611 [Thread-16       ] INFO  HikariDataSource       - HikariPool-2 - Shutdown initiated...
+26-07-19.09:48:39.612 [Thread-16       ] INFO  HikariDataSource       - HikariPool-2 - Shutdown completed.
+26-07-19.09:48:39.661 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 8404 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:48:39.661 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:48:39.661 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:48:39.770 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:48:39.770 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:39.770 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:48:39.770 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:48:39.774 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:48:39.774 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 112 ms
+26-07-19.09:48:44.986 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:48:44.991 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:44.992 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:48:44.994 [restartedMain   ] INFO  App                    - Started App in 5.345 seconds (process running for 67.88)
+26-07-19.09:48:44.995 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:48:52.576 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+26-07-19.09:48:52.580 [Thread-24       ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:52.625 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 8404 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:48:52.625 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:48:52.625 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:48:52.751 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:48:52.751 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:52.751 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:48:52.751 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:48:52.755 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:48:52.755 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 129 ms
+26-07-19.09:48:58.001 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:48:58.007 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:48:58.008 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:48:58.010 [restartedMain   ] INFO  App                    - Started App in 5.398 seconds (process running for 80.896)
+26-07-19.09:48:58.010 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.09:49:42.654 [http-nio-8080-exec-1] INFO  [/api]                 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-07-19.09:49:42.654 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-07-19.09:49:42.656 [http-nio-8080-exec-1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+26-07-19.09:49:42.665 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-3 - Starting...
+26-07-19.09:49:42.673 [http-nio-8080-exec-1] INFO  HikariPool             - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22cd7b46
+26-07-19.09:49:42.673 [http-nio-8080-exec-1] INFO  HikariDataSource       - HikariPool-3 - Start completed.
+26-07-19.09:58:23.576 [File Watcher    ] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 4 class path changes (0 additions, 0 deletions, 4 modifications)
+26-07-19.09:58:23.579 [Thread-30       ] INFO  Http11NioProtocol      - Stopping ProtocolHandler ["http-nio-8080"]
+26-07-19.09:58:23.583 [Thread-30       ] INFO  HikariDataSource       - HikariPool-3 - Shutdown initiated...
+26-07-19.09:58:23.583 [Thread-30       ] INFO  HikariDataSource       - HikariPool-3 - Shutdown completed.
+26-07-19.09:58:23.641 [restartedMain   ] INFO  App                    - Starting App using Java 17.0.19 with PID 8404 (/Users/weibaiwang/Desktop/AAA/work/all/rs/target/classes started by weibaiwang in /Users/weibaiwang/Desktop/AAA/work/all/rs)
+26-07-19.09:58:23.641 [restartedMain   ] DEBUG App                    - Running with Spring Boot v3.2.5, Spring v6.1.6
+26-07-19.09:58:23.641 [restartedMain   ] INFO  App                    - No active profile set, falling back to 1 default profile: "default"
+26-07-19.09:58:23.766 [restartedMain   ] INFO  TomcatWebServer        - Tomcat initialized with port 8080 (http)
+26-07-19.09:58:23.767 [restartedMain   ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8080"]
+26-07-19.09:58:23.767 [restartedMain   ] INFO  StandardService        - Starting service [Tomcat]
+26-07-19.09:58:23.767 [restartedMain   ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/10.1.20]
+26-07-19.09:58:23.771 [restartedMain   ] INFO  [/api]                 - Initializing Spring embedded WebApplicationContext
+26-07-19.09:58:23.771 [restartedMain   ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 129 ms
+26-07-19.09:58:29.014 [restartedMain   ] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+26-07-19.09:58:29.019 [restartedMain   ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8080"]
+26-07-19.09:58:29.020 [restartedMain   ] INFO  TomcatWebServer        - Tomcat started on port 8080 (http) with context path '/api'
+26-07-19.09:58:29.022 [restartedMain   ] INFO  App                    - Started App in 5.395 seconds (process running for 651.914)
+26-07-19.09:58:29.023 [restartedMain   ] INFO  ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+26-07-19.10:18:24.716 [http-nio-8080-exec-2] INFO  [/api]                 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26-07-19.10:18:24.717 [http-nio-8080-exec-2] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+26-07-19.10:18:24.719 [http-nio-8080-exec-2] INFO  DispatcherServlet      - Completed initialization in 2 ms
+26-07-19.10:18:24.739 [http-nio-8080-exec-2] INFO  HikariDataSource       - HikariPool-4 - Starting...
+26-07-19.10:18:24.790 [http-nio-8080-exec-2] INFO  HikariPool             - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68802f59
+26-07-19.10:18:24.791 [http-nio-8080-exec-2] INFO  HikariDataSource       - HikariPool-4 - Start completed.
+26-07-19.10:34:42.939 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=16m18s40ms).
+26-07-19.10:41:25.866 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=6m12s925ms).
+26-07-19.11:06:22.987 [HikariPool-4 housekeeper] WARN  HikariPool             - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=9m27s20ms).

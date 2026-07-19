@@ -93,6 +93,21 @@ public class NoteController {
         return R.ok();
     }
 
+    @PutMapping("/admin/{id}")
+    @RequirePerm({"content:review", "content:manage"})
+    public R<Note> adminUpdate(@PathVariable Long id, @RequestBody Note note) {
+        note.setId(id);
+        return R.ok("保存成功", noteService.adminUpdate(note));
+    }
+
+    /** 后台删除笔记(内容审核) */
+    @DeleteMapping("/admin/{id}")
+    @RequirePerm({"content:review", "content:manage"})
+    public R<Void> adminDelete(@PathVariable Long id) {
+        noteService.adminDelete(id);
+        return R.ok();
+    }
+
     @PutMapping("/{id}/recommend")
     @RequirePerm("content:manage")
     public R<Void> setRecommend(@PathVariable Long id, @RequestParam Integer recommend) {

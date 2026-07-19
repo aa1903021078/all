@@ -118,6 +118,21 @@ public class RecipeController {
         return R.ok();
     }
 
+    @PutMapping("/admin/{id}")
+    @RequirePerm({"content:manage", "content:review"})
+    public R<Recipe> adminUpdate(@PathVariable Long id, @RequestBody Recipe recipe) {
+        recipe.setId(id);
+        return R.ok("保存成功", recipeService.adminUpdateBasic(recipe));
+    }
+
+    /** 后台删除菜谱(内容审核) */
+    @DeleteMapping("/admin/{id}")
+    @RequirePerm({"content:manage", "content:review"})
+    public R<Void> adminDelete(@PathVariable Long id) {
+        recipeService.adminDelete(id);
+        return R.ok();
+    }
+
     @PutMapping("/{id}/recommend")
     @RequirePerm("content:manage")
     public R<Void> setRecommend(@PathVariable Long id, @RequestParam Integer recommend) {

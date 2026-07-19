@@ -72,6 +72,8 @@ export const recipeApi = {
   reposts: (id) => request.get(`/recipes/${id}/reposts`),
   addRepost: (id, data) => request.post(`/recipes/${id}/reposts`, data),
   adminPage: (params) => request.get('/recipes/admin/page', { params }),
+  adminUpdate: (id, data) => request.put(`/recipes/admin/${id}`, data),
+  adminRemove: (id) => request.delete(`/recipes/admin/${id}`),
   changeStatus: (id, status) => request.put(`/recipes/${id}/status`, null, { params: { status } }),
   setRecommend: (id, recommend) => request.put(`/recipes/${id}/recommend`, null, { params: { recommend } }),
 }
@@ -87,6 +89,8 @@ export const noteApi = {
   remove: (id) => request.delete(`/notes/${id}`),
   like: (id) => request.post(`/notes/${id}/like`),
   adminPage: (params) => request.get('/notes/admin/page', { params }),
+  adminUpdate: (id, data) => request.put(`/notes/admin/${id}`, data),
+  adminRemove: (id) => request.delete(`/notes/admin/${id}`),
   review: (id, status) => request.put(`/notes/${id}/status`, null, { params: { status } }),
   setRecommend: (id, recommend) => request.put(`/notes/${id}/recommend`, null, { params: { recommend } }),
 }
