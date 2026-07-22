@@ -50,6 +50,10 @@
         </div>
       </div>
 
+      <!-- 店铺位置 -->
+      <div class="section-title mt-16">📍 店铺位置</div>
+      <div ref="mapContainer" class="map-container"></div>
+
       <!-- 推荐菜品 -->
       <div class="section-title mt-16">🍽️ 推荐菜品</div>
       <div class="dish-list" v-if="dishes.length">
@@ -100,13 +104,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { shopApi, noteApi, favoriteApi, reservationApi, chatApi } from '@/api'
 import { useAuthStore } from '@/store/auth'
 import StarRating from '@/components/StarRating.vue'
 import NoteCard from '@/components/NoteCard.vue'
+import AMapLoader from '@amap/amap-jsapi-loader'
 
 const route = useRoute()
 const router = useRouter()
@@ -118,6 +123,8 @@ const notes = ref([])
 const loading = ref(false)
 const activeImage = ref('')
 const reserveVisible = ref(false)
+const mapContainer = ref(null)
+let map = null
 const reserveForm = reactive({
   reserveTime: '', peopleCount: 2, contactName: '', contactPhone: '', remark: '',
 })
@@ -189,7 +196,41 @@ async function submitReserve() {
   ElMessage.success('预约已提交,等待商家确认')
 }
 
-onMounted(load)
+// 初始化高德地图
+async function initMap() {
+  if (!shop.value.longitude || !shop.value.latitude) return
+  try {
+    const AMap = await AMapLoader.load({
+      key: '247ccad7c41a6591a2209a367983617d',
+      version: '2.0'
+    })
+    map = new AMap.Map(mapContainer.value, {
+      center: [Number(shop.value.longitude), Number(shop.value.latitude)],
+      zoom: 15,
+      resizeEnable: true
+    })
+    new AMap.Marker({
+      position: [Number(shop.value.longitude), Number(shop.value.latitude)],
+      map
+    })
+  } catch (e) {
+    console.warn('高德地图加载失败:', e)
+  }
+}
+
+onMounted(async () => {
+  await load()
+  if (shop.value?.longitude && shop.value?.latitude) {
+    await initMap()
+  }
+})
+
+onUnmounted(() => {
+  if (map) {
+    map.destroy()
+    map = null
+  }
+})
 </script>
 
 <style scoped>
@@ -275,6 +316,16 @@ onMounted(load)
   flex: 1;
   min-width: 0;
 }
+
+/* 店铺位置地图 */
+.map-container {
+  height: 250px;
+  border-radius: 12px;
+  margin-top: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border, #e8e8e8);
+}
+
 @media (max-width: 800px) {
   .detail-head {
     flex-direction: column;

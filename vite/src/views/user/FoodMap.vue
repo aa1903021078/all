@@ -38,14 +38,41 @@
 
     <div class="map-layout mt-16">
       <div class="map-main" v-loading="loading">
-        <SimpleMap
-          :shops="filtered"
-          @open="goDetail"
-          @checkin="doCheckin"
-          @reserve="openReserve"
-          @consult="doConsult"
-        />
+        <div id="amap-container" class="map-container"></div>
+
+        <!-- 店铺信息面板 -->
+        <div class="shop-panel" v-if="selectedShop">
+          <div class="panel-header">
+            <h3>{{ selectedShop.name }}</h3>
+            <el-icon class="close-btn" @click="selectedShop = null"><Close /></el-icon>
+          </div>
+          <div class="panel-body">
+            <el-image v-if="selectedShop.cover" :src="selectedShop.cover" fit="cover" class="panel-cover" />
+            <div class="panel-info">
+              <StarRating :model-value="Number(selectedShop.rating || 0)" readonly :size="14" show-text />
+              <p class="panel-price" v-if="selectedShop.avgPrice">人均 ¥{{ selectedShop.avgPrice }}</p>
+              <p class="panel-addr">
+                <el-icon :size="14"><Location /></el-icon>
+                {{ selectedShop.address }}
+              </p>
+              <div class="panel-actions">
+                <el-button type="primary" size="small" @click="goDetail(selectedShop)">查看详情</el-button>
+                <el-button
+                  :type="selectedShop.lit ? 'danger' : 'default'"
+                  size="small"
+                  plain
+                  @click="doCheckin(selectedShop)"
+                >
+                  {{ selectedShop.lit ? '已点亮' : '🔥点亮' }}
+                </el-button>
+                <el-button size="small" @click="openReserve(selectedShop)">预约</el-button>
+                <el-button size="small" @click="doConsult(selectedShop)">咨询</el-button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="map-side card">
         <div class="side-head">
           共 {{ filtered.length }} 家店铺
@@ -99,13 +126,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import { Close, Location } from '@element-plus/icons-vue'
 import { shopApi, categoryApi, reservationApi, chatApi } from '@/api'
 import { useAuthStore } from '@/store/auth'
-import SimpleMap from '@/components/SimpleMap.vue'
 import StarRating from '@/components/StarRating.vue'
+import AMapLoader from '@amap/amap-jsapi-loader'
 
 const router = useRouter()
 const auth = useAuthStore()
@@ -115,11 +143,16 @@ const categories = ref([])
 const categoryId = ref(null)
 const onlyLit = ref(false)
 const loading = ref(false)
+const selectedShop = ref(null)
 
 // 周边雷达筛选
 const radius = ref(0)
 const priceMax = ref(0)
 const minRating = ref(0)
+
+// 高德地图实例与命名空间
+let map = null
+let AMapNS = null
 
 // 地图中心(取当前店铺质心, 作为"我的位置"参考点)
 const center = computed(() => {
@@ -164,11 +197,69 @@ const filtered = computed(() => {
   return list
 })
 
+// ---- 地图初始化 ----
+async function initMap() {
+  try {
+    const AMap = await AMapLoader.load({
+      key: '247ccad7c41a6591a2209a367983617d',
+      version: '2.0'
+    })
+    AMapNS = AMap
+    map = new AMap.Map('amap-container', {
+      center: [116.397428, 39.90923], // 默认北京
+      zoom: 12,
+      resizeEnable: true
+    })
+  } catch (e) {
+    console.warn('高德地图加载失败:', e)
+    ElMessage.warning('地图加载失败，请检查网络连接')
+  }
+}
+
+// ---- 标记点管理 ----
+function clearMarkers() {
+  if (map) {
+    map.clearMap()
+  }
+}
+
+function addMarkers(shops) {
+  if (!map) return
+  shops.forEach((shop) => {
+    if (shop.longitude != null && shop.latitude != null) {
+      const marker = new AMapNS.Marker({
+        position: [Number(shop.longitude), Number(shop.latitude)],
+        title: shop.name
+      })
+      marker.on('click', () => {
+        selectedShop.value = shop
+      })
+      map.add(marker)
+    }
+  })
+}
+
+function updateMarkers() {
+  clearMarkers()
+  addMarkers(filtered.value)
+}
+
+// 监听筛选条件变化, 更新地图标记
+watch([radius, priceMax, minRating], () => {
+  updateMarkers()
+})
+
+// ---- 数据加载 ----
 async function load() {
   loading.value = true
   try {
     const res = await shopApi.map({ categoryId: categoryId.value, onlyLit: onlyLit.value })
     rawShops.value = res.data || []
+    // 居中到店铺质心
+    if (center.value && map) {
+      map.setCenter([center.value.lng, center.value.lat])
+    }
+    updateMarkers()
   } finally {
     loading.value = false
   }
@@ -193,6 +284,10 @@ async function doCheckin(s) {
   await shopApi.checkin(s.id)
   const target = rawShops.value.find((x) => x.id === s.id)
   if (target) target.lit = true
+  // 同步更新选中店铺
+  if (selectedShop.value && selectedShop.value.id === s.id) {
+    selectedShop.value = { ...selectedShop.value, lit: true }
+  }
   ElMessage.success('已点亮 ' + s.name + ' 🔥')
 }
 
@@ -201,7 +296,11 @@ const reserveVisible = ref(false)
 const submitting = ref(false)
 const reserveShop = ref({})
 const reserveForm = reactive({
-  reserveTime: '', peopleCount: 2, contactName: '', contactPhone: '', remark: '',
+  reserveTime: '',
+  peopleCount: 2,
+  contactName: '',
+  contactPhone: '',
+  remark: '',
 })
 
 function openReserve(s) {
@@ -234,9 +333,18 @@ async function doConsult(s) {
   router.push('/chat')
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await initMap()
   load()
   categoryApi.list().then((res) => (categories.value = res.data || []))
+})
+
+onUnmounted(() => {
+  if (map) {
+    map.destroy()
+    map = null
+    AMapNS = null
+  }
 })
 </script>
 
@@ -261,6 +369,78 @@ onMounted(() => {
   grid-template-columns: 1fr 300px;
   gap: 16px;
 }
+
+/* 地图主区域 */
+.map-main {
+  position: relative;
+  min-height: 520px;
+}
+.map-container {
+  width: 100%;
+  height: 520px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 店铺信息面板 */
+.shop-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 320px;
+  max-width: calc(100% - 40px);
+  overflow: hidden;
+  z-index: 100;
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--brand, #ff6a3d);
+  color: #fff;
+}
+.panel-header h3 {
+  font-size: 15px;
+  margin: 0;
+}
+.close-btn {
+  cursor: pointer;
+  font-size: 18px;
+}
+.panel-body {
+  padding: 12px;
+}
+.panel-cover {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.panel-price {
+  color: var(--brand, #ff6a3d);
+  font-weight: 600;
+  margin: 6px 0;
+}
+.panel-addr {
+  font-size: 13px;
+  color: var(--text-secondary, #909399);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* 侧边栏 */
 .map-side {
   padding: 12px;
   display: flex;
@@ -270,7 +450,7 @@ onMounted(() => {
 .side-head {
   font-weight: 700;
   padding: 4px 4px 10px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border, #e8e8e8);
 }
 .side-list {
   overflow-y: auto;
