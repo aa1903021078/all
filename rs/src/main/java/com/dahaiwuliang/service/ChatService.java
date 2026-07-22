@@ -50,7 +50,6 @@ public class ChatService {
         }
         ChatSession session = sessionMapper.selectOne(new LambdaQueryWrapper<ChatSession>()
                 .eq(ChatSession::getUserId, userId)
-                .eq(ChatSession::getShopId, shopId)
                 .eq(ChatSession::getMerchantId, merchantId)
                 .last("limit 1"));
         if (session == null) {
